@@ -4,7 +4,7 @@
   - [Python 转义字符](#python-转义字符)
   - [注释（comment）](#注释comment)
   - [Python 代码规范](#python-代码规范)
-  - [Python 文档](#python-文档)
+  - [Python 文档](#python文档)
   - [本章作业](#本章作业)
 - [变量](#变量)
   - [为什么需要变量](#为什么需要变量)
