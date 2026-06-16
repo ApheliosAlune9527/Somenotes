@@ -218,7 +218,7 @@ print("姓名\t年龄\t籍贯\t住址\ntom\t12\t河北\t北京")
 3. 不同于 C、C++ 或 Java 这样的编程语言，Python 代码中的语句不需要用分号来表示结束，也就是说，如果我们想再写一条语句，只需要回车换行即可。
 
 
-### Python 文档
+### Python-文档
 
 - [Python 在线文档](https://docs.python.org/zh-cn/3/)
 
