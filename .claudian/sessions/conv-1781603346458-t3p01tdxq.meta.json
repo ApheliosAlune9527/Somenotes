@@ -4,8 +4,8 @@
   "title": "帮我看看这个 External contexts 里边的项目结构",
   "titleGenerationStatus": "failed",
   "createdAt": 1781603346458,
-  "updatedAt": 1781604435828,
-  "lastResponseAt": 1781604435828,
+  "updatedAt": 1781604586358,
+  "lastResponseAt": 1781604586358,
   "sessionId": "7d79ac91-5e8c-45b0-b7d6-54a3d86aa976",
   "providerState": {
     "providerSessionId": "7d79ac91-5e8c-45b0-b7d6-54a3d86aa976"
@@ -16,11 +16,11 @@
   ],
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 534,
+    "inputTokens": 3460,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 30976,
+    "cacheReadInputTokens": 38272,
     "contextWindow": 1000000,
-    "contextTokens": 31510,
-    "percentage": 3
+    "contextTokens": 41732,
+    "percentage": 4
   }
 }
