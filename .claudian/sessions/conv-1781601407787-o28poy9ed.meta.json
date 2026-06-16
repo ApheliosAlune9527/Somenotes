@@ -4,8 +4,8 @@
   "title": "External contexts 你的这个功能是啥",
   "titleGenerationStatus": "failed",
   "createdAt": 1781601407787,
-  "updatedAt": 1781601430786,
-  "lastResponseAt": 1781601430786,
+  "updatedAt": 1781601612570,
+  "lastResponseAt": 1781601612570,
   "sessionId": "7433e32d-3012-4931-85f0-0cae94235025",
   "providerState": {
     "providerSessionId": "7433e32d-3012-4931-85f0-0cae94235025"
@@ -16,11 +16,12 @@
   ],
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 27926,
+    "inputTokens": 430,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 0,
+    "cacheReadInputTokens": 27904,
     "contextWindow": 1000000,
-    "contextTokens": 27926,
-    "percentage": 3
+    "contextTokens": 28334,
+    "percentage": 3,
+    "contextWindowIsAuthoritative": true
   }
 }
