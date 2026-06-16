@@ -4,8 +4,8 @@
   "title": "把这个文件夹里边的代码以及我的注释内容全部写入我现在这个md文档中",
   "titleGenerationStatus": "failed",
   "createdAt": 1781591694334,
-  "updatedAt": 1781591759493,
-  "lastResponseAt": 1781591759493,
+  "updatedAt": 1781600404780,
+  "lastResponseAt": 1781600404780,
   "sessionId": "8b104336-1efd-435a-9ab7-876c7489f3b0",
   "providerState": {
     "providerSessionId": "8b104336-1efd-435a-9ab7-876c7489f3b0"
@@ -16,11 +16,11 @@
   ],
   "usage": {
     "model": "opus",
-    "inputTokens": 41677,
+    "inputTokens": 135573,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 93760,
+    "cacheReadInputTokens": 0,
     "contextWindow": 200000,
-    "contextTokens": 135437,
+    "contextTokens": 135573,
     "percentage": 68
   }
 }
