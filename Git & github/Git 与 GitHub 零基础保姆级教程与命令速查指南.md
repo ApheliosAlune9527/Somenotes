@@ -73,7 +73,7 @@
     
 - **命令行终端**：
     
-    - **Windows 用户**：必须下载并安装 **Git Bash** （安装时一路点击 Next 即可，建议勾选 "On the Desktop" 图标，并在命名默认分支时可选择将其设为 `main` ）。![]
+    - **Windows 用户**：必须下载并安装 **Git Bash** （安装时一路点击 Next 即可，建议勾选 "On the Desktop" 图标，并在命名默认分支时可选择将其设为 `main` ）。![[Pasted image 20260617135343.png]]
         
     - **Mac 用户**：直接使用系统自带的 **Terminal（终端）** 即可。可通过 `Finder` 搜索 "Terminal" 打开。
         
