@@ -89,8 +89,7 @@ git --version
 
 ### 3. 配置 Git 用户信息 [`00:20:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m12s)
 
-在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在````
-```终端输入以下命令进行**全局配置（Global Configuration）**：
+在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在 终端 输入以下命令进行**全局配置（Global Configuration）**：
 
 ```
 # 设置你的用户名（ 建议 与 GitHub 用户名一致）
@@ -129,7 +128,7 @@ git config --global user.email "你的邮箱地址"
 
 1. 先在GitHub上创建一个[仓库](https://github.com/new)
 ![](仓库的建立.png)
-	接着点击下方绿色**Create repository** 按钮即可创建一个新仓库
+接着点击下方绿色**Create repository** 按钮即可创建一个新仓库
 
 2. 在 GitHub 仓库页面点击绿色的 **Code** 按钮，复制 **HTTPS** 链接。
     
