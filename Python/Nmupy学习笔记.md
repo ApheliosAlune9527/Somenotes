@@ -1,4 +1,3 @@
-# NumPy 学习笔记
 
 > 📚 本笔记整理自 numpy_course 项目，系统涵盖 NumPy 从基础到实战的核心知识点。
 
