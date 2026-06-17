@@ -234,13 +234,13 @@ git push origin main
 
 ![](附件/github同步页面.png)
 
-> _注意 : `origin`：远程仓库的地址（别名）。你第一次 `git clone` 的时候，Git 会自动帮你记住这个地址并起名叫 `origin`。你可以用 `git remote -v` 查看它对应的实际 URL。
+> _注意 : `origin`：远程仓库的地址（别名）。你第一次 `git clone` 的时候，Git 会自动帮你记住这个地址并起名叫 `origin`。你可以用 `git remote -v` 查看它对应的实际 URL。_
 > 
-> `main`：你要推送的分支名。表示把本地的 `main` 分支推送到远程的 `main` 分支。
+> _`main`：你要推送的分支名。表示把本地的 `main` 分支推送到远程的 `main` 分支。_
 > 
-> 即:`git push` 是"寄出去"，`origin` 是"收件地址"，`main` 是"寄哪个包裹"。
+>_即:`git push` 是"寄出去"，`origin` 是"收件地址"，`main` 是"寄哪个包裹"。_
 > 
-> 另外 : 当我们使用 `git push -u origin main` -u 就是 --set-upstream 设置上游, 以后我们就只打 `git push`即可
+> _另外 : 当我们使用 `git push -u origin main` -u 就是 --set-upstream 设置上游, 以后我们就只打 `git push`即可_
 
 
 
