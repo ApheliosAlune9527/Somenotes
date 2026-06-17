@@ -4,24 +4,8 @@
 [![](https://img.youtube.com/vi/Ez8F0nW6S-w/maxresdefault.jpg)](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=4299s)
 ## 目录
 
-1. [第一部分：Git 与 GitHub 基础概念](#第一部分git-与-github-基础概念 "null")
-    
-2. [第二部分：环境搭建与初始配置](#第二部分环境搭建与初始配置 "null")
-    
-3. [第三部分：Git 核心工作流与基础命令](#第三部分git-核心工作流与基础命令 "null")
-    
-4. [第四部分：在本地从零初始化仓库并推送](#第四部分在本地从零初始化仓库并推送 "null")
-    
-5. [第五部分：分支（Branches）管理与协作开发](#第五部分分支branches管理与协作开发 "null")
-    
-6. [第六部分：冲突解决（Merge Conflicts）](#第六部分冲突解决merge-conflicts "null")
-    
-7. [第七部分：撤销更改与版本回退（Undo Changes）](#第七部分撤销更改与版本回退undo-changes "null")
-    
-8. [第八部分：开源贡献与 Fork 工作流](#第八部分开源贡献与-fork-工作流 "null")
-    
-9. [附录：Git 高频命令速查表](#附录git-高频命令速查表 "null")
-    
+- [[#第一部分：Git 与 GitHub 基础概念]]
+	 - [[#1. 什么是 Git ?]
 
 ## 第一部分：Git 与 GitHub 基础概念
 
