@@ -234,7 +234,12 @@ git push origin main
 
 ![](附件/github同步页面.png)
 
-> _注意:
+> _注意 : `origin`：远程仓库的地址（别名）。你第一次 `git clone` 的时候，Git 会自动帮你记住这个地址并起名叫 `origin`。你可以用 `git remote -v` 查看它对应的实际 URL。
+> 
+> `main`：你要推送的分支名。表示把本地的 `main` 分支推送到远程的 `main` 分支。
+> 
+
+
 
 
 ## 第四部分：在本地从零初始化仓库并推送
