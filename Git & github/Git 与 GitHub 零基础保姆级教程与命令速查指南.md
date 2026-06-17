@@ -238,6 +238,8 @@ git push origin main
 > 
 > `main`：你要推送的分支名。表示把本地的 `main` 分支推送到远程的 `main` 分支。
 > 
+> 即:`git push` 是"寄出去"，`origin` 是"收件地址"，`main` 是"寄哪个包裹"。
+> 另外 : 当我们使用 `git push -u origin main`
 
 
 
