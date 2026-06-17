@@ -380,13 +380,10 @@ git push -u origin main
 
 - 使用 `git merge main` 使得两个分支合并
 	
-	![[Pasted image 20260617183742.png]]
+	![662](附件/合并冲突.png)
 
 - 当你尝试将这两个分支合并时，Git 不知道到底应该保留谁的改动，于是它会罢工并抛出 **Merge Conflict** 错误，要求你手动解决。
 	
-	
-    
-
 ### 2. 冲突的代码标识 [`01:02:34`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=62m34s)
 
 发生冲突时，Git 会直接在你冲突的文件中插入特殊的标记：
