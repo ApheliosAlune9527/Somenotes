@@ -135,11 +135,11 @@ git config --global user.email "你的邮箱地址"
 将 GitHub 上的云端项目下载到本地电脑上。
 
 1. 先在GitHub上创建一个[仓库](https://github.com/new)
-	![](仓库的建立.png)
+	![[附件/仓库的建立.png]]
 接着点击下方绿色**Create repository** 按钮即可创建一个新仓库
 
 2. 在 GitHub 仓库页面点击绿色的 **Code** 按钮，复制 **HTTPS** 链接。
-    ![](复制http链接.png)
+    ![[附件/复制http链接.png]]
 3. 在本地终端中，进入到你想保存项目的文件夹，右键打开终端运行以下命令：
     
 
@@ -172,12 +172,12 @@ git clone <复制的仓库HTTPS链接>
 - 使用 vscode 打开刚才你保存项目的文件夹
 	![](附件/打开仓库.png)
 - 然后使用命令:`cd 你的项目名称/`  进入到git项目问价夹中(正常之只有README.md文件,我这里不是新创建的文件夹所以会多一些文件)
-	![](进入git项目中.png)
+	![[附件/进入git项目中.png]]
 
 - 使用 `git status` 命令可以查看当前仓库中文件的状态。文件通常处于以下四种状态之一：
  
 	1. **Untracked（未追踪）**：新创建的文件，Git 还没开始记录它。
-	    ![](untracked.png)
+	    ![[附件/untracked.png]]
 		> 我们在本地创建了一个`test.py`文件 ,然后Git远程仓库那边是不知道的所以文件是为未追踪状态,即git并未追踪改项目。
 		
 		
@@ -340,7 +340,7 @@ git push -u origin main
     git push origin feature-login
     ```
 	
-![](成功推送.png)
+![[附件/成功推送.png]]
 
 
 ### 4. 合并分支与拉取请求（Pull Request / PR） [`00:57:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=57m01s)
@@ -373,7 +373,7 @@ git push -u origin main
 	
 - 使用 `git diff 另一分支的名称` 来看分支差异
 	
-	![](feature-login分支和main分支差异.png)
+	![[附件/feature-login分支和main分支差异.png]]
     
 - 当你尝试将这两个分支合并时，Git 不知道到底应该保留谁的改动，于是它会罢工并抛出 **Merge Conflict** 错误，要求你手动解决。
     
