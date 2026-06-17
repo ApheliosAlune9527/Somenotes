@@ -189,7 +189,7 @@ git clone <复制的仓库HTTPS链接>
 	
 	
 	4. **Unmodified（未修改）**：提交后，本地文件与仓库版本一致，没有未保存的更改。
-	    
+	    >  `git status` 命令只会显示被修改改文件的状态
 
 ### 5. 基础操作三部曲：Add、Commit、Push
 
