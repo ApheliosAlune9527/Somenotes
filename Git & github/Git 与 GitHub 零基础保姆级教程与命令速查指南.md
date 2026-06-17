@@ -89,7 +89,8 @@ git --version
 
 ### 3. 配置 Git 用户信息 [`00:20:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m12s)
 
-在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在终端输入以下命令进行**全局配置（Global Configuration）**：
+在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在````
+```终端输入以下命令进行**全局配置（Global Configuration）**：
 
 ```
 # 设置你的用户名（ 建议 与 GitHub 用户名一致）
