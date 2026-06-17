@@ -5,7 +5,7 @@
 
 ## 目录
 
-- [[#一ndarray-特性]]
+- [[#一ndarray-特性|一.ndarray特性]]
 - [[#二ndarray-属性]]
 - [[#三ndarray-创建]]
 - [[#四ndarray-索引与切片]]
