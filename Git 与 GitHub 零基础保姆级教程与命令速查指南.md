@@ -467,3 +467,5 @@ git reset --hard <Commit_Hash>
 |**`git log --oneline`**|`log list`|简洁地列出项目的所有历史提交记录（Q 键退出）|
 |**`git reset HEAD~1`**|`reset commit`|撤销上一次 commit，保留代码在工作区中|
 |**`git remote -v`**|`remote verbose`|验证本地项目与哪些远程云端仓库建立了关联|
+
+
