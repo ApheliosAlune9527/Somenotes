@@ -353,6 +353,8 @@ git push -u origin main
 - 团队的资深开发者（Senior Developer）或项目经理会查看你提交的 PR，审查代码是否合规，确定无误后在 GitHub 网页端点击 **Merge Pull Request** 完成合并。
     
 - **同步云端改动到本地（Git Pull）** [`01:00:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m12s)： 当云端的 `main` 分支被合并了新代码后，你本地的 `main` 就会落后于云端。你必须切换回本地 `main`，并拉取最新代码：
+	
+	![[Pasted image 20260617181707.png]]
     
     ```
     git checkout main
