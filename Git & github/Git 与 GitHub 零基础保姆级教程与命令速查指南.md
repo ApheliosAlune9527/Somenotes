@@ -184,7 +184,7 @@ git clone <复制的仓库HTTPS链接>
 	    > 注意该状态一定是被git所追踪的文件在本地发生了修改,我们对README.md进行更改之后,左侧资源管理器这里 该文件后边就会多了一个 M 代表已修改。
 	
 	3. **Staged（已暂存）**：运行了 `git add` 后的文件，准备好被提交。 ^git-note
-	    ![](已暂存.png)
+	    ![](附件/已暂存.png)
 	> 使用 `git add .` 命令之后 所有的文件被添加到stage(暂存区)同时显示 changes to be committed 意味 改动准备被提交 , 而且这个test.py文件 后边多了个A 意思就是git新增(Added)文件,此时这个文件就被git所追踪了。
 	 ^c5c1f5
 	
@@ -212,7 +212,7 @@ git add .
 git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
 ```
 
-![](commit.png)
+![](附件/commit.png)
 
 > `git commit` 之后 左侧资源管理器中的后缀字母全都消失了,此时使用 `git status` 看到`your branch is ahead of main by 1 commit : 你本地 main 分支比远程 origin/main 多了 1 个提交` 
 > 因为执行commit,只是提交到了本地仓库,也就是本地仓库现在处于 C 状态,而因为没有推送到远程github仓库,所以它现在是 B 状态,所以显示:你本地分支比远程多一个提交,故我们还需要最后一个操作`push` 把我们的修改推送到远程仓库上
@@ -226,11 +226,11 @@ git push origin main
 
 > _注意：如果是第一次推送，VS Code 或终端可能会弹窗请求 GitHub 网页授权，点击 "Authorize" 允许即可 [`00:36:37`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=36m37s)。_
 
-![](push.png)
+![](附件/push.png)
 
 刷新github页面就能看到我们提交更改
 
-![](github同步页面.png)
+![](附件/github同步页面.png)
 
 > 
 
