@@ -339,8 +339,10 @@ git push -u origin main
     ```
     git push origin feature-login
     ```
-    
+	
 ![](成功推送.png)
+
+
 ### 4. 合并分支与拉取请求（Pull Request / PR） [`00:57:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=57m01s)
 
 - **什么是 PR？**：在团队协作中，你不能直接把自己的分支合并到生产环境的 `main` 分支。你需要提交一个“拉取请求”（Pull Request），告诉团队成员：“我写好了一个新功能，请求将我的 `feature-login` 分支合并到 `main`。”
