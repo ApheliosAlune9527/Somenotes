@@ -278,7 +278,7 @@ git remote add origin <你的GitHub仓库链接>
 
 ![](附件/新建仓库.png)
 
-![[Pasted image 20260617175136.png]]
+![](附件/关联远程仓库.png)
 
 - `origin`：这是给远程仓库起的默认别名
     
