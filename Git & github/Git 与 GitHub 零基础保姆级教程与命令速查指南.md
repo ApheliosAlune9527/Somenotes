@@ -126,7 +126,7 @@ git config --global user.email "你的邮箱地址"
 
 将 GitHub 上的云端项目下载到本地电脑上。
 
-1. 先在GitHub上创建一个[`仓库`](https://github.com/new)
+1. 先在GitHub上创建一个[仓库](https://github.com/new)
 
 
 2. 在 GitHub 仓库页面点击绿色的 **Code** 按钮，复制 **HTTPS** 链接。
