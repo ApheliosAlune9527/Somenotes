@@ -227,6 +227,9 @@ git push origin main
 > _注意：如果是第一次推送，VS Code 或终端可能会弹窗请求 GitHub 网页授权，点击 "Authorize" 允许即可 [`00:36:37`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=36m37s)。_
 
 ![](push.png)
+刷新github页面就能看到我们提交更改
+
+![[4e476f6b-ce0d-4f1d-aea7-d5d6de62549d.png]]
 
 > 
 
