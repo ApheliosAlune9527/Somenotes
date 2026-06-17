@@ -18,4 +18,6 @@ view_count: 7329610
 like_count: 141483
 cover: "[[mx-cover-youtube_Ez8F0nW6S-w.jpg]]"
 aspect_ratio: 16 / 9
+subtitles:
+  - "[[jn87gkzvnfjdsh3mus7ddmtw.MGHC.zh-Hans.vtt#lang=zh-Hans&label=%E4%B8%AD%E6%96%87%EF%BC%88%E7%AE%80%E4%BD%93%EF%BC%89+%28translated%29]]"
 ---
