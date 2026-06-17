@@ -4,8 +4,8 @@
   "title": "我需要你帮我更改这个笔记里边的所有的时间戳",
   "titleGenerationStatus": "failed",
   "createdAt": 1781674762814,
-  "updatedAt": 1781692163716,
-  "lastResponseAt": 1781692163716,
+  "updatedAt": 1781692985455,
+  "lastResponseAt": 1781692985455,
   "sessionId": "9a294519-ead1-4b02-9ad1-4533f97f5934",
   "providerState": {
     "providerSessionId": "9a294519-ead1-4b02-9ad1-4533f97f5934"
@@ -13,11 +13,11 @@
   "currentNote": "Git & github/Git 与 GitHub 零基础保姆级教程与命令速查指南.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 175,
+    "inputTokens": 295,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 62720,
+    "cacheReadInputTokens": 64192,
     "contextWindow": 1000000,
-    "contextTokens": 62895,
+    "contextTokens": 64487,
     "percentage": 6
   }
 }
