@@ -234,7 +234,7 @@ git push origin main
 
 ![](附件/github同步页面.png)
 
-> 
+> _注意:
 
 
 ## 第四部分：在本地从零初始化仓库并推送
