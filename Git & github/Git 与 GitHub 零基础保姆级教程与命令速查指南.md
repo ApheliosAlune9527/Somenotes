@@ -165,7 +165,7 @@ git clone <复制的仓库HTTPS链接>
 	![](附件/打开仓库.png)
 
 - 使用 `git status` 命令可以查看当前仓库中文件的状态。文件通常处于以下四种状态之一：
-
+ 
 	1. **Untracked（未追踪）**：新创建的文件，Git 还没开始记录它。
 	    ![](untracked.png)
 	2. **Modified（已修改）**：已被 Git 追踪的文件在本地发生了更改。
