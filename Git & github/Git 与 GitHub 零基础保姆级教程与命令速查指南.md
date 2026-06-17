@@ -212,6 +212,9 @@ git add .
 git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
 ```
 
+
+
+> `git commit` 之后 左侧资源
 #### 第三步：推送到云端（Push） [`00:35:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=35m53s)
 
 将本地的提交推送并同步到 GitHub 远程仓库：
