@@ -202,7 +202,7 @@ git push origin main
 
 有时候，我们是在本地电脑先建立的项目文件夹并写了代码，后续才想用 Git 追踪并上传到 GitHub。工作流如下：
 
-### 1. 初始化本地仓库 `[00:39:28]`
+### 1. 初始化本地仓库 [`00:39:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=39m28s)
 
 在你的项目根目录下打开终端，运行：
 
@@ -212,14 +212,14 @@ git init
 
 这会在当前目录下生成隐藏的 `.git` 文件夹，使其变成一个受 Git 追踪的本地仓库。
 
-### 2. 添加文件并进行首次本地提交 `[00:41:52]`
+### 2. 添加文件并进行首次本地提交 [`00:41:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=41m52s)
 
 ```
 git add .
 git commit -m "初始化项目文件"
 ```
 
-### 3. 关联远程 GitHub 仓库 `[00:43:18]`
+### 3. 关联远程 GitHub 仓库 [`00:43:18`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=43m18s)
 
 在 GitHub 上新建一个干净的仓库（**不要**勾选 Add a README 文件），复制仓库的 HTTPS 地址。然后在本地运行：
 
@@ -227,49 +227,49 @@ git commit -m "初始化项目文件"
 git remote add origin <你的GitHub仓库链接>
 ```
 
-- `origin`：这是给远程仓库起的默认别名 `[00:38:03]`。
+- `origin`：这是给远程仓库起的默认别名 [`00:38:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=38m03s)。
     
-- 验证关联是否成功：`git remote -v` `[00:44:12]`。
+- 验证关联是否成功：`git remote -v` [`00:44:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=44m12s)。
     
 
-### 4. 统一分支名称（从 master 重命名为 main） `[00:44:39]`
+### 4. 统一分支名称（从 master 重命名为 main） [`00:44:39`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=44m39s)
 
-过去 Git 默认主分支叫 `master`，由于一些历史文化原因，现在 GitHub 默认主分支改为了 `main` `[00:45:52]`。为了保持一致，我们将本地的 `master` 重命名为 `main`：
+过去 Git 默认主分支叫 `master`，由于一些历史文化原因，现在 GitHub 默认主分支改为了 `main` [`00:45:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=45m52s)。为了保持一致，我们将本地的 `master` 重命名为 `main`：
 
 ```
 git branch -m main
 ```
 
-### 5. 首次推送并设置上游分支 `[00:46:52]`
+### 5. 首次推送并设置上游分支 [`00:46:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=46m52s)
 
 ```
 git push -u origin main
 ```
 
-- `-u` 参数（`--set-upstream`）：将本地的 `main` 分支和远程的 `origin/main` 分支绑定 `[00:47:01]`。
+- `-u` 参数（`--set-upstream`）：将本地的 `main` 分支和远程的 `origin/main` 分支绑定 [`00:47:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=47m01s)。
     
-- 绑定后，以后在这个分支上推送或拉取代码，只需简单输入 `git push` 或 `git pull`，无需再写 `origin main` `[00:47:19]`。
+- 绑定后，以后在这个分支上推送或拉取代码，只需简单输入 `git push` 或 `git pull`，无需再写 `origin main` [`00:47:19`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=47m19s)。
     
 
 ## 第五部分：分支（Branches）管理与协作开发
 
-### 1. 什么是分支？ `[00:49:36]`
+### 1. 什么是分支？ [`00:49:36`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=49m36s)
 
 - **概念**：分支就像是并行的宇宙。当多个开发人员合作，或者你需要开发一个可能破坏现有代码的新功能时，你可以从主线上拉出一个“分支”（项目的完美克隆版）。
     
-- 你在分支上做任何修改，主线（`main` 分支）上的代码都不会受到任何干扰。当你的新功能完全写好并通过测试后，再将分支合并（Merge）回主线。这极大地方便了多人开发，互不干扰 `[00:51:06]`。
+- 你在分支上做任何修改，主线（`main` 分支）上的代码都不会受到任何干扰。当你的新功能完全写好并通过测试后，再将分支合并（Merge）回主线。这极大地方便了多人开发，互不干扰 [`00:51:06`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=51m06s)。
     
 
-### 2. 分支核心命令 `[00:51:53]`
+### 2. 分支核心命令 [`00:51:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=51m53s)
 
 |命令|功能描述|
 |---|---|
 |`git branch`|查看本地所有分支（当前所在分支前会带 `*` 号并高亮显示）|
-|`git checkout -b <新分支名>`|创建并**立即切换**到新分支（推荐！） `[00:52:05]`|
-|`git checkout <分支名>`|切换到已存在的指定分支 `[00:52:29]`|
-|`git branch -d <分支名>`|删除指定分支（_注意：不能在当前所在的分支上删除自身_） `[00:52:58]`|
+|`git checkout -b <新分支名>`|创建并**立即切换**到新分支（推荐！） [`00:52:05`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m05s)|
+|`git checkout <分支名>`|切换到已存在的指定分支 [`00:52:29`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m29s)|
+|`git branch -d <分支名>`|删除指定分支（_注意：不能在当前所在的分支上删除自身_） [`00:52:58`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m58s)|
 
-### 3. 分支开发实战流向 `[00:53:38]`
+### 3. 分支开发实战流向 [`00:53:38`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=53m38s)
 
 1. 新建并切换到功能分支：`git checkout -b feature-login`
     
@@ -287,13 +287,13 @@ git push -u origin main
     ```
     
 
-### 4. 合并分支与拉取请求（Pull Request / PR） `[00:57:01]`
+### 4. 合并分支与拉取请求（Pull Request / PR） [`00:57:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=57m01s)
 
 - **什么是 PR？**：在团队协作中，你不能直接把自己的分支合并到生产环境的 `main` 分支。你需要提交一个“拉取请求”（Pull Request），告诉团队成员：“我写好了一个新功能，请求将我的 `feature-login` 分支合并到 `main`。”
     
 - 团队的资深开发者（Senior Developer）或项目经理会查看你提交的 PR，审查代码是否合规，确定无误后在 GitHub 网页端点击 **Merge Pull Request** 完成合并。
     
-- **同步云端改动到本地（Git Pull）** `[01:00:12]`： 当云端的 `main` 分支被合并了新代码后，你本地的 `main` 就会落后于云端。你必须切换回本地 `main`，并拉取最新代码：
+- **同步云端改动到本地（Git Pull）** [`01:00:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m12s)： 当云端的 `main` 分支被合并了新代码后，你本地的 `main` 就会落后于云端。你必须切换回本地 `main`，并拉取最新代码：
     
     ```
     git checkout main
@@ -303,7 +303,7 @@ git push -u origin main
 
 ## Sixth 部分：冲突解决（Merge Conflicts）
 
-### 1. 为什么会发生冲突？ `[01:00:44]`
+### 1. 为什么会发生冲突？ [`01:00:44`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m44s)
 
 冲突通常发生在以下场景：
 
@@ -312,7 +312,7 @@ git push -u origin main
 - 当你尝试将这两个分支合并时，Git 不知道到底应该保留谁的改动，于是它会罢工并抛出 **Merge Conflict** 错误，要求你手动解决。
     
 
-### 2. 冲突的代码标识 `[01:02:34]`
+### 2. 冲突的代码标识 [`01:02:34`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=62m34s)
 
 发生冲突时，Git 会直接在你冲突的文件中插入特殊的标记：
 
@@ -324,7 +324,7 @@ git push -u origin main
 >>>>>>> main
 ```
 
-### 3. 如何在 VS Code 中解决冲突 `[01:03:08]`
+### 3. 如何在 VS Code 中解决冲突 [`01:03:08`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=63m08s)
 
 VS Code 非常智能，它会把冲突区域高亮，并在上方提供四个一键点击选项：
 
@@ -356,7 +356,7 @@ VS Code 非常智能，它会把冲突区域高亮，并在上方提供四个一
 
 在日常开发中，写错代码是常有的事。Git 提供了多种后悔药：
 
-### 1. 情况一：撤销已 stage（已运行 git add）但未 commit 的文件 `[01:05:32]`
+### 1. 情况一：撤销已 stage（已运行 git add）但未 commit 的文件 [`01:05:32`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=65m32s)
 
 如果你不小心 `git add` 了一个不该暂存的文件，想把它退回到工作区：
 
@@ -368,7 +368,7 @@ git reset <文件名>
 git reset
 ```
 
-### 2. 情况二：撤销最近一次 commit，但保留写好的代码 `[01:07:45]`
+### 2. 情况二：撤销最近一次 commit，但保留写好的代码 [`01:07:45`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=67m45s)
 
 如果你刚刚提交了代码，但突然发现提交信息写错了，或者还有一点小改动没保存：
 
@@ -383,7 +383,7 @@ git reset HEAD~1
 - 此命令会撤销你最后一次的 `commit`，但你写好的代码依然完好地保留在你的工作目录中。
     
 
-### 3. 查看提交历史记录（Git Log） `[01:08:50]`
+### 3. 查看提交历史记录（Git Log） [`01:08:50`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=68m50s)
 
 在回退更早的版本前，我们需要查看历史的提交记录：
 
@@ -400,7 +400,7 @@ git log --oneline
 - _退出 log 界面：在键盘上按小写字母 `q` 键退出。_
     
 
-### 4. 情况三：回退到历史的某一个指定版本 `[01:09:21]`
+### 4. 情况三：回退到历史的某一个指定版本 [`01:09:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=69m21s)
 
 如果你想让项目彻底回到历史上某个 commit 的状态：
 
@@ -413,7 +413,7 @@ git log --oneline
 git reset <Commit_Hash>
 ```
 
-#### ⚠️ 警告：硬重置（Hard Reset） `[01:10:55]`
+#### ⚠️ 警告：硬重置（Hard Reset） [`01:10:55`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=70m55s)
 
 如果你想彻底丢弃目前所有的本地修改，强行将本地代码恢复到某个历史 Commit 的状态：
 
@@ -426,14 +426,14 @@ git reset --hard <Commit_Hash>
 
 ## 第八部分：开源贡献与 Fork 工作流
 
-### 1. 什么是 Fork？ `[01:11:22]`
+### 1. 什么是 Fork？ [`01:11:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=71m22s)
 
 - **概念**：当你想要参与一个大型开源项目（比如 Express 框架），你没有该项目的直接修改权限。
     
 - **Fork** 允许你在你自己的 GitHub 账号下，一键创建该开源项目的一个**完整独立复制版**（粗糙复印件）。你可以在自己的 Fork 仓里随意修改、折腾，而不会影响到原作者的项目。
     
 
-### 2. 参与开源贡献的黄金五步法 `[01:12:00]`
+### 2. 参与开源贡献的黄金五步法 [`01:12:00`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=72m00s)
 
 1. **Fork**：在开源项目的 GitHub 页面点击右上角的 **Fork** 按钮，拷贝一份到个人账户。
     
