@@ -373,7 +373,7 @@ git push -u origin main
 	
 - 使用 `git diff 另一分支的名称` 来看分支差异
 	
-	![[feature-login分支和main分支差异.png]]
+	![](feature-login分支和main分支差异.png)
     
 - 当你尝试将这两个分支合并时，Git 不知道到底应该保留谁的改动，于是它会罢工并抛出 **Merge Conflict** 错误，要求你手动解决。
     
