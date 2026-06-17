@@ -276,12 +276,13 @@ git commit -m "初始化项目文件"
 git remote add origin <你的GitHub仓库链接>
 ```
 
-
 ![](附件/新建仓库.png)
 
-- `origin`：这是给远程仓库起的默认别名 [`00:38:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=38m03s)。
+![[Pasted image 20260617175136.png]]
+
+- `origin`：这是给远程仓库起的默认别名
     
-- 验证关联是否成功：`git remote -v` [`00:44:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=44m12s)。
+- 验证关联是否成功：`git remote -v` 
     
 
 ### 4. 统一分支名称（从 master 重命名为 main） [`00:44:39`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=44m39s)
