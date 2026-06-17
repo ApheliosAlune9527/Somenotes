@@ -172,7 +172,7 @@ git clone <复制的仓库HTTPS链接>
 		
 		
 	2. **Modified（已修改）**：已被 Git 追踪的文件在本地发生了更改。
-		
+			![modified]
 	    
 	3. **Staged（已暂存）**：运行了 `git add` 后的文件，准备好被提交。
 	    
