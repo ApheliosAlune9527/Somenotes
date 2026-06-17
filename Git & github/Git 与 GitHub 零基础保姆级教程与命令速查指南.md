@@ -77,7 +77,7 @@
     - **Mac 用户**：直接使用系统自带的 **Terminal（终端）** 即可。可通过 `Finder` 搜索 "Terminal" 打开。
         
 
-### 2. 验证安装 [`00:17:35`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=17m35s)
+### 2. 验证安装 
 
 安装完成后，打开你的终端（Mac）或 Git Bash（Windows），输入以下命令检查是否安装成功：
 
