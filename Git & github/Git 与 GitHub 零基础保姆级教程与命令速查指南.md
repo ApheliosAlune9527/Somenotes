@@ -360,7 +360,8 @@ git push -u origin main
     git checkout main
     git pull origin main
     ```
-    
+	
+	![](附件/pull拉取之后.png)
 
 ## 第六部分：冲突解决（Merge Conflicts）
 
