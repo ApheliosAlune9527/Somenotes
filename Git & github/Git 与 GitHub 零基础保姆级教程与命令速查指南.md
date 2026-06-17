@@ -226,7 +226,11 @@ git push origin main
 
 > _注意：如果是第一次推送，VS Code 或终端可能会弹窗请求 GitHub 网页授权，点击 "Authorize" 允许即可 [`00:36:37`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=36m37s)。_
 
-![[Pasted image 20260617153918.png]]
+![](push.png)
+
+> 
+
+
 ## 第四部分：在本地从零初始化仓库并推送
 
 有时候，我们是在本地电脑先建立了项目文件夹并写了代码，后续才想用 Git 追踪并上传到 GitHub。工作流如下：
