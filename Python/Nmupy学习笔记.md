@@ -5,8 +5,8 @@
 
 ## 目录
 
-- [[#一、ndarray-特性|一、ndarray特性]]
-- [[#二、ndarray-属性|二、ndarray-属性]]
+- [[#一、ndarray 特性|一、ndarray特性]]
+- [[# 二、ndarray 属性|二、ndarray属性]]
 - [[#三ndarray-创建|三.ndarray-创建]]
 - [[#四ndarray-索引与切片]]
 - [[#五ndarray-运算]]
