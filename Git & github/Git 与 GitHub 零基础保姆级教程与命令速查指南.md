@@ -347,7 +347,7 @@ git push -u origin main
 
 - **什么是 PR？**：在团队协作中，你不能直接把自己的分支合并到生产环境的 `main` 分支。你需要提交一个“拉取请求”（Pull Request），告诉团队成员：“我写好了一个新功能，请求将我的 `feature-login` 分支合并到 `main`。”
 	- 合并分支方法 1 : `get merge main`
-	- 方法2 : 网页 点击 绿色an'j
+	- 方法2 : 网页 点击 _绿色按钮 Compare & pull request_**
 - 团队的资深开发者（Senior Developer）或项目经理会查看你提交的 PR，审查代码是否合规，确定无误后在 GitHub 网页端点击 **Merge Pull Request** 完成合并。
     
 - **同步云端改动到本地（Git Pull）** [`01:00:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m12s)： 当云端的 `main` 分支被合并了新代码后，你本地的 `main` 就会落后于云端。你必须切换回本地 `main`，并拉取最新代码：
