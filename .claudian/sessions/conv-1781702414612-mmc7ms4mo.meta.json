@@ -4,6 +4,20 @@
   "title": "把这个文档的格式修改一些 改成obsidian的原生markdown语法",
   "titleGenerationStatus": "failed",
   "createdAt": 1781702414626,
-  "updatedAt": 1781702417453,
-  "sessionId": null
+  "updatedAt": 1781702466229,
+  "lastResponseAt": 1781702466229,
+  "sessionId": "f0a8476f-fc60-4e42-99cb-18d965246d93",
+  "providerState": {
+    "providerSessionId": "f0a8476f-fc60-4e42-99cb-18d965246d93"
+  },
+  "currentNote": "C语言的快速入门/Gemini的建议/函数返回多值.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1445,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 29376,
+    "contextWindow": 1000000,
+    "contextTokens": 30821,
+    "percentage": 3
+  }
 }
