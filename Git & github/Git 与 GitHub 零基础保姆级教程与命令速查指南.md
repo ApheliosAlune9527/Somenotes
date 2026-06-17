@@ -186,7 +186,7 @@ git clone <复制的仓库HTTPS链接>
 	3. **Staged（已暂存）**：运行了 `git add` 后的文件，准备好被提交。 ^git-note
 	    ![](已暂存.png)
 	> 使用 `git add .` 命令之后 所有的文件被添加到stage(暂存区)同时显示 changes to be committed 意味 改动准备被提交 , 而且这个test.py文件 后边多了个A 意思就是git新增(Added)文件,此时这个文件就被git所追踪了。
-	
+	 ^c5c1f5
 	
 	4. **Unmodified（未修改）**：提交后，本地文件与仓库版本一致，没有未保存的更改。
 		
@@ -206,7 +206,7 @@ git add .
 
 #### 第二步：提交更改（Commit） [`00:34:11`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=34m11s)
 
-每次提交都必须附带一条**有意义的提交信息**，解释你这次改动了什么：[[#^git]]
+每次提交都必须附带一条**有意义的提交信息**，解释你这次改动了什么：[[#^git-note|接着准备ti]]
 
 ```
 git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
