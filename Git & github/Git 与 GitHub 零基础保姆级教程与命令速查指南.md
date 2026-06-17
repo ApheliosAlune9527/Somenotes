@@ -214,7 +214,7 @@ git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
 
 ![](commit.png)
 
-> `git commit` 之后 左侧资源管理器中的后缀字母全都消失了,此时使用 `git status` 发现
+> `git commit` 之后 左侧资源管理器中的后缀字母全都消失了,此时使用 `git status` 看到`your branch is ahead of main by 1 commit :你本地 main 分支比远程 origin/main 多了 1 个提交` 
 #### 第三步：推送到云端（Push） [`00:35:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=35m53s)
 
 将本地的提交推送并同步到 GitHub 远程仓库：
