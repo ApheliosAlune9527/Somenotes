@@ -1,0 +1,516 @@
+
+> 本指南基于 Apna College 经典教程（主讲人：Shradha Khapra）整理，配有精确的视频时间戳索引。
+
+[![](https://img.youtube.com/vi/Ez8F0nW6S-w/maxresdefault.jpg)](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=4299s)
+## 目录
+
+1. [第一部分：Git 与 GitHub 基础概念](#第一部分git-与-github-基础概念 "null")
+    
+2. [第二部分：环境搭建与初始配置](#第二部分环境搭建与初始配置 "null")
+    
+3. [第三部分：Git 核心工作流与基础命令](#第三部分git-核心工作流与基础命令 "null")
+    
+4. [第四部分：在本地从零初始化仓库并推送](#第四部分在本地从零初始化仓库并推送 "null")
+    
+5. [第五部分：分支（Branches）管理与协作开发](#第五部分分支branches管理与协作开发 "null")
+    
+6. [第六部分：冲突解决（Merge Conflicts）](#第六部分冲突解决merge-conflicts "null")
+    
+7. [第七部分：撤销更改与版本回退（Undo Changes）](#第七部分撤销更改与版本回退undo-changes "null")
+    
+8. [第八部分：开源贡献与 Fork 工作流](#第八部分开源贡献与-fork-工作流 "null")
+    
+9. [附录：Git 高频命令速查表](#附录git-高频命令速查表 "null")
+    
+
+## 第一部分：Git 与 GitHub 基础概念
+
+### 1. 什么是 Git？ [`00:01:20`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=1m20s)
+
+- **版本控制系统（VCS, Version Control System）**：Git 是一种用于追踪代码文件修改历史的工具。
+    
+- **形象比喻**：就像银行账户的流水账单，它详细记录了每一笔钱的流入、流出及税费。Git 同样也记录了代码中：
+    
+    - 什么时候添加了新文件？
+        
+    - 什么时候删除了文件？
+        
+    - 哪一行代码被修改或删除了？
+        
+- **Git 的特点**：
+    
+    1. 它是目前全球最流行、使用最广泛的版本控制系统（微软、谷歌等大厂及无数开源项目都在使用）
+        
+    2. 完全免费且开源 
+        
+    3. 运行速度极快，且具备极强的可扩展性，无论是小项目还是超大型项目都能轻松应对 
+        
+
+### 2. 为什么要使用 Git？ 
+
+- **追踪历史（Track History）**：假设你正在开发一个网站，已经完成了“注册页面”和“按钮设计”。接着你开始开发复杂的“帮助表单”功能，结果在开发过程中遇到了严重的 Bug 导致整个项目崩溃。如果没有 Git，你必须手动去删除所有新写的代码，这非常危险且容易出错。而使用 Git，你可以轻松一键“坐时光机”回到开发“按钮设计”时的完好状态 
+    
+- **团队协作（Collaboration）**：在企业中，多个开发者会同时修改同一个项目。Git 能够完美追踪谁在什么时间修改了什么，并防止大家的代码互相覆盖，协助合并不同人的劳动成果 
+    
+
+### 3. 什么是 GitHub？ [`00:05:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=5m03s)
+
+- **区别于 Git**：**Git** 是安装在你本地电脑上的一个软件/工具，而 **GitHub**（github.com）是一个**网站平台**，它允许开发者使用 Git 在云端存储和管理他们的代码。
+    
+- **形象比喻**：GitHub 就像是开发者的 Instagram。模特会在 Instagram 上发布照片展示自己，而开发者则在 GitHub 上建立自己的代码档案库（Portfolio），并在求职时将 GitHub 链接写在简历上，供面试官和 HR 查看、验证其实际开发能力 
+    
+
+### 4. 什么是仓库（Repository / Repo）？ [`00:06:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=6m21s)
+
+- 在 Git 和 GitHub 的世界里，“仓库”（简称 **Repo**）就是指你的**项目文件夹**。它不仅包含了项目的所有代码文件，还包含了 Git 追踪历史所需的隐藏元数据（`.git` 文件夹）。
+    
+
+## 第二部分：环境搭建与初始配置
+
+### 1. 工具下载与安装 [`00:16:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=16m22s)
+
+- **代码编辑器**：推荐下载 **VS Code（Visual Studio Code）**，它是微软开发的免费、开源且最流行的代码编辑器。
+    
+- **命令行终端**：
+    
+    - **Windows 用户**：必须下载并安装 [**Git Bash** ](https://git-scm.com/install/windows)（安装时一路点击 Next 即可，建议勾选 "On the Desktop" 图标，并在命名默认分支时可选择将其设为 `main` ）。![](附件/Git下载页面.png)        
+    - **Mac 用户**：直接使用系统自带的 **Terminal（终端）** 即可。可通过 `Finder` 搜索 "Terminal" 打开。
+        
+
+### 2. 验证安装 
+
+安装完成后，打开你的终端（Mac）或 Git Bash（Windows），输入以下命令检查是否安装成功：
+
+```
+git --version
+```
+
+如果能正确输出类似于 `git version 2.x.x` 的版本号，则说明安装成功。
+
+### 3. 配置 Git 用户信息 [`00:20:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m12s)
+
+在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在 终端 输入以下命令进行**全局配置（Global Configuration）**：
+
+```
+# 设置你的用户名（ 建议 与 GitHub 用户名一致）
+git config --global user.name "你的用户名"
+
+# 设置你的邮箱（必须 与 GitHub 注册邮箱一致）
+git config --global user.email "你的邮箱地址"
+```
+
+> **检查配置是否成功**：
+> 
+> ```
+> git config --list
+> ```
+> 
+> 该命令会列出所有配置项，你可以在其中找到设置好的 `user.name` 和 `user.email` [`00:22:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=22m12s)。
+
+## 第三部分：Git 核心工作流与基础命令
+
+### 1. 核心工作流概念：两阶段提交过程 [`00:12:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=12m28s)
+
+- **Git 大概有三层**
+	
+	- 工作区 → 暂存区 → 本地仓库
+	
+	- 对应的命令为 : 修改文件 → git add → git commit
+
+在 Git 中，保存修改并不是一步到位的，它像是一次"网购"，分为三个步骤：
+
+1. **工作区（Working Directory）**：相当于你在逛淘宝超市。你看到了很多商品（修改、新建的文件），有的想买，有的只是看看。
+
+2. **Stage（暂存）**：相当于你把看中的商品“加入购物车”（git add）。你可以把外套、鞋子、零食一件件放进购物车 **(stage 暂存区)**。放进去了不代表你买了，你随时可以把某件商品从购物车里拿出来。
+    
+3. **Commit（提交）**：相当于你点击“去结账/清空购物车”（git commit）。一旦付款成功，系统就会生成一张固定不可更改的订单发票（历史快照）。
+    
+
+```
+[ 工作目录 (Working Directory) ] --( git add )--> [ 暂存区 (Staging Area) ] --( git commit )--> [ 本地仓库 (Local Repo) ]
+```
+
+### 2. 远程克隆：Git Clone [`00:24:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=24m01s)
+
+将 GitHub 上的云端项目下载到本地电脑上。
+
+1. 先在GitHub上创建一个[仓库](https://github.com/new)
+	![](仓库的建立.png)
+接着点击下方绿色**Create repository** 按钮即可创建一个新仓库
+
+2. 在 GitHub 仓库页面点击绿色的 **Code** 按钮，复制 **HTTPS** 链接。
+    ![](复制http链接.png)
+3. 在本地终端中，进入到你想保存项目的文件夹，右键打开终端运行以下命令：
+    
+
+```
+git clone <复制的仓库HTTPS链接>
+```
+
+4. 这样我们就把这个仓库复制到了我们的电脑上
+
+### 3. 基础导航命令（Terminal / Git Bash 常用命令）[`00:25:51`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=25m51s)
+
+- `cd <文件夹名>`：进入该文件夹（Change Directory）。
+    
+    - _技巧：输入前几个字母后按 `Tab` 键可以自动补全文件夹名。_
+        
+- `cd ..`：返回上一级文件夹 [`00:39:56`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=39m56s)。
+    
+- `ls`：列出当前文件夹下的所有可见文件 and 文件夹（List）。
+    
+- `ls -a`：列出所有文件，包括**隐藏文件** [`00:27:20`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=27m20s)。
+    
+    - _克隆或初始化后的项目文件夹内会有一个隐藏的 `.git` 文件夹，这就是 Git 的核心大脑，不要删除它！_
+        
+- `pwd`：显示当前所在的绝对路径（Print Working Directory）[`00:20:04`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m04s)。
+    
+- `clear`：清空终端屏幕 [`00:20:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m01s)。
+    
+
+### 4. 文件的四种状态 [`00:30:19`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=30m19s)
+- 使用 vscode 打开刚才你保存项目的文件夹
+	![](附件/打开仓库.png)
+- 然后使用命令:`cd 你的项目名称/`  进入到git项目问价夹中(正常之只有README.md文件,我这里不是新创建的文件夹所以会多一些文件)
+	![](进入git项目中.png)
+
+- 使用 `git status` 命令可以查看当前仓库中文件的状态。文件通常处于以下四种状态之一：
+ 
+	1. **Untracked（未追踪）**：新创建的文件，Git 还没开始记录它。
+	    ![](untracked.png)
+		> 我们在本地创建了一个`test.py`文件 ,然后Git远程仓库那边是不知道的所以文件是为未追踪状态,即git并未追踪改项目。
+		
+		
+	2. **Modified（已修改）**：已被 Git 追踪的文件在本地发生了更改。
+		![](附件/modified.png)
+	    > 注意该状态一定是被git所追踪的文件在本地发生了修改,我们对README.md进行更改之后,左侧资源管理器这里 该文件后边就会多了一个 M 代表已修改。
+	
+	3. **Staged（已暂存）**：运行了 `git add` 后的文件，准备好被提交。 ^git-note
+	    ![](附件/已暂存.png)
+	> 使用 `git add .` 命令之后 所有的文件被添加到stage(暂存区)同时显示 changes to be committed 意味 改动准备被提交 , 而且这个test.py文件 后边多了个A 意思就是git新增(Added)文件,此时这个文件就被git所追踪了。
+	 ^c5c1f5
+	
+	4. **Unmodified（未修改）**：提交后，本地文件与仓库版本一致，没有未保存的更改。
+		
+	    >  `git status` 命令只会显示被修改改文件的状态,没有显示的文件就是未修改状态
+
+### 5. 基础操作三部曲：Add、Commit、Push
+
+#### 第一步：暂存更改（Add） [`00:32:24`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=32m24s)
+
+```
+# 暂存单个指定文件
+git add <文件名>
+
+# 暂存所有发生更改和新创建的文件（最常用！）
+git add .
+```
+
+#### 第二步：提交更改（Commit） [`00:34:11`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=34m11s)
+
+每次提交都必须附带一条**有意义的提交信息**，解释你这次改动了什么：
+
+```
+git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
+```
+
+![](附件/commit.png)
+
+> `git commit` 之后 左侧资源管理器中的后缀字母全都消失了,此时使用 `git status` 看到`your branch is ahead of main by 1 commit : 你本地 main 分支比远程 origin/main 多了 1 个提交` 
+> 因为执行commit,只是提交到了本地仓库,也就是本地仓库现在处于 C 状态,而因为没有推送到远程github仓库,所以它现在是 B 状态,所以显示:你本地分支比远程多一个提交,故我们还需要最后一个操作`push` 把我们的修改推送到远程仓库上
+#### 第三步：推送到云端（Push） [`00:35:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=35m53s)
+
+将本地的提交推送并同步到 GitHub 远程仓库：
+
+```
+git push origin main
+```
+
+> _注意：如果是第一次推送，VS Code 或终端可能会弹窗请求 GitHub 网页授权，点击 "Authorize" 允许即可 [`00:36:37`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=36m37s)。_
+
+![](附件/push.png)
+
+刷新github页面就能看到我们提交更改
+
+![](附件/github同步页面.png)
+
+> _注意 : `origin`：远程仓库的地址（别名）。你第一次 `git clone` 的时候，Git 会自动帮你记住这个地址并起名叫 `origin`。你可以用 `git remote -v` 查看它对应的实际 URL。_
+> 
+> _`main`：你要推送的分支名。表示把本地的 `main` 分支推送到远程的 `main` 分支。_
+> 
+>_即:`git push` 是"寄出去"，`origin` 是"收件地址"，`main` 是"寄哪个包裹"。_
+> 
+> _另外 : 当我们使用 `git push -u origin main` -u 就是 --set-upstream 设置上游, 以后我们就只打 `git push`即可_
+
+
+
+
+## 第四部分：在本地从零初始化仓库并推送
+
+有时候，我们是在本地电脑先建立了项目文件夹并写了代码，后续才想用 Git 追踪并上传到 GitHub。工作流如下：
+
+### 1. 初始化本地仓库 [`00:39:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=39m28s)
+
+在你的项目根目录下打开终端(或者在vscode里边直接创建一个新的文件夹)，运行：
+
+```
+git init
+```
+
+这会在当前目录下生成隐藏的 `.git` 文件夹，使其变成一个受 Git 追踪的本地仓库。(如果没有这个.git文件夹就是一个普通的项目目录)
+
+### 2. 添加文件并进行首次本地提交 [`00:41:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=41m52s)
+
+```
+git add .
+git commit -m "初始化项目文件"
+```
+
+### 3. 关联远程 GitHub 仓库 [`00:43:18`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=43m18s)
+
+在 GitHub 上新建一个干净的仓库（**不要**勾选 Add a README 文件），复制仓库的 HTTPS 地址。然后在本地运行：
+
+```
+git remote add origin <你的GitHub仓库链接>
+```
+
+- `origin`：这是给远程仓库起的默认别名 [`00:38:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=38m03s)。
+    
+- 验证关联是否成功：`git remote -v` [`00:44:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=44m12s)。
+    
+
+### 4. 统一分支名称（从 master 重命名为 main） [`00:44:39`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=44m39s)
+
+过去 Git 默认主分支叫 `master`，由于一些历史文化原因，现在 GitHub 默认主分支改为了 `main` [`00:45:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=45m52s)。为了保持一致，我们将本地的 `master` 重命名为 `main`：
+
+```
+git branch -m main
+```
+
+### 5. 首次推送并设置上游分支 [`00:46:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=46m52s)
+
+```
+git push -u origin main
+```
+
+- `-u` 参数（`--set-upstream`）：将本地的 `main` 分支和远程的 `origin/main` 分支绑定 [`00:47:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=47m01s)。
+    
+- 绑定后，以后在这个分支上推送或拉取代码，只需简单输入 `git push` 或 `git pull`，无需再写 `origin main` [`00:47:19`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=47m19s)。
+    
+
+## 第五部分：分支（Branches）管理与协作开发
+
+### 1. 什么是分支？ [`00:49:36`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=49m36s)
+
+- **概念**：分支就像是并行的宇宙。当多个开发人员合作，或者你需要开发一个可能破坏现有代码的新功能时，你可以从主线上拉出一个“分支”（项目的完美克隆版）。
+    
+- 你在分支上做任何修改，主线（`main` 分支）上的代码都不会受到任何干扰。当你的新功能完全写好并通过测试后，再将分支合并（Merge）回主线。这极大地方便了多人开发，互不干扰 
+    
+
+### 2. 分支核心命令 [`00:51:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=51m53s)
+
+|命令|功能描述|
+|---|---|
+|`git branch`|查看本地所有分支（当前所在分支前会带 `*` 号并高亮显示）|
+|`git checkout -b <新分支名>`|创建并**立即切换**到新分支（推荐！） [`00:52:05`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m05s)|
+|`git checkout <分支名>`|切换到已存在的指定分支 [`00:52:29`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m29s)|
+|`git branch -d <分支名>`|删除指定分支（_注意：不能在当前所在的分支上删除自身_） [`00:52:58`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m58s)|
+
+### 3. 分支开发实战流向 [`00:53:38`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=53m38s)
+
+1. 新建并切换到功能分支：`git checkout -b feature-login`
+    
+2. 在 VS Code 中修改代码，并添加、提交：
+    
+    ```
+    git add .
+    git commit -m "开发了登录页面的 UI"
+    ```
+    
+3. 将该分支推送到 GitHub 端（此时 GitHub 也会自动创建一个同名分支）：
+    
+    ```
+    git push origin feature-login
+    ```
+    
+
+### 4. 合并分支与拉取请求（Pull Request / PR） [`00:57:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=57m01s)
+
+- **什么是 PR？**：在团队协作中，你不能直接把自己的分支合并到生产环境的 `main` 分支。你需要提交一个“拉取请求”（Pull Request），告诉团队成员：“我写好了一个新功能，请求将我的 `feature-login` 分支合并到 `main`。”
+    
+- 团队的资深开发者（Senior Developer）或项目经理会查看你提交的 PR，审查代码是否合规，确定无误后在 GitHub 网页端点击 **Merge Pull Request** 完成合并。
+    
+- **同步云端改动到本地（Git Pull）** [`01:00:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m12s)： 当云端的 `main` 分支被合并了新代码后，你本地的 `main` 就会落后于云端。你必须切换回本地 `main`，并拉取最新代码：
+    
+    ```
+    git checkout main
+    git pull origin main
+    ```
+    
+
+## 第六部分：冲突解决（Merge Conflicts）
+
+### 1. 为什么会发生冲突？ [`01:00:44`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m44s)
+
+冲突通常发生在以下场景：
+
+- 两个分支（比如 `main` 和 `feature-1`）同时修改了**同一个文件的同一行代码**。
+    
+- 当你尝试将这两个分支合并时，Git 不知道到底应该保留谁的改动，于是它会罢工并抛出 **Merge Conflict** 错误，要求你手动解决。
+    
+
+### 2. 冲突的代码标识 [`01:02:34`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=62m34s)
+
+发生冲突时，Git 会直接在你冲突的文件中插入特殊的标记：
+
+```
+<<<<<<< HEAD
+（你当前分支的代码，例如：这里放了一个下拉菜单）
+=======
+（你要合并进来的分支的代码，例如：这里放了一个按钮）
+>>>>>>> main
+```
+
+### 3. 如何在 VS Code 中解决冲突 [`01:03:08`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=63m08s)
+
+VS Code 非常智能，它会把冲突区域高亮，并在上方提供四个一键点击选项：
+
+1. **Accept Current Change**（接受当前更改）：只保留你当前所在分支的代码。
+    
+2. **Accept Incoming Change**（接受引入更改）：只保留被合并分支的代码。
+    
+3. **Accept Both Changes**（保留双方更改）：两者都留着，上下并存。
+    
+4. **Compare Changes**：对比差异。
+    
+
+**解决冲突的步骤**：
+
+1. 挑选出你想保留的代码，删掉特殊的标记符号（如 `<<<<<<<`、`=======`、`>>>>>>>`）。
+    
+2. 保存文件。
+    
+3. 重新将其暂存、提交并推送：
+    
+    ```
+    git add .
+    git commit -m "解决合并冲突并保留双方功能"
+    git push
+    ```
+    
+
+## 第七部分：撤销更改与版本回退（Undo Changes）
+
+在日常开发中，写错代码是常有的事。Git 提供了多种后悔药：
+
+### 1. 情况一：撤销已 stage（已运行 git add）但未 commit 的文件 [`01:05:32`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=65m32s)
+
+如果你不小心 `git add` 了一个不该暂存的文件，想把它退回到工作区：
+
+```
+# 撤销指定文件的暂存
+git reset <文件名>
+
+# 撤销所有暂存的文件
+git reset
+```
+
+### 2. 情况二：撤销最近一次 commit，但保留写好的代码 [`01:07:45`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=67m45s)
+
+如果你刚刚提交了代码，但突然发现提交信息写错了，或者还有一点小改动没保存：
+
+```
+git reset HEAD~1
+```
+
+- `HEAD`：代表当前最新的提交版本。
+    
+- `HEAD~1`（或 `HEAD^`）：代表 HEAD 的前一个版本。
+    
+- 此命令会撤销你最后一次的 `commit`，但你写好的代码依然完好地保留在你的工作目录中。
+    
+
+### 3. 查看提交历史记录（Git Log） [`01:08:50`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=68m50s)
+
+在回退更早的版本前，我们需要查看历史的提交记录：
+
+```
+# 查看详细历史
+git log
+
+# 单行简洁查看历史（最实用！）
+git log --oneline
+```
+
+- 这会输出所有提交的 **Commit Hash**（一串 7 位的哈希值，例如 `a1b2c3d`）以及对应的提交信息。
+    
+- _退出 log 界面：在键盘上按小写字母 `q` 键退出。_
+    
+
+### 4. 情况三：回退到历史的某一个指定版本 [`01:09:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=69m21s)
+
+如果你想让项目彻底回到历史上某个 commit 的状态：
+
+1. 通过 `git log --oneline` 复制该历史提交的 7 位 **Commit Hash**。
+    
+2. 运行重置命令：
+    
+
+```
+git reset <Commit_Hash>
+```
+
+#### ⚠️ 警告：硬重置（Hard Reset） [`01:10:55`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=70m55s)
+
+如果你想彻底丢弃目前所有的本地修改，强行将本地代码恢复到某个历史 Commit 的状态：
+
+```
+git reset --hard <Commit_Hash>
+```
+
+> **注意**：`--hard` 是非常危险的参数！它会清空你本地所有未提交的修改，且**无法撤销**。请务必确认后再使用。
+
+
+## 第八部分：开源贡献与 Fork 工作流
+
+### 1. 什么是 Fork？ [`01:11:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=71m22s)
+
+- **概念**：当你想要参与一个大型开源项目（比如 Express 框架），你没有该项目的直接修改权限。
+    
+- **Fork** 允许你在你自己的 GitHub 账号下，一键创建该开源项目的一个**完整独立复制版**（粗糙复印件）。你可以在自己的 Fork 仓里随意修改、折腾，而不会影响到原作者的项目。
+    
+
+### 2. 参与开源贡献的黄金五步法 [`01:12:00`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=72m00s)
+
+1. **Fork**：在开源项目的 GitHub 页面点击右上角的 **Fork** 按钮，拷贝一份到个人账户。
+    
+2. **Clone**：将你个人账户下的 Fork 仓库克隆到本地：
+    
+    ```
+    git clone <你个人Fork仓库的链接>
+    ```
+    
+3. **Branch**：在本地新建一个功能分支并进行修改开发。
+    
+4. **Push**：将修改推送到你自己 GitHub 上的 Fork 仓库中。
+    
+5. **Pull Request**：在你的 GitHub Fork 页面，点击 **Contribute -> Open Pull Request**。写明你修复了什么 Bug 或增加了什么功能。原作者看到后，若觉得你的代码很棒，就会同意并将其合并到官方主仓中，这样你就成功成为该开源项目的贡献者（Contributor）了！
+    
+
+## 附录：Git 高频命令速查表
+
+|命令|命令全称 / 参数|实用场景|
+|---|---|---|
+|**`git init`**|`initialize`|本地新建项目文件夹后，初始化 Git 仓库|
+|**`git clone <url>`**|`clone`|下载 GitHub 上的远程项目到本地电脑|
+|**`git status`**|`status`|查看当前工作区文件的增删改状态|
+|**`git add .`**|`add all`|将本地所有修改过的文件添加到暂存区|
+|**`git commit -m "msg"`**|`commit message`|将暂存区文件提交到本地历史记录，并附带说明|
+|**`git push origin main`**|`push to remote`|将本地 main 分支的代码同步上传到 GitHub 仓库|
+|**`git pull origin main`**|`pull from remote`|从 GitHub 仓库拉取 main 分支的最新代码同步到本地|
+|**`git branch`**|`branch`|查看本地分支列表|
+|**`git checkout -b <name>`**|`checkout branch`|新建并立即切换到该名字的新分支|
+|**`git checkout <name>`**|`switch branch`|切换到已存在的指定分支|
+|**`git log --oneline`**|`log list`|简洁地列出项目的所有历史提交记录（Q 键退出）|
+|**`git reset HEAD~1`**|`reset commit`|撤销上一次 commit，保留代码在工作区中|
+|**`git remote -v`**|`remote verbose`|验证本地项目与哪些远程云端仓库建立了关联|
