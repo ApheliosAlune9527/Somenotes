@@ -5,9 +5,9 @@
 
 ## 目录
 
-- [[#一ndarray-特性|一.ndarray特性]]
-- [[#二ndarray-属性|二.ndarray-属性]]
-- [[#三ndarray-创建]]
+- [[#一、ndarray-特性|一、ndarray特性]]
+- [[#二、ndarray-属性|二、ndarray-属性]]
+- [[#三ndarray-创建|三.ndarray-创建]]
 - [[#四ndarray-索引与切片]]
 - [[#五ndarray-运算]]
 - [[#六numpy-常用函数]]
