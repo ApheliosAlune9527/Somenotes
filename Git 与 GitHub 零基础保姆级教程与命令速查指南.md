@@ -1,7 +1,6 @@
 
 > 本指南基于 Apna College 经典教程（主讲人：Shradha Khapra）整理，配有精确的视频时间戳索引。
 
-[https://www.youtube.com/watch?v=Ez8F0nW6S-w&list=PLAgZd_vxsBKDg-xbZubEz6mmK_3gkPdc2&index=5]
 ## 目录
 
 1. [第一部分：Git 与 GitHub 基础概念](#第一部分git-与-github-基础概念 "null")
