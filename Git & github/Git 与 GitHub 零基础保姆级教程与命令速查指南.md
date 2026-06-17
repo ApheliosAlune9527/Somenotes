@@ -92,10 +92,10 @@ git --version
 在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在终端输入以下命令进行**全局配置（Global Configuration）**：
 
 ```
-# 设置你的用户名（建议与 GitHub 用户名一致）
+# 设置你的用户名（ 建议 与 GitHub 用户名一致）
 git config --global user.name "你的用户名"
 
-# 设置你的邮箱（必须与 GitHub 注册邮箱一致）
+# 设置你的邮箱（必须 与 GitHub 注册邮箱一致）
 git config --global user.email "你的邮箱地址"
 ```
 
