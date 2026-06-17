@@ -39,46 +39,46 @@
         
 - **Git 的特点**：
     
-    1. 它是目前全球最流行、使用最广泛的版本控制系统（微软、谷歌等大厂及无数开源项目都在使用）`[00:02:11]`。
+    1. 它是目前全球最流行、使用最广泛的版本控制系统（微软、谷歌等大厂及无数开源项目都在使用）[`00:02:11`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=2m11s)。
         
-    2. 完全免费且开源 `[00:02:34]`。
+    2. 完全免费且开源 [`00:02:34`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=2m34s)。
         
-    3. 运行速度极快，且具备极强的可扩展性，无论是小项目还是超大型项目都能轻松应对 `[00:02:38]`。
+    3. 运行速度极快，且具备极强的可扩展性，无论是小项目还是超大型项目都能轻松应对 [`00:02:38`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=2m38s)。
         
 
-### 2. 为什么要使用 Git？ `[00:02:48]`
+### 2. 为什么要使用 Git？ [`00:02:48`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=2m48s)
 
-- **追踪历史（Track History）**：假设你正在开发一个网站，已经完成了“注册页面”和“按钮设计”。接着你开始开发复杂的“帮助表单”功能，结果在开发过程中遇到了严重的 Bug 导致整个项目崩溃。如果没有 Git，你必须手动去删除所有新写的代码，这非常危险且容易出错。而使用 Git，你可以轻松一键“坐时光机”回到开发“按钮设计”时的完好状态 `[00:02:53]`。
+- **追踪历史（Track History）**：假设你正在开发一个网站，已经完成了“注册页面”和“按钮设计”。接着你开始开发复杂的“帮助表单”功能，结果在开发过程中遇到了严重的 Bug 导致整个项目崩溃。如果没有 Git，你必须手动去删除所有新写的代码，这非常危险且容易出错。而使用 Git，你可以轻松一键“坐时光机”回到开发“按钮设计”时的完好状态 [`00:02:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=2m53s)。
     
-- **团队协作（Collaboration）**：在企业中，多个开发者会同时修改同一个项目。Git 能够完美追踪谁在什么时间修改了什么，并防止大家的代码互相覆盖，协助合并不同人的劳动成果 `[00:04:05]`。
+- **团队协作（Collaboration）**：在企业中，多个开发者会同时修改同一个项目。Git 能够完美追踪谁在什么时间修改了什么，并防止大家的代码互相覆盖，协助合并不同人的劳动成果 [`00:04:05`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=4m05s)。
     
 
-### 3. 什么是 GitHub？ `[00:05:03]`
+### 3. 什么是 GitHub？ [`00:05:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=5m03s)
 
 - **区别于 Git**：**Git** 是安装在你本地电脑上的一个软件/工具，而 **GitHub**（github.com）是一个**网站平台**，它允许开发者使用 Git 在云端存储和管理他们的代码。
     
-- **形象比喻**：GitHub 就像是开发者的 Instagram。模特会在 Instagram 上发布照片展示自己，而开发者则在 GitHub 上建立自己的代码档案库（Portfolio），并在求职时将 GitHub 链接写在简历上，供面试官和 HR 查看、验证其实际开发能力 `[00:05:51]`。
+- **形象比喻**：GitHub 就像是开发者的 Instagram。模特会在 Instagram 上发布照片展示自己，而开发者则在 GitHub 上建立自己的代码档案库（Portfolio），并在求职时将 GitHub 链接写在简历上，供面试官和 HR 查看、验证其实际开发能力 [`00:05:51`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=5m51s)。
     
 
-### 4. 什么是仓库（Repository / Repo）？ `[00:06:21]`
+### 4. 什么是仓库（Repository / Repo）？ [`00:06:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=6m21s)
 
 - 在 Git 和 GitHub 的世界里，“仓库”（简称 **Repo**）就是指你的**项目文件夹**。它不仅包含了项目的所有代码文件，还包含了 Git 追踪历史所需的隐藏元数据（`.git` 文件夹）。
     
 
 ## 第二部分：环境搭建与初始配置
 
-### 1. 工具下载与安装 `[00:16:22]`
+### 1. 工具下载与安装 [`00:16:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=16m22s)
 
 - **代码编辑器**：推荐下载 **VS Code（Visual Studio Code）**，它是微软开发的免费、开源且最流行的代码编辑器。
     
 - **命令行终端**：
     
-    - **Windows 用户**：必须下载并安装 **Git Bash** `[00:18:49]`（安装时一路点击 Next 即可，建议勾选 "On the Desktop" 图标，并在命名默认分支时可选择将其设为 `main` ）。
+    - **Windows 用户**：必须下载并安装 **Git Bash** [`00:18:49`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=18m49s)（安装时一路点击 Next 即可，建议勾选 "On the Desktop" 图标，并在命名默认分支时可选择将其设为 `main` ）。
         
     - **Mac 用户**：直接使用系统自带的 **Terminal（终端）** 即可。可通过 `Finder` 搜索 "Terminal" 打开。
         
 
-### 2. 验证安装 `[00:17:35]`
+### 2. 验证安装 [`00:17:35`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=17m35s)
 
 安装完成后，打开你的终端（Mac）或 Git Bash（Windows），输入以下命令检查是否安装成功：
 
@@ -88,7 +88,7 @@ git --version
 
 如果能正确输出类似于 `git version 2.x.x` 的版本号，则说明安装成功。
 
-### 3. 配置 Git 用户信息 `[00:20:12]`
+### 3. 配置 Git 用户信息 [`00:20:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m12s)
 
 在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在终端输入以下命令进行**全局配置（Global Configuration）**：
 
@@ -106,11 +106,11 @@ git config --global user.email "你的邮箱地址"
 > git config --list
 > ```
 > 
-> 该命令会列出所有配置项，你可以在其中找到设置好的 `user.name` 和 `user.email` `[00:22:12]`。
+> 该命令会列出所有配置项，你可以在其中找到设置好的 `user.name` 和 `user.email` [`00:22:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=22m12s)。
 
 ## 第三部分：Git 核心工作流与基础命令
 
-### 1. 核心工作流概念：两阶段提交过程 `[00:12:28]`
+### 1. 核心工作流概念：两阶段提交过程 [`00:12:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=12m28s)
 
 在 Git 中，保存修改并不是一步到位的，它像是一场婚礼前的准备，分为两个步骤：
 
@@ -123,7 +123,7 @@ git config --global user.email "你的邮箱地址"
 [ 工作目录 (Working Directory) ] --( git add )--> [ 暂存区 (Staging Area) ] --( git commit )--> [ 本地仓库 (Local Repo) ]
 ```
 
-### 2. 远程克隆：Git Clone `[00:24:01]`
+### 2. 远程克隆：Git Clone [`00:24:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=24m01s)
 
 将 GitHub 上的云端项目下载到本地电脑上。
 
@@ -136,26 +136,26 @@ git config --global user.email "你的邮箱地址"
 git clone <复制的仓库HTTPS链接>
 ```
 
-### 3. 基础导航命令（Terminal / Git Bash 常用命令）`[00:25:51]`
+### 3. 基础导航命令（Terminal / Git Bash 常用命令）[`00:25:51`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=25m51s)
 
 - `cd <文件夹名>`：进入该文件夹（Change Directory）。
     
     - _技巧：输入前几个字母后按 `Tab` 键可以自动补全文件夹名。_
         
-- `cd ..`：返回上一级文件夹 `[00:39:56]`。
+- `cd ..`：返回上一级文件夹 [`00:39:56`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=39m56s)。
     
 - `ls`：列出当前文件夹下的所有可见文件 and 文件夹（List）。
     
-- `ls -a`：列出所有文件，包括**隐藏文件** `[00:27:20]`。
+- `ls -a`：列出所有文件，包括**隐藏文件** [`00:27:20`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=27m20s)。
     
     - _克隆或初始化后的项目文件夹内会有一个隐藏的 `.git` 文件夹，这就是 Git 的核心大脑，不要删除它！_
         
-- `pwd`：显示当前所在的绝对路径（Print Working Directory）`[00:20:04]`。
+- `pwd`：显示当前所在的绝对路径（Print Working Directory）[`00:20:04`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m04s)。
     
-- `clear`：清空终端屏幕 `[00:20:01]`。
+- `clear`：清空终端屏幕 [`00:20:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m01s)。
     
 
-### 4. 文件的四种状态 `[00:30:19]`
+### 4. 文件的四种状态 [`00:30:19`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=30m19s)
 
 使用 `git status` 命令可以查看当前仓库中文件的状态。文件通常处于以下四种状态之一：
 
@@ -170,7 +170,7 @@ git clone <复制的仓库HTTPS链接>
 
 ### 5. 基础操作三部曲：Add、Commit、Push
 
-#### 第一步：暂存更改（Add） `[00:32:24]`
+#### 第一步：暂存更改（Add） [`00:32:24`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=32m24s)
 
 ```
 # 暂存单个指定文件
@@ -180,7 +180,7 @@ git add <文件名>
 git add .
 ```
 
-#### 第二步：提交更改（Commit） `[00:34:11]`
+#### 第二步：提交更改（Commit） [`00:34:11`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=34m11s)
 
 每次提交都必须附带一条**有意义的提交信息**，解释你这次改动了什么：
 
@@ -188,7 +188,7 @@ git add .
 git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
 ```
 
-#### 第三步：推送到云端（Push） `[00:35:53]`
+#### 第三步：推送到云端（Push） [`00:35:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=35m53s)
 
 将本地的提交推送并同步到 GitHub 远程仓库：
 
@@ -196,7 +196,7 @@ git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
 git push origin main
 ```
 
-> _注意：如果是第一次推送，VS Code 或终端可能会弹窗请求 GitHub 网页授权，点击 "Authorize" 允许即可 `[00:36:37]`。_
+> _注意：如果是第一次推送，VS Code 或终端可能会弹窗请求 GitHub 网页授权，点击 "Authorize" 允许即可 [`00:36:37`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=36m37s)。_
 
 ## 第四部分：在本地从零初始化仓库并推送
 
