@@ -132,12 +132,14 @@ git config --global user.email "你的邮箱地址"
 
 2. 在 GitHub 仓库页面点击绿色的 **Code** 按钮，复制 **HTTPS** 链接。
     ![](复制http链接.png)
-3. 在本地终端中，进入到你想保存项目的文件夹，运行以下命令：
+3. 在本地终端中，进入到你想保存项目的文件夹，右键打开终端运行以下命令：
     
 
 ```
 git clone <复制的仓库HTTPS链接>
 ```
+
+4. 这样我们就把这个仓库复制到了我们的电脑上
 
 ### 3. 基础导航命令（Terminal / Git Bash 常用命令）[`00:25:51`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=25m51s)
 
