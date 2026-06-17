@@ -293,6 +293,7 @@ git remote add origin <你的GitHub仓库链接>
 git branch -m main
 ```
 
+![](附件/更改分支名称.png)
 ### 5. 首次推送并设置上游分支 [`00:46:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=46m52s)
 
 ```
