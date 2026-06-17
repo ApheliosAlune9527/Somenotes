@@ -348,7 +348,7 @@ git push -u origin main
     ```
     
 
-## Sixth 部分：冲突解决（Merge Conflicts）
+## 第六部分：冲突解决（Merge Conflicts）
 
 ### 1. 为什么会发生冲突？ [`01:00:44`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m44s)
 
