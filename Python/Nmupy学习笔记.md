@@ -21,7 +21,9 @@
 
 ## 一、ndarray 特性
 
-1. 多维性 : ndarray 可以是多维的,常见的
+1. 多维性 : ndarray 可以是多维的,常见的一维 二维 三维等。
+	- duo'wei'xing 
+2. 
 
 ```python
 """Ndarry的特性
