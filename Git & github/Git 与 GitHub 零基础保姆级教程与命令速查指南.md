@@ -261,7 +261,7 @@ git init
 
 ![](附件/初始化本地仓库.png)
 
-### 2. 添加文件并进行首次本地提交 [`00:41:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=41m52s)
+### 2. 添加文件并进行首次本地提交 
 
 ```
 git add .
@@ -285,7 +285,7 @@ git remote add origin <你的GitHub仓库链接>
 - 验证关联是否成功：`git remote -v` 
     
 
-### 4. 统一分支名称（从 master 重命名为 main） [`00:44:39`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=44m39s)
+### 4. 统一分支名称（从 master 重命名为 main） 
 
 过去 Git 默认主分支叫 `master`，由于一些历史文化原因，现在 GitHub 默认主分支改为了 `main` [`00:45:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=45m52s)。为了保持一致，我们将本地的 `master` 重命名为 `main`：
 
@@ -294,7 +294,7 @@ git branch -m main
 ```
 
 ![](附件/更改分支名称.png)
-### 5. 首次推送并设置上游分支 [`00:46:52`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=46m52s)
+### 5. 首次推送并设置上游分支 
 
 ```
 git push -u origin main
@@ -307,7 +307,7 @@ git push -u origin main
 
 ## 第五部分：分支（Branches）管理与协作开发
 
-### 1. 什么是分支？ [`00:49:36`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=49m36s)
+### 1. 什么是分支？ 
 
 - **概念**：分支就像是并行的宇宙。当多个开发人员合作，或者你需要开发一个可能破坏现有代码的新功能时，你可以从主线上拉出一个“分支”（项目的完美克隆版）。
     
