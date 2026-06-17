@@ -1,0 +1,23 @@
+{
+  "id": "conv-1781707571674-58g7hxhj5",
+  "providerId": "claude",
+  "title": "我目录写了一和二了 你帮我按照我的格式 把剩下的目录改完 注意按照我的格式就行",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1781707571674,
+  "updatedAt": 1781707614088,
+  "lastResponseAt": 1781707614088,
+  "sessionId": "a3c0d1de-babe-4bd8-a380-70f7f9231ce9",
+  "providerState": {
+    "providerSessionId": "a3c0d1de-babe-4bd8-a380-70f7f9231ce9"
+  },
+  "currentNote": "Python/Nmupy学习笔记.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1029,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 40448,
+    "contextWindow": 1000000,
+    "contextTokens": 41477,
+    "percentage": 4
+  }
+}

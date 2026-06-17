@@ -6,16 +6,16 @@
 ## 目录
 
 - [[#一、ndarray 特性|一、ndarray特性]]
-- [[# 二、ndarray 属性|二、ndarray属性]]
-- [[#三ndarray-创建|三.ndarray-创建]]
-- [[#四ndarray-索引与切片]]
-- [[#五ndarray-运算]]
-- [[#六numpy-常用函数]]
-- [[#七numpy-统计函数]]
-- [[#八numpy-比较函数]]
-- [[#九numpy-排序函数]]
-- [[#十综合练习一]]
-- [[#十一综合练习二]]
+- [[#二、ndarray 属性|二、ndarray属性]]
+- [[#三、ndarray 创建|三、ndarray创建]]
+- [[#四、ndarray 索引与切片|四、ndarray索引与切片]]
+- [[#五、ndarray 运算|五、ndarray运算]]
+- [[#六、numpy 常用函数|六、numpy常用函数]]
+- [[#七、numpy 统计函数|七、numpy统计函数]]
+- [[#八、numpy 比较函数|八、numpy比较函数]]
+- [[#九、numpy 排序函数|九、numpy排序函数]]
+- [[#十、综合练习一|十、综合练习一]]
+- [[#十一、综合练习二|十一、综合练习二]]
 
 ---
 
