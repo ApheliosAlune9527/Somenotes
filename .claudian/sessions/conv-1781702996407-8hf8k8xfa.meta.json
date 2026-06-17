@@ -4,8 +4,8 @@
   "title": "现在这个文档 应该插入到 @C语言的快速入门/程序基础---循环",
   "titleGenerationStatus": "failed",
   "createdAt": 1781702996408,
-  "updatedAt": 1781703074293,
-  "lastResponseAt": 1781703074293,
+  "updatedAt": 1781703840765,
+  "lastResponseAt": 1781703840765,
   "sessionId": "30495a07-6e0b-44b1-be46-443d00ba38ed",
   "providerState": {
     "providerSessionId": "30495a07-6e0b-44b1-be46-443d00ba38ed"
@@ -13,11 +13,11 @@
   "currentNote": "C语言的快速入门/Gemini的建议/函数返回多值.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 47737,
+    "inputTokens": 437,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 30720,
+    "cacheReadInputTokens": 79616,
     "contextWindow": 1000000,
-    "contextTokens": 78457,
+    "contextTokens": 80053,
     "percentage": 8
   }
 }
