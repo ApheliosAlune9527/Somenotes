@@ -251,7 +251,7 @@ git push origin main
 
 ### 1. 初始化本地仓库 [`00:39:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=39m28s)
 
-在你的项目根目录下打开终端，运行：
+在你的项目根目录下打开终端(或者在vscode里边直接创建一个新的文件夹)，运行：
 
 ```
 git init
