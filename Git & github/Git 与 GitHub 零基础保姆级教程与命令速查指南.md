@@ -128,6 +128,7 @@ git config --global user.email "你的邮箱地址"
 
 1. 先在GitHub上创建一个[`仓库`](https://github.com/new)
 
+
 2. 在 GitHub 仓库页面点击绿色的 **Code** 按钮，复制 **HTTPS** 链接。
     
 3. 在本地终端中，进入到你想保存项目的文件夹，运行以下命令：
