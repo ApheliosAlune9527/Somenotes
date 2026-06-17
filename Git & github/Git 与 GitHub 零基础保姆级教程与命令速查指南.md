@@ -469,3 +469,4 @@ git reset --hard <Commit_Hash>
 |**`git remote -v`**|`remote verbose`|验证本地项目与哪些远程云端仓库建立了关联|
 
 
+[![](https://www.bilibili.com/video/BV1Ex411L7oT/?spm_id_from=333.1387.favlist.content.click&vd_source=5c33aab53ab2bd8cd702128935c39343)]
