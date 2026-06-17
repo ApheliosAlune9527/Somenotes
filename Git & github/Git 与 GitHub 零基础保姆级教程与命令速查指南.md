@@ -162,7 +162,7 @@ git clone <复制的仓库HTTPS链接>
 
 ### 4. 文件的四种状态 [`00:30:19`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=30m19s)
 - 使用 vscode 打开刚才你保存项目的文件夹
-	![](附件.png)
+	![](附件/打开仓库.png)
 使用 `git status` 命令可以查看当前仓库中文件的状态。文件通常处于以下四种状态之一：
 
 2. **Untracked（未追踪）**：新创建的文件，Git 还没开始记录它。
