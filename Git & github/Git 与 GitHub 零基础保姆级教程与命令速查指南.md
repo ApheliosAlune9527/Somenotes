@@ -128,7 +128,7 @@ git config --global user.email "你的邮箱地址"
 
 1. 先在GitHub上创建一个[仓库](https://github.com/new)
 ![](仓库的建立.png)
-点击下方绿色**Create repository** 按钮
+	接着点击下方绿色**Create repository** 按钮即可创建一个新仓库
 
 2. 在 GitHub 仓库页面点击绿色的 **Code** 按钮，复制 **HTTPS** 链接。
     
