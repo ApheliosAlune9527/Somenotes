@@ -4,49 +4,51 @@
 [![](https://img.youtube.com/vi/Ez8F0nW6S-w/maxresdefault.jpg)](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=4299s)
 ## 目录
 
-- [[#第一部分：Git 与 GitHub 基础概念]]
-	 - [[# 什么是 Git ?]]
-	 - [[# 为什么要使用 Git？]]
-	 - [[# 什么是 GitHub?]]
-	 - [[# 什么是仓库（Repository / Repo）？]]
-- [[#第二部分：环境搭建与初始配置]]
-	 - [[# 工具下载与安装]]
-	 - [[# 验证安装]]
-	 - [[# 配置 Git 用户信息]]
-- [[#第三部分：Git 核心工作流与基础命令]]
-	 - [[# 核心工作流概念：两阶段提交过程]]
-	 - [[# 远程克隆：Git Clone]]
-	 - [[# 基础导航命令（Terminal / Git Bash 常用命令）]]
-	 - [[# 文件的四种状态]]
-	 - [[# 基础操作三部曲：Add、Commit、Push]]
-- [[#第四部分：在本地从零初始化仓库并推送]]
-	 - [[# 初始化本地仓库]]
-	 - [[# 添加文件并进行首次本地提交]]
-	 - [[# 关联远程 GitHub 仓库]]
-	 - [[# 统一分支名称（从 master 重命名为 main）]]
-	 - [[# 首次推送并设置上游分支]]
-- [[#第五部分：分支（Branches）管理与协作开发]]
-	 - [[# 什么是分支？]]
-	 - [[# 分支核心命令]]
-	 - [[# 分支开发实战流向]]
-	 - [[# 合并分支与拉取请求（Pull Request / PR）]]
-- [[#第六部分：冲突解决（Merge Conflicts）]]
-	 - [[# 为什么会发生冲突？]]
-	 - [[# 冲突的代码标识]]
-	 - [[# 如何在 VS Code 中解决冲突]]
-- [[#第七部分：撤销更改与版本回退（Undo Changes）]]
-	 - [[# 情况一：撤销已 stage（已运行 git add）但未 commit 的文件]]
-	 - [[# 情况二：撤销最近一次 commit，但保留写好的代码]]
-	 - [[# 查看提交历史记录（Git Log）]]
-	 - [[# 情况三：回退到历史的某一个指定版本]]
-- [[#第八部分：开源贡献与 Fork 工作流]]
-	 - [[# 什么是 Fork？]]
-	 - [[# 参与开源贡献的黄金五步法]]
-- [[#附录：Git 高频命令速查表]]
+- [[#第一部分：Git 与 GitHub 基础概念|第一部分：Git 与 GitHub 基础概念]]
+	 - [[#第一部分：Git 与 GitHub 基础概念#1. 什么是 Git？|1. 什么是 Git？]]
+	 - [[#第一部分：Git 与 GitHub 基础概念#2. 为什么要使用 Git？|2. 为什么要使用 Git？]]
+	 - [[#第一部分：Git 与 GitHub 基础概念#3. 什么是 GitHub？|3. 什么是 GitHub？]]
+	 - [[#第一部分：Git 与 GitHub 基础概念#4. 什么是仓库（Repository / Repo）？|4. 什么是仓库（Repository / Repo）？]]
+- [[#第二部分：环境搭建与初始配置|第二部分：环境搭建与初始配置]]
+	 - [[#第二部分：环境搭建与初始配置#1. 工具下载与安装|1. 工具下载与安装]]
+	 - [[#第二部分：环境搭建与初始配置#2. 验证安装|2. 验证安装]]
+	 - [[#第二部分：环境搭建与初始配置#3. 配置 Git 用户信息|3. 配置 Git 用户信息]]
+- [[#第三部分：Git 核心工作流与基础命令|第三部分：Git 核心工作流与基础命令]]
+	 - [[#第三部分：Git 核心工作流与基础命令#1. 核心工作流概念：两阶段提交过程|1. 核心工作流概念：两阶段提交过程]]
+	 - [[#第三部分：Git 核心工作流与基础命令#2. 远程克隆：Git Clone|2. 远程克隆：Git Clone]]
+	 - [[#第三部分：Git 核心工作流与基础命令#3. 基础导航命令（Terminal / Git Bash 常用命令）|3. 基础导航命令（Terminal / Git Bash 常用命令）]]
+	 - [[#第三部分：Git 核心工作流与基础命令#4. 文件的四种状态|4. 文件的四种状态]]
+	 - [[#第三部分：Git 核心工作流与基础命令#5. 基础操作三部曲：Add、Commit、Push|5. 基础操作三部曲：Add、Commit、Push]]
+- [[#第四部分：在本地从零初始化仓库并推送|第四部分：在本地从零初始化仓库并推送]]
+	 - [[#第四部分：在本地从零初始化仓库并推送#1. 初始化本地仓库|1. 初始化本地仓库]]
+	 - [[#第四部分：在本地从零初始化仓库并推送#2. 添加文件并进行首次本地提交|2. 添加文件并进行首次本地提交]]
+	 - [[#第四部分：在本地从零初始化仓库并推送#3. 关联远程 GitHub 仓库|3. 关联远程 GitHub 仓库]]
+	 - [[#第四部分：在本地从零初始化仓库并推送#4. 统一分支名称（从 master 重命名为 main）|4. 统一分支名称（从 master 重命名为 main）]]
+	 - [[#第四部分：在本地从零初始化仓库并推送#5. 首次推送并设置上游分支|5. 首次推送并设置上游分支]]
+- [[#第五部分：分支（Branches）管理与协作开发|第五部分：分支（Branches）管理与协作开发]]
+	 - [[#第五部分：分支（Branches）管理与协作开发#1. 什么是分支？|1. 什么是分支？]]
+	 - [[#第五部分：分支（Branches）管理与协作开发#2. 分支核心命令|2. 分支核心命令]]
+	 - [[#第五部分：分支（Branches）管理与协作开发#3. 分支开发实战流向|3. 分支开发实战流向]]
+	 - [[#第五部分：分支（Branches）管理与协作开发#4. 合并分支与拉取请求（Pull Request / PR）|4. 合并分支与拉取请求（Pull Request / PR）]]
+- [[#第六部分：冲突解决（Merge Conflicts）|第六部分：冲突解决（Merge Conflicts）]]
+	 - [[#第六部分：冲突解决（Merge Conflicts）#1. 为什么会发生冲突？|1. 为什么会发生冲突？]]
+	 - [[#第六部分：冲突解决（Merge Conflicts）#2. 冲突的代码标识|2. 冲突的代码标识]]
+	 - [[#第六部分：冲突解决（Merge Conflicts）#3. 如何在 VS Code 中解决冲突|3. 如何在 VS Code 中解决冲突]]
+- [[#第七部分：撤销更改与版本回退（Undo Changes）|第七部分：撤销更改与版本回退（Undo Changes）]]
+	 - [[#第七部分：撤销更改与版本回退（Undo Changes）#1. 情况一：撤销已 stage（已运行 git add）但未 commit 的文件|1. 情况一：撤销已 stage（已运行 git add）但未 commit 的文件]]
+	 - [[#第七部分：撤销更改与版本回退（Undo Changes）#2. 情况二：撤销最近一次 commit，但保留写好的代码|2. 情况二：撤销最近一次 commit，但保留写好的代码]]
+	 - [[#第七部分：撤销更改与版本回退（Undo Changes）#3. 查看提交历史记录（Git Log）|3. 查看提交历史记录（Git Log）]]
+	 - [[#第七部分：撤销更改与版本回退（Undo Changes）#4. 情况三：回退到历史的某一个指定版本|4. 情况三：回退到历史的某一个指定版本]]
+- [[#第八部分：开源贡献与 Fork 工作流|第八部分：开源贡献与 Fork 工作流]]
+	 - [[#第八部分：开源贡献与 Fork 工作流#1. 什么是 Fork？|1. 什么是 Fork？]]
+	 - [[#第八部分：开源贡献与 Fork 工作流#2. 参与开源贡献的黄金五步法|2. 参与开源贡献的黄金五步法]]
+- [[#附录：Git 高频命令速查表|附录：Git 高频命令速查表]]
 
 ## 第一部分：Git 与 GitHub 基础概念
 
-### 1. 什么是 Git？ [`00:01:20`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=1m20s)
+### 1. 什么是 Git？
+
+[`00:01:20`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=1m20s)
 
 - **版本控制系统（VCS, Version Control System）**：Git 是一种用于追踪代码文件修改历史的工具。
     
@@ -74,21 +76,27 @@
 - **团队协作（Collaboration）**：在企业中，多个开发者会同时修改同一个项目。Git 能够完美追踪谁在什么时间修改了什么，并防止大家的代码互相覆盖，协助合并不同人的劳动成果 
     
 
-### 3. 什么是 GitHub？ [`00:05:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=5m03s)
+### 3. 什么是 GitHub？
+
+[`00:05:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=5m03s)
 
 - **区别于 Git**：**Git** 是安装在你本地电脑上的一个软件/工具，而 **GitHub**（github.com）是一个**网站平台**，它允许开发者使用 Git 在云端存储和管理他们的代码。
     
 - **形象比喻**：GitHub 就像是开发者的 Instagram。模特会在 Instagram 上发布照片展示自己，而开发者则在 GitHub 上建立自己的代码档案库（Portfolio），并在求职时将 GitHub 链接写在简历上，供面试官和 HR 查看、验证其实际开发能力 
     
 
-### 4. 什么是仓库（Repository / Repo）？ [`00:06:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=6m21s)
+### 4. 什么是仓库（Repository / Repo）？
+
+[`00:06:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=6m21s)
 
 - 在 Git 和 GitHub 的世界里，“仓库”（简称 **Repo**）就是指你的**项目文件夹**。它不仅包含了项目的所有代码文件，还包含了 Git 追踪历史所需的隐藏元数据（`.git` 文件夹）。
     
 
 ## 第二部分：环境搭建与初始配置
 
-### 1. 工具下载与安装 [`00:16:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=16m22s)
+### 1. 工具下载与安装
+
+[`00:16:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=16m22s)
 
 - **代码编辑器**：推荐下载 **VS Code（Visual Studio Code）**，它是微软开发的免费、开源且最流行的代码编辑器。
     
@@ -110,7 +118,9 @@ git --version
 
 如果能正确输出类似于 `git version 2.x.x` 的版本号，则说明安装成功。
 
-### 3. 配置 Git 用户信息 [`00:20:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m12s)
+### 3. 配置 Git 用户信息
+
+[`00:20:12`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m12s)
 
 在开始使用 Git 之前，你必须告诉 Git 你是谁（这些信息会关联到你的每一次提交中）。 在 终端 输入以下命令进行**全局配置（Global Configuration）**：
 
@@ -132,7 +142,9 @@ git config --global user.email "你的邮箱地址"
 
 ## 第三部分：Git 核心工作流与基础命令
 
-### 1. 核心工作流概念：两阶段提交过程 [`00:12:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=12m28s)
+### 1. 核心工作流概念：两阶段提交过程
+
+[`00:12:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=12m28s)
 
 - **Git 大概有三层**
 	
@@ -153,7 +165,9 @@ git config --global user.email "你的邮箱地址"
 [ 工作目录 (Working Directory) ] --( git add )--> [ 暂存区 (Staging Area) ] --( git commit )--> [ 本地仓库 (Local Repo) ]
 ```
 
-### 2. 远程克隆：Git Clone [`00:24:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=24m01s)
+### 2. 远程克隆：Git Clone
+
+[`00:24:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=24m01s)
 
 将 GitHub 上的云端项目下载到本地电脑上。
 
@@ -172,7 +186,9 @@ git clone <复制的仓库HTTPS链接>
 
 4. 这样我们就把这个仓库复制到了我们的电脑上
 
-### 3. 基础导航命令（Terminal / Git Bash 常用命令）[`00:25:51`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=25m51s)
+### 3. 基础导航命令（Terminal / Git Bash 常用命令）
+
+[`00:25:51`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=25m51s)
 
 - `cd <文件夹名>`：进入该文件夹（Change Directory）。
     
@@ -191,7 +207,9 @@ git clone <复制的仓库HTTPS链接>
 - `clear`：清空终端屏幕 [`00:20:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=20m01s)。
     
 
-### 4. 文件的四种状态 [`00:30:19`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=30m19s)
+### 4. 文件的四种状态
+
+[`00:30:19`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=30m19s)
 - 使用 vscode 打开刚才你保存项目的文件夹
 	![](附件/打开仓库.png)
 - 然后使用命令:`cd 你的项目名称/`  进入到git项目问价夹中(正常之只有README.md文件,我这里不是新创建的文件夹所以会多一些文件)
@@ -219,7 +237,9 @@ git clone <复制的仓库HTTPS链接>
 
 ### 5. 基础操作三部曲：Add、Commit、Push
 
-#### 第一步：暂存更改（Add） [`00:32:24`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=32m24s)
+#### 第一步：暂存更改（Add）
+
+[`00:32:24`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=32m24s)
 
 ```
 # 暂存单个指定文件
@@ -229,7 +249,9 @@ git add <文件名>
 git add .
 ```
 
-#### 第二步：提交更改（Commit） [`00:34:11`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=34m11s)
+#### 第二步：提交更改（Commit）
+
+[`00:34:11`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=34m11s)
 
 每次提交都必须附带一条**有意义的提交信息**，解释你这次改动了什么：
 
@@ -241,7 +263,9 @@ git commit -m "这次提交的说明信息（例如：添加了登录按钮）"
 
 > `git commit` 之后 左侧资源管理器中的后缀字母全都消失了,此时使用 `git status` 看到`your branch is ahead of main by 1 commit : 你本地 main 分支比远程 origin/main 多了 1 个提交` 
 > 因为执行commit,只是提交到了本地仓库,也就是本地仓库现在处于 C 状态,而因为没有推送到远程github仓库,所以它现在是 B 状态,所以显示:你本地分支比远程多一个提交,故我们还需要最后一个操作`push` 把我们的修改推送到远程仓库上
-#### 第三步：推送到云端（Push） [`00:35:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=35m53s)
+#### 第三步：推送到云端（Push）
+
+[`00:35:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=35m53s)
 
 将本地的提交推送并同步到 GitHub 远程仓库：
 
@@ -272,7 +296,9 @@ git push origin main
 
 有时候，我们是在本地电脑先建立了项目文件夹并写了代码，后续才想用 Git 追踪并上传到 GitHub。工作流如下：
 
-### 1. 初始化本地仓库 [`00:39:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=39m28s)
+### 1. 初始化本地仓库
+
+[`00:39:28`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=39m28s)
 
 在你的项目根目录下打开终端(或者在vscode里边直接创建一个新的文件夹)，运行：
 
@@ -291,7 +317,9 @@ git add .
 git commit -m "初始化项目文件"
 ```
 
-### 3. 关联远程 GitHub 仓库 [`00:43:18`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=43m18s)
+### 3. 关联远程 GitHub 仓库
+
+[`00:43:18`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=43m18s)
 
 在 GitHub 上新建一个干净的仓库（**不要**勾选 Add a README 文件），复制仓库的 HTTPS 地址。然后在本地运行：
 
@@ -337,7 +365,9 @@ git push -u origin main
 - 你在分支上做任何修改，主线（`main` 分支）上的代码都不会受到任何干扰。当你的新功能完全写好并通过测试后，再将分支合并（Merge）回主线。这极大地方便了多人开发，互不干扰 
     
 
-### 2. 分支核心命令 [`00:51:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=51m53s)
+### 2. 分支核心命令
+
+[`00:51:53`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=51m53s)
 
 |命令|功能描述|
 |---|---|
@@ -346,7 +376,9 @@ git push -u origin main
 |`git checkout <分支名>`|切换到已存在的指定分支 [`00:52:29`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m29s)|
 |`git branch -d <分支名>`|删除指定分支（_注意：不能在当前所在的分支上删除自身_） [`00:52:58`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=52m58s)|
 
-### 3. 分支开发实战流向 [`00:53:38`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=53m38s)
+### 3. 分支开发实战流向
+
+[`00:53:38`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=53m38s)
 
 1. 新建并切换到功能分支：`git checkout -b feature-login`
     
@@ -366,7 +398,9 @@ git push -u origin main
 ![](附件/成功推送.png)
 
 
-### 4. 合并分支与拉取请求（Pull Request / PR） [`00:57:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=57m01s)
+### 4. 合并分支与拉取请求（Pull Request / PR）
+
+[`00:57:01`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=57m01s)
 
 - **什么是 PR？**：在团队协作中，你不能直接把自己的分支合并到生产环境的 `main` 分支。你需要提交一个“拉取请求”（Pull Request），告诉团队成员：“我写好了一个新功能，请求将我的 `feature-login` 分支合并到 `main`。”
 	- 合并分支方法 1 : `get merge main`
@@ -388,7 +422,9 @@ git push -u origin main
 
 ## 第六部分：冲突解决（Merge Conflicts）
 
-### 1. 为什么会发生冲突？ [`01:00:44`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m44s)
+### 1. 为什么会发生冲突？
+
+[`01:00:44`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=60m44s)
 
 冲突通常发生在以下场景：
 
@@ -405,7 +441,9 @@ git push -u origin main
 
 - 当你尝试将这两个分支合并时，Git 不知道到底应该保留谁的改动，于是它会罢工并抛出 **Merge Conflict** 错误，要求你手动解决。
 	
-### 2. 冲突的代码标识 [`01:02:34`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=62m34s)
+### 2. 冲突的代码标识
+
+[`01:02:34`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=62m34s)
 
 发生冲突时，Git 会直接在你冲突的文件中插入特殊的标记：
 
@@ -417,7 +455,9 @@ git push -u origin main
 >>>>>>> main
 ```
 
-### 3. 如何在 VS Code 中解决冲突 [`01:03:08`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=63m08s)
+### 3. 如何在 VS Code 中解决冲突
+
+[`01:03:08`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=63m08s)
 
 VS Code 非常智能，它会把冲突区域高亮，并在上方提供四个一键点击选项：
 
@@ -451,7 +491,9 @@ VS Code 非常智能，它会把冲突区域高亮，并在上方提供四个一
 
 在日常开发中，写错代码是常有的事。Git 提供了多种后悔药：
 
-### 1. 情况一：撤销已 stage（已运行 git add）但未 commit 的文件 [`01:05:32`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=65m32s)
+### 1. 情况一：撤销已 stage（已运行 git add）但未 commit 的文件
+
+[`01:05:32`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=65m32s)
 
 如果你不小心 `git add` 了一个不该暂存的文件，想把它退回到工作区：
 
@@ -463,7 +505,9 @@ git reset 文件名
 git reset
 ```
 
-### 2. 情况二：撤销最近一次 commit，但保留写好的代码 [`01:07:45`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=67m45s)
+### 2. 情况二：撤销最近一次 commit，但保留写好的代码
+
+[`01:07:45`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=67m45s)
 
 如果你刚刚提交了代码，但突然发现提交信息写错了，或者还有一点小改动没保存：
 
@@ -478,7 +522,9 @@ git reset HEAD~1
 - 此命令会撤销你最后一次的 `commit`，但你写好的代码依然完好地保留在你的工作目录中。
     
 
-### 3. 查看提交历史记录（Git Log） [`01:08:50`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=68m50s)
+### 3. 查看提交历史记录（Git Log）
+
+[`01:08:50`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=68m50s)
 
 在回退更早的版本前，我们需要查看历史的提交记录：
 
@@ -495,7 +541,9 @@ git log --oneline
 - _退出 log 界面：在键盘上按小写字母 `q` 键退出。_
     
 
-### 4. 情况三：回退到历史的某一个指定版本 [`01:09:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=69m21s)
+### 4. 情况三：回退到历史的某一个指定版本
+
+[`01:09:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=69m21s)
 
 如果你想让项目彻底回到历史上某个 commit 的状态：
 
@@ -508,7 +556,9 @@ git log --oneline
 git reset <Commit_Hash>
 ```
 
-#### ⚠️ 警告：硬重置（Hard Reset） [`01:10:55`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=70m55s)
+#### ⚠️ 警告：硬重置（Hard Reset）
+
+[`01:10:55`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=70m55s)
 
 如果你想彻底丢弃目前所有的本地修改，强行将本地代码恢复到某个历史 Commit 的状态：
 
@@ -521,14 +571,18 @@ git reset --hard <Commit_Hash>
 
 ## 第八部分：开源贡献与 Fork 工作流
 
-### 1. 什么是 Fork？ [`01:11:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=71m22s)
+### 1. 什么是 Fork？
+
+[`01:11:22`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=71m22s)
 
 - **概念**：当你想要参与一个大型开源项目（比如 Express 框架），你没有该项目的直接修改权限。
     
 - **Fork** 允许你在你自己的 GitHub 账号下，一键创建该开源项目的一个**完整独立复制版**（粗糙复印件）。你可以在自己的 Fork 仓里随意修改、折腾，而不会影响到原作者的项目。
     
 
-### 2. 参与开源贡献的黄金五步法 [`01:12:00`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=72m00s)
+### 2. 参与开源贡献的黄金五步法
+
+[`01:12:00`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=72m00s)
 
 1. **Fork**：在开源项目的 GitHub 页面点击右上角的 **Fork** 按钮，拷贝一份到个人账户。
     
