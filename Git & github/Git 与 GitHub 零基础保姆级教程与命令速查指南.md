@@ -272,11 +272,12 @@ git commit -m "初始化项目文件"
 
 在 GitHub 上新建一个干净的仓库（**不要**勾选 Add a README 文件），复制仓库的 HTTPS 地址。然后在本地运行：
 
-![](附件/新建仓库.png)
-
 ```
 git remote add origin <你的GitHub仓库链接>
 ```
+
+
+![](附件/新建仓库.png)
 
 - `origin`：这是给远程仓库起的默认别名 [`00:38:03`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=38m03s)。
     
