@@ -46,7 +46,7 @@
     3. 运行速度极快，且具备极强的可扩展性，无论是小项目还是超大型项目都能轻松应对 
         
 
-### 2. 为什么要使用 Git？ [`00:02:48`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=2m48s)
+### 2. 为什么要使用 Git？ 
 
 - **追踪历史（Track History）**：假设你正在开发一个网站，已经完成了“注册页面”和“按钮设计”。接着你开始开发复杂的“帮助表单”功能，结果在开发过程中遇到了严重的 Bug 导致整个项目崩溃。如果没有 Git，你必须手动去删除所有新写的代码，这非常危险且容易出错。而使用 Git，你可以轻松一键“坐时光机”回到开发“按钮设计”时的完好状态 
     
@@ -57,7 +57,7 @@
 
 - **区别于 Git**：**Git** 是安装在你本地电脑上的一个软件/工具，而 **GitHub**（github.com）是一个**网站平台**，它允许开发者使用 Git 在云端存储和管理他们的代码。
     
-- **形象比喻**：GitHub 就像是开发者的 Instagram。模特会在 Instagram 上发布照片展示自己，而开发者则在 GitHub 上建立自己的代码档案库（Portfolio），并在求职时将 GitHub 链接写在简历上，供面试官和 HR 查看、验证其实际开发能力 [`00:05:51`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=5m51s)。
+- **形象比喻**：GitHub 就像是开发者的 Instagram。模特会在 Instagram 上发布照片展示自己，而开发者则在 GitHub 上建立自己的代码档案库（Portfolio），并在求职时将 GitHub 链接写在简历上，供面试官和 HR 查看、验证其实际开发能力 
     
 
 ### 4. 什么是仓库（Repository / Repo）？ [`00:06:21`](https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=6m21s)
