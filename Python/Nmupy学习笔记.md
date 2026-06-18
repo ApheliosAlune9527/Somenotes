@@ -159,7 +159,7 @@ arr = rng.random((3, 4))
 arr1 = rng.integers(0, 10, (3, 4))  # 生成start:0到end:10之间的随机整数，形状为3行4列
 
 # 正态分布
-# arr2 = rng.normal(0, 1, (3, 4))  # 均值为0，标准差为1，形状为3行4列 .standard_normal() 也是生成标准正态分布的随机数，等价于 normal(0, 1, size) 使用这个函数只需要填写 size即可
+arr2 = rng.normal(0, 1, (3, 4))  # 均值为0，标准差为1，形状为3行4列 .standard_normal() 也是生成标准正态分布的随机数，等价于 normal(0, 1, size) 使用这个函数只需要填写 size即可
 
 # 均匀分布
 arr3 = rng.uniform(0, 10, (3, 4))  # 生成low:0到high:10之间的随机浮点数，形状为3行4列
