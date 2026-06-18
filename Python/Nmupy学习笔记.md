@@ -153,7 +153,7 @@ import numpy as np
 # 第一步: 建立 Generator 实例 (可以传种子)
 rng = np.array.default_rng()
 # 生成 0~1 随机浮点数
-arr = rng.int
+arr = rng.random((3,4))
 
 # 生成指定范围内的随机浮点数 .random.uniform(low, high, size)  low是下界 high是上界 size是形状
 
