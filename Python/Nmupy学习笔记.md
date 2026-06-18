@@ -219,7 +219,12 @@ print(arr[slice(1, 5)]) # 等价于 arr[1:5]
 print(arr[slice(None, None, -1)])
 ```
 
->2.二维数组: 索引与qie
+>**2.二维数组: 索引与切片**
+
+```python
+import
+
+```
 
 
 
