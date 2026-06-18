@@ -58,7 +58,7 @@ print(f"{arr2}\narr2的类型为:{type(arr2)}\n维度:{arr2.ndim}")
 
 3. 数组内元素格式 : size 用法: `arr.size` 返回一个整数 , 表示数组中元素的总个数 。
 <br>
-4. 
+4. 数组内的**元素类型 : **  d't'y 
 
 ```python
 """Ndarry的属性
