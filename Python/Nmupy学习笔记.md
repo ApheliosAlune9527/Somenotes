@@ -249,8 +249,8 @@ print(arr[slice(None, None, -1)])
 	
 	```python
 import numpy as np
-	arr = np.array( [1, 2, 3, 4]
-					[5, 6, 7, 8]
+	arr = np.array( [1, 2, 3, 4],
+					[5, 6, 7, 8],
 					[9, 10, 11, 12])
 					
 # 单元素访问(注意不论是行还是列 索引都是从0开始的)
@@ -259,7 +259,8 @@ print(arr[1, 2]) # 7
 print(arr[-1, -1]) # 12 
 
 # 取得完整的行(列)
-print(arr[:])
+print(arr[0, :]) # 取得第1行全部元素
+print(arr[:, ])
 
 	```
 
