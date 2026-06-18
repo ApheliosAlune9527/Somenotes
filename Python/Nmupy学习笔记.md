@@ -194,7 +194,7 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 		<br>
 	- 二维索引 : `arr[row, column]`
 <br>
->一位数组:
+>1. 一维数组 : 
 ```python
 import numpy as np
 
