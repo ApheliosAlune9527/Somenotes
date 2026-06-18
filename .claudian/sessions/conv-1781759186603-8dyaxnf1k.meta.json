@@ -4,6 +4,20 @@
   "title": "你看 这种列表的段落 ,我在编辑模式下是打了一行空格的,而我切换成阅读模式的时候这行空格就没了 就是...",
   "titleGenerationStatus": "failed",
   "createdAt": 1781759186618,
-  "updatedAt": 1781759188479,
-  "sessionId": null
+  "updatedAt": 1781759321849,
+  "lastResponseAt": 1781759321849,
+  "sessionId": "aaa624bf-f5ab-432e-b13f-3f5a2b59786c",
+  "providerState": {
+    "providerSessionId": "aaa624bf-f5ab-432e-b13f-3f5a2b59786c"
+  },
+  "currentNote": "C语言的快速入门/程序基础---循环.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 445,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 71744,
+    "contextWindow": 1000000,
+    "contextTokens": 72189,
+    "percentage": 7
+  }
 }
