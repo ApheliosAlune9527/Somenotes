@@ -150,7 +150,8 @@ import numpy as np
 # print(diag)
 
 # 随机数组 使用新的Generator API  括号里写形状 生成0到1之间的随机浮点数
-rng = mp.array.default_r
+# 第一步: 创立
+rng = np.array.default_rng()
 
 # 生成指定范围内的随机浮点数 .random.uniform(low, high, size)  low是下界 high是上界 size是形状
 
