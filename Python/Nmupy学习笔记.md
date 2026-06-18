@@ -222,7 +222,9 @@ print(arr[slice(None, None, -1)])
 >**2.二维数组: 索引与切片**
 
 ```python
-import
+import numpy as np
+arr = np.array( [1, 2,]
+				[])
 
 ```
 
