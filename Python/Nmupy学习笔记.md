@@ -228,7 +228,7 @@ print(arr[slice(None, None, -1)])
     - **多维索引 (Multi-dimensional Indexing)**：如 `arr[0, 0, 0]`，NumPy 推荐写法，直接定位，速度极快。
 	<br>
 	
-
+	
 ```python
 import numpy as np
 	arr = np.array( [1, 2, 3, 4],
@@ -254,7 +254,6 @@ import numpy as np
 	print(arr[1,:]) # 第二行全部: [5, 6, 7, 8]
 	print(arr[1:2,:]) # 二维 [[5, 6, 7, 8]] 
 ```
-
 <br>
 
 >[!Attention] 3.切片是视图, 不是副本 ! 
