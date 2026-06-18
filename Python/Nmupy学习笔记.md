@@ -260,7 +260,8 @@ import numpy as np
 >	和Python的列表的切片区别在于 : Numpy 切片返回的是**视图(view)** , 修改切片会直接影响原数组 !
 >	
 >	arr = np.array([1, 2, 3, 4, 5]) 
->	sub = arr[1 : 4]
+>	sub = arr[1 : 4] 
+>	# sub 拿dao
 
 
 
