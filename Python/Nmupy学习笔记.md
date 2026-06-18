@@ -150,8 +150,7 @@ import numpy as np
 # print(diag)
 
 # 随机数组 .random.rand()  括号里写形状 生成0到1之间的随机浮点数
-# rand_arr = np.random.rand(3,4)
-# print(rand_arr)
+
 
 # 生成指定范围内的随机浮点数 .random.uniform(low, high, size)  low是下界 high是上界 size是形状
 
