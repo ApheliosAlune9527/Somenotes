@@ -226,28 +226,8 @@ print(arr[slice(None, None, -1)])
     - **链式索引 (Chain Indexing)**：如 `arr[0][0][0]`，效率较低（每次调用都会创建一个临时临时对象）。
         <br>
     - **多维索引 (Multi-dimensional Indexing)**：如 `arr[0, 0, 0]`，NumPy 推荐写法，直接定位，速度极快。
-	
-	<br>
-	
-	```
-	3D 蛋糕矩阵形式：
-┌─────────────────────────┐
-│ Layer 0 (第0层 - A-I)    │
-│  [A, B, C]  <- Row 0    │
-│  [D, E, F]              │
-│  [G, H, I]              │
-└─────────────────────────┘
-            │
-            ▼ 叠放
-┌─────────────────────────┐
-│ Layer 1 (第1层 - J-R)    │
-│  [J, K, L]              │
-│  [M, N, O]  <- Row 1, Col 1 (N)
-│  [P, Q, R]              │
-└─────────────────────────┘
-	```
 
-<br>
+
 ```python
 	import numpy as np
 		arr = np.array( [1, 2, 3, 4],
@@ -273,6 +253,8 @@ print(arr[slice(None, None, -1)])
 		print(arr[1,:]) # 第二行全部: [5, 6, 7, 8]
 		print(arr[1:2,:]) # 二维 [[5, 6, 7, 8]] 
 ```
+
+<br>
 
 >[!Attention] 3.切片是视图, 不是副本 ! 
 >	和Python的列表的切片区别在于 : Numpy 切片返回的是**视图(view)** , 修改切片会直接影响原数组 !
