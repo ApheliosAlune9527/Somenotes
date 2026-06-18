@@ -52,9 +52,11 @@ print(f"{arr2}\narr2的类型为:{type(arr2)}\n维度:{arr2.ndim}")
 ## 二、ndarray 属性
 1. 数组的形状 :  .shape( ) 用法 : `arr.shape` 返回一个元组 , 表示数组的维数和每个维度的大小。
 <br>
-2. 数组的维度 :   ndim 用法 : `arr.ndim` 返回一个整数 , 表示数组的维度 , 
+2. 数组的维度 :   ndim 用法 : `arr.ndim` 返回一个整数 , 表示数组的维度。
 
 >  注意多维的时候 : 是两层括号 `[[]]` 外层代表行数, 内层代表列数
+
+3. 数组内元素格式 : size 用法: `a'r'r`
 
 ```python
 """Ndarry的属性
