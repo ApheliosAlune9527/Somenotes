@@ -82,7 +82,9 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 
 1. ndarray 的创建
 >[!example] 
->	`li'se`
+>	`list = [1, 2, 3]`
+>	`arr = np.array(list)`
+>	
 >	
 ```python
 import numpy as np
