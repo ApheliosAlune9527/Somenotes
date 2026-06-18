@@ -199,8 +199,12 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 ```python
 import numpy as np
 arr = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+print(arr)
 
 # ========== 基本索引 ==========
+print(f"arr[0]:{arr[0]}")
+
+```
 
 
 
