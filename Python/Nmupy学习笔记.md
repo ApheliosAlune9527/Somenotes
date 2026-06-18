@@ -274,8 +274,9 @@ import numpy as np
 >	sub[0] = 0
 >	print(arr) # 原数组不变
 
->**4.
+>**4. 布尔索引**
 
+- 使用布尔数组当"sai"
 
 
 
