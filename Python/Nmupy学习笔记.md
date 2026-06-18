@@ -281,6 +281,8 @@ import numpy as np
 ```python
 arr = np.array([3, 7, 1, 9, 4, 8,2])
 print(arr > 5) # 这个直接拿数组和 5 进行比较 由于广播机制得到一个布尔数组[False  True False  True False  True False]
+print(arr[arr > 5]) # 只留下 true false 丢掉 
+
 ```
 
 
