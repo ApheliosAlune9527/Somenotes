@@ -191,8 +191,9 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 	- 负索引 : `[-1]` 表示最后一个元素 , `[-2]` 表示倒数第二个
 	<br>
 	- 切片符号 ':' (冒号) , 切边规则 `[start : end]` 左闭右开
-	<br>
+		<br>
 	- 二维索引 : `arr[row, column]`
+
 ```python
 import numpy as np
 # 一维数组
