@@ -210,7 +210,7 @@ print(f"arr[-2]:{arr[-2]}")
 # ========== 切片 arr[start:stop:step] ==========
 print(arr[:]) # [10 20 ... 100 ]全部元素
 print(arr[2:6]) # [30 40 50 60] 索引2到5(不含5)
-print(arr[::2]) # 
+print(arr[::2]) # [全部元素]
 ```
 
 
