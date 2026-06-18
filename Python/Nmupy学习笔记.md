@@ -92,8 +92,10 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 >[!example]
 >	 全0 : np.zeros(shape, dtype=float, order='C')
 >	 全1数组: np.ones(shape, dtype=float, order='C')
-	   未初始化数组: np.empty(shape, dtype=float, order='C')
-	   固定值数组: np.full(shape, fill_value, dtype=float, order='C')
+>	 未初始化数组: np.empty(shape, dtype=float, order='C')
+>	 固定值数组: np.full(shape, fill_value, dtype=float, order='C')
+	   
+	   
 ```python
 import numpy as np
 """ndarry 的创建
