@@ -60,17 +60,9 @@ print(f"{arr2}\narr2的类型为:{type(arr2)}\n维度:{arr2.ndim}")
 <br>
 4. 数组内的**元素类型:**   dtype 用法:   `arr.dtype` 返回一个数据类型对象,  表示数组中的元素类型 。
 <br>
-5. 数组的转置 T  用法 : `arr.T`
+5. 数组的转置 T  用法 : `arr.T` 返回一个新的数组, 表示原数组的转置 。
 
 ```python
-"""Ndarry的属性
-注意多维的时候外层的括号是行，内层的括号是列
-1.数组的形状 shape 用法:arr.shape 返回一个元组，表示数组的维数和每个维度的大小
-2.数组的维数 ndim 用法:arr.ndim 返回一个整数，表示数组的维数
-3.数组的元素个数 size 用法:arr.size 返回一个整数，表示数组中元素的总个数
-4.数组的元素类型 dtype 用法:arr.dtype   返回一个数据类型对象，表示数组中元素的数据类型
-5.数组的转置 T 用法:arr.T 返回一个新的数组，表示原数组的转置。
-"""
 import numpy as np
 arr1 = np.array(1)
 arr2 = np.array([1,2,3])
