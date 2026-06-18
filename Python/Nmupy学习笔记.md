@@ -169,6 +169,7 @@ print(arr3)
 np.random.seed(42)
 arr4 = np.random.randint(1, 25, (3, 3))
 print(arr4)
+
 ```
 
 ---
