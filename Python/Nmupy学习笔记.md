@@ -216,7 +216,7 @@ print(arr[1:8:2]) # [20 40 60 80] 索引1到8,不长2
 
 # ========== slice 对象（等价写法） ==========
 print(arr[slice(1, 5)]) # 等价于 arr[1:5]
-p
+print(arr[slice(None, None, -1)])
 ```
 
 
