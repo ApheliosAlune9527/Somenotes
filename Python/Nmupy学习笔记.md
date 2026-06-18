@@ -159,14 +159,11 @@ arr = rng.random((3, 4))
 arr1 = rng.integers(0, 10, (3, 4))  # 生成start:0到end:10之间的随机整数，形状为3行4列
 
 # 正态分布
+# arr2 = rng.normal(0, 1, (3, 4))  # 均值为0，标准差为1，形状为3行4列 .standard_normal() 也是生成标准正态分布的随机数，等价于 normal(0, 1, size) 使用这个函数只需要填写 size即可
 
-# rand_arr2 = np.random.randint(0, 10, (3,4))
-# print(rand_arr2)
-
-# 生成随机数列(正态分布)
-# 正态分布：就是两边小中间大，钟形曲线。参数loc是均值，scale是标准差，size是形状
-# rand_arr3 = np.random.randn(3, 4)
-# print(rand_arr3)
+# 均匀分布
+arr3 = rng.uniform(0, 10, (3, 4))  # 生成low:0到high:10之间的随机浮点数，形状为3行4列
+print(arr3)
 
 # 随机数种子 .random.seed(seed)  seed是一个整数，设置了随机数种子后，每次生成的随机数序列都是一样的，方便调试和复现结果
 np.random.seed(42)
