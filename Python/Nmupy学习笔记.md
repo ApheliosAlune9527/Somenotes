@@ -276,24 +276,40 @@ import numpy as np
 
 >**4. 布尔索引**
 
-使用布尔数组当"筛子" : True留下 , False 丢掉 。
+基本原理：
+1. 先用条件生成布尔数组
+<br>
+2. 再用布尔数组去原数组里取数，True 的位置留下，False 的位置丢掉
+<br>
+3. 布尔数组就像一张"筛子"，最终输出的是原数组的数字，不是 True/False
 
 ```python
-arr = np.array([3, 7, 1, 9, 4, 8,2])
-# print(arr > 5) # 这个直接拿数组和 5 进行比较 由于广播机制得到一个布尔数组[False  True False  True False  True False]
-# print(arr[arr > 5]) # 只留下 true false 丢掉  [7, 9, 8]
-# print(arr[arr % 2 == 0]) # [4, 8, 2]
+import numpy as py
 
-# 多条件组合（⚠️ 每个条件加括号)
-print(arr[(arr > 3) & (arr < 9)]) # [7, 4, 8]
+arr = np.array([3, 7, 1, 9, 4, 8, 2])
+# print(arr > 5)            # [False  True False  True False  True False]
+# print(arr[arr > 5])       # [7, 9, 8]
+# print(arr[arr % 2 == 0])  # [4, 8, 2]
+
+# 多条件组合（⚠️ 每个条件加括号）
+print(arr[(arr > 3) & (arr < 9)])  # [7, 4, 8]
 print(arr[~(arr > 5)])              # [3 1 4 2] 取反
 
 # 二维布尔索引会降为一维！
 A = np.array([[12, 3, 15], [2, 11, 9]])
-print(A[A > 10])      # [12 15 11]  一维！
+print(A[A > 10])  # [12 15 11]  一维！
 
 # 想保留形状用 np.where()
 np.where(A > 10, A, 0)  # [[12 0 15] [0 11 0]]
+
+# 配合 np.sum 统计满足条件的个数（True算1，False算0，求和就是个数）
+print(np.sum(arr > 5))            # 3
+print(np.count_nonzero(arr > 5))  # 3  等价写法
+
+# 常用条件运算符：>  >=  <  <=  ==  !=
+# 多条件组合：& 与  | 或  ~ 非（每个条件要加括号）
+#   arr[(arr > 3) & (arr < 9)]    → 大于3且小于9
+#   arr[(arr < 3) | (arr > 9)]    → 小于3或大于9
 ```
 
 >[!Attention] 常见踩坑点
@@ -301,46 +317,6 @@ np.where(A > 10, A, 0)  # [[12 0 15] [0 11 0]]
 >   2. **切片是视图**：改切片会改原数组，想要副本用 .copy()
 >   3. **多条件必须加括号**：arr[arr > 3 & arr < 9] ❌ → arr[(arr > 3) & (arr < 9)] ✅ 
 >   4. **逗号不能忘**：arr[行, 列]，不是 arr[行] [列]
-
-
-```python
-"""
-  # ==================== NumPy 布尔索引 ====================
-  # 用布尔数组（True/False）来筛选数组元素
-  #
-  # 基本原理：
-  #   1. 先用条件生成布尔数组
-  #   2. 再用布尔数组去原数组里取数，True 的位置留下，False 的位置丢掉
-  #   3. 布尔数组就像一张"筛子"，最终输出的是原数组的数字，不是 True/False
-  #
-  # 一维数组示例：
-  #   arr = np.array([3, 7, 1, 9, 4])
-  #   arr > 5              → [False, True, False, True, False]
-  #   arr[arr > 5]         → [7, 9]        只留下大于5的元素
-  #   arr[arr % 2 == 0]    → [4]           只留下偶数
-  #
-  # 二维数组示例：
-  #   A = np.array([[12, 3, 15],
-  #                 [ 2, 11,  9]])
-  #   A > 10               → [[ True, False,  True],
-  #                            [False,  True, False]]
-  #   A[A > 10]            → [12, 15, 11]  结果变成一维数组，不再保留行列结构
-  #
-  # 配合 np.sum 统计个数：
-  #   np.sum(arr > 5)      → 2             True算1，False算0，求和就是满足条件的个数
-  #   np.count_nonzero(arr > 5) → 2        等价写法
-  #
-  # 常用条件运算符：
-  #   >   大于        >=  大于等于
-  #   <   小于        <=  小于等于
-  #   ==  等于        !=  不等于
-  #
-  # 多条件组合（注意每个条件要加括号，用 & 和 | 连接）：
-  #   arr[(arr > 3) & (arr < 9)]    → 大于3且小于9
-  #   arr[(arr < 3) | (arr > 9)]    → 小于3或大于9
-  # ================================================================
-"""
-```
 
 ---
 
