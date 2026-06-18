@@ -196,6 +196,17 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 
 ```python
 import numpy as np
+```
+
+
+
+
+
+
+
+
+```python
+import numpy as np
 # 一维数组
 # arr = np.random.randint(1, 100, 20)
 # print(arr)
