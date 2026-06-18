@@ -285,7 +285,10 @@ arr = np.array([3, 7, 1, 9, 4, 8,2])
 # print(arr[arr % 2 == 0]) # [4, 8, 2]
 
 # 多条件组合（⚠️ 每个条件加括号)
-print(arr[(arr > 3)])
+print(arr[(arr > 3) & (arr < 9)]) # [7, 4, 8]
+print(arr[~(arr > 5)])              # [3 1 4 2] 取反
+
+#
 ```
 
 
