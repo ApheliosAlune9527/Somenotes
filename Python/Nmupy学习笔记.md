@@ -98,17 +98,6 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 	   
 ```python
 import numpy as np
-"""ndarry 的创建
-1.基础创建:通过列表创建
-list = [1,2,3]
-arr = np.array(list) # 或者直接把列表写到括号里
-ps: .copy()方法可以创建一个副本数组，修改副本不会影响原数组
-2.特殊创建:通过函数创建 (全0 全1 未初始化 固定值(秩1阵) )
-全0数组: np.zeros(shape, dtype=float, order='C')
-全1数组: np.ones(shape, dtype=float, order='C')
-未初始化数组: np.empty(shape, dtype=float, order='C')
-固定值数组: np.full(shape, fill_value, dtype=float, order='C')
-"""
 # 1.基础创建:从数据创建
 # arr = np.array([1, 2, 3])
 # print(arr)
