@@ -62,7 +62,7 @@ print(f"{arr2}\narr2的类型为:{type(arr2)}\n维度:{arr2.ndim}")
 
 ```python
 import numpy as np
-arr1 = np.array(1)
+arr1 = np.array(1) # 零维数组
 arr2 = np.array([1,2,3])
 arr3 = np.array([[7,8,9],[4,5,6]])
 print(arr1)
@@ -79,6 +79,8 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 ---
 
 ## 三、ndarray 创建
+
+1. ndarray 的创建
 
 ```python
 import numpy as np
