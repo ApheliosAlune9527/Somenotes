@@ -48,6 +48,7 @@ print(f"{arr2}\narr2的类型为:{type(arr2)}\n维度:{arr2.ndim}")
 ---
 
 ## 二、ndarray 属性
+
 1. 数组的形状 :  .shape( ) 用法 : `arr.shape` 返回一个元组 , 表示数组的维数和每个维度的大小。
 <br>
 2. 数组的维度 :   ndim 用法 : `arr.ndim` 返回一个整数 , 表示数组的维度。
@@ -94,83 +95,92 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 >	 全1数组: np.ones(shape, dtype=float, order='C')
 >	 未初始化数组: np.empty(shape, dtype=float, order='C')
 >	 固定值数组: np.full(shape, fill_value, dtype=float, order='C')
-	   
-	   
-```python
-import numpy as np
-# 1.基础创建:从数据创建
-# arr = np.array([1, 2, 3])
-# print(arr)
-# arr1 = np.copy(arr)
-# print(arr1)
-# arr1[0] = 24
-# print(arr)
-# print(arr1)
 
-# 2.特殊创建:通过函数创建
-# 全0数组 默认类型为float 可以使用dtype指定参数类型
-# arr2 = np.zeros((2,5))
-# # arr3 = np.zeros((3,5), dtype=int)
-# print(arr2)
+> [!example]- 1. 基础创建：从数据创建
+> ```python
+> import numpy as np
+>
+> arr = np.array([1, 2, 3])
+> print(arr)  # [1 2 3]
+>
+> # 深拷贝：修改副本不影响原数组
+> arr1 = np.copy(arr)
+> arr1[0] = 24
+> print(arr)   # [1 2 3]  原数组不变
+> print(arr1)  # [24  2  3]
+> ```
 
-# 全1数组
-# arr3 = np.ones((2,5))
-# print(arr3)
+> [!example]- 2. 特殊创建：通过函数创建
+> ```python
+> # 全0数组（默认float，可用dtype指定）
+> arr2 = np.zeros((2, 5))
+> arr3 = np.zeros((3, 5), dtype=int)
+>
+> # 全1数组
+> arr4 = np.ones((2, 5))
+>
+> # 未初始化数组（值为内存中的随机垃圾值，速度快）
+> arr5 = np.empty((2, 5))
+>
+> # 固定值数组（所有元素相同，秩1阵）
+> arr6 = np.full((3, 3), 7)
+>
+> # 等差数列 arange(start, stop, step)  右不包含
+> arr7 = np.arange(0, 10, 2)  # [0 2 4 6 8]
+>
+> # 等间隔数列 linspace(start, stop, num)  右包含，num是元素个数，自动算步长
+> arr8 = np.linspace(0, 10, 5)  # [ 0.   2.5  5.   7.5 10. ]
+>
+> # 对数等间隔数列 logspace(start, stop, num)  start/stop是指数，默认底数10
+> # 先线性切分指数范围，再以10为底求值
+> # start=0, stop=4, num=3 → 10^0, 10^2, 10^4 → [1, 100, 10000]
+> f = np.logspace(1, 6, 1000)   # Bode图横轴
+> arr9 = np.logspace(0, 4, 3)   # [1.e+00 1.e+02 1.e+04]
+> ```
 
-# 未初始化数组
-# arr4 = np.empty((2,5))
-# print(arr4)
+> [!example]- 3. 特殊矩阵
+> ```python
+> # 单位矩阵 eye(N, M=None, k=0)  N行 M列 k=对角线偏移
+> eye = np.eye(3, 4, dtype=int)
+>
+> # 对角矩阵 diag(v, k=0)  v=对角线元素 k=对角线偏移
+> diag = np.diag([1, 2, 3], k=0)
+> ```
 
-# 固定值数组 因为所有元素都相同，所以是秩1阵
-# arr5 = np.full((3, 3), 7)
-# print(arr5)
-
-# 等差数列 arange(start, stop, step, dtype)
-# arr6 = np.arange(0, 10, 2)
-# print(arr6) # 注意最后一个元素不包含在内
-
-# 等间隔数列 linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)  注意：右包含。第三参数是元素个数，自动计算步长
-# arr7 = np.linspace(0, 10, 5)
-# print(arr7)
-
-# 对数等间隔数列 logspace(start, stop, num=50, endpoint=True, base=10.0, dtype=None)  这里的start和stop是指数, num是元素个数, python会先线性切分指数范围，然后把这些均匀的数字作为指数，计算出对应的数值。默认底数是10，所以如果start=0, stop=4, num=3，那么生成的数列就是10^0, 10^2, 10^4，即1, 100, 10000。
-# 常见Bode图横轴
-# f = np.logspace(1, 6, 1000)
-# print(f)
-# arr8 = np.logspace(0, 4, 3)
-# print(arr8)
-
-# 3.特殊矩阵
-# 单位矩阵 .eye(N, M=None, k=0, dtype=float, order='C')  N是行数 M是列数 k是对角线位置
-# eye = np.eye(3,4, dtype=int)
-# print(eye)
-
-# 对角矩阵 .diag(v, k=0)  v是对角线元素 k是对角线位置
-# diag = np.diag([1,2,3], k=0)
-# print(diag)
-
-# 随机数组 使用新的Generator API  括号里写形状 生成0到1之间的随机浮点数
-# 第一步: 建立 Generator 实例 (可以传种子)
-rng = np.array.default_rng()
-# 生成指定形状的随机浮点数 .random.random(size)  size是形状
-arr = rng.random((3, 4))
-
-# 生成随机整数
-arr1 = rng.integers(0, 10, (3, 4))  # 生成start:0到end:10之间的随机整数，形状为3行4列
-
-# 正态分布
-arr2 = rng.normal(0, 1, (3, 4))  # 均值为0，标准差为1，形状为3行4列 .standard_normal() 也是生成标准正态分布的随机数，等价于 normal(0, 1, size) 使用这个函数只需要填写 size即可
-
-# 均匀分布
-arr3 = rng.uniform(0, 10, (3, 4))  # 生成low:0到high:10之间的随机浮点数，形状为3行4列
-print(arr3)
-
-# 随机数种子 .random.seed(seed)  seed是一个整数，设置了随机数种子后，每次生成的随机数序列都是一样的，方便调试和复现结果
-np.random.seed(42)
-arr4 = np.random.randint(1, 25, (3, 3))
-print(arr4)
-
-```
+> [!tip]- 4. 随机数组（推荐使用新 Generator API）
+> NumPy 1.17+ 推荐使用 `default_rng()` 创建独立实例，替代旧的 `np.random.xxx()` 全局函数。
+>
+> **创建 Generator 实例**（可传种子）：
+> ```python
+> rng = np.random.default_rng(42)
+> ```
+>
+> | 方法 | 说明 | 示例 |
+> |---|---|---|
+> | `rng.random(size)` | 0~1 随机浮点数 | `rng.random((3, 4))` |
+> | `rng.integers(low, high, size)` | 随机整数（不含high） | `rng.integers(0, 10, (3, 4))` |
+> | `rng.normal(loc, scale, size)` | 正态分布 | `rng.normal(0, 1, (3, 4))` |
+> | `rng.standard_normal(size)` | 标准正态（= normal(0,1)） | `rng.standard_normal((3, 4))` |
+> | `rng.uniform(low, high, size)` | 均匀分布 | `rng.uniform(0, 10, (3, 4))` |
+>
+> ```python
+> rng = np.random.default_rng(42)
+>
+> # 0~1 随机浮点数
+> arr = rng.random((3, 4))
+>
+> # 随机整数（0到9）
+> arr1 = rng.integers(0, 10, (3, 4))
+>
+> # 正态分布（均值0，标准差1）
+> # 也等价于 rng.standard_normal((3, 4))，只需要传 size
+> arr2 = rng.normal(0, 1, (3, 4))
+>
+> # 均匀分布（0到10）
+> arr3 = rng.uniform(0, 10, (3, 4))
+>
+> print(arr3)
+> ```
 
 ---
 
