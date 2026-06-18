@@ -280,6 +280,7 @@ import numpy as np
 
 ```python
 arr = np.array([3, 7, 1, 9, 4, 8,2])
+print(arr > 5) # 这个直接拿数组和 5 进行比较 由于广播机制
 ```
 
 
