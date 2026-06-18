@@ -152,15 +152,13 @@ import numpy as np
 # 随机数组 使用新的Generator API  括号里写形状 生成0到1之间的随机浮点数
 # 第一步: 建立 Generator 实例 (可以传种子)
 rng = np.array.default_rng()
-# 生成 0~1 随机浮点数
-arr = rng.random((3,4))
+# 生成指定形状的随机浮点数 .random.random(size)  size是形状
+arr = rng.random((3, 4))
 
-# 生成指定范围内的随机浮点数 .random.uniform(low, high, size)  low是下界 high是上界 size是形状
+# 生成随机整数
+arr1 = rng.integers(0, 10, (3, 4))  # 生成start:0到end:10之间的随机整数，形状为3行4列
 
-# rand_arr1 = np.random.uniform(0, 10, (3,4))
-# print(rand_arr1)
-
-# 生成指定范围内的随机整数 .random.randint(low, high=None, size=None, dtype=int)  low是下界 high是上界 size是形状
+# 正态分布
 
 # rand_arr2 = np.random.randint(0, 10, (3,4))
 # print(rand_arr2)
