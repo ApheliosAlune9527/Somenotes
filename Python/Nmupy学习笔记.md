@@ -228,6 +228,7 @@ print(arr[slice(None, None, -1)])
     - **多维索引 (Multi-dimensional Indexing)**：如 `arr[0, 0, 0]`，NumPy 推荐写法，直接定位，速度极快。
 
 
+
 ```python
 	import numpy as np
 		arr = np.array( [1, 2, 3, 4],
