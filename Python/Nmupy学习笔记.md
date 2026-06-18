@@ -193,9 +193,11 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 	- 切片符号 ':' (冒号) , 切边规则 `[start : end]` 左闭右开
 		<br>
 	- 二维索引 : `arr[row, column]`
-
+<br>
+- 
 ```python
 import numpy as np
+
 ```
 
 
