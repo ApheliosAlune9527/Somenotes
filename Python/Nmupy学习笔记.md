@@ -81,7 +81,7 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 ## 三、ndarray 创建
 
 1. ndarray 的创建
-
+>[!]
 ```python
 import numpy as np
 """ndarry 的创建
