@@ -261,7 +261,8 @@ import numpy as np
 >	
 >	arr = np.array([1, 2, 3, 4, 5]) 
 >	sub = arr[1 : 4] 
->	# sub 拿dao
+>	# sub 拿到的是 : [2, 3 , 4]
+>	# 但它不是自己存了一份附件 [2, 3, 4]
 
 
 
