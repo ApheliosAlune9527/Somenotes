@@ -257,7 +257,7 @@ import numpy as np
 <br>
 
 >[!Attention] 3.切片是视图, 不是副本 ! 
->	和Python的列表的切片区别在于 : Numpy 切片返回的是**视图(view)** , 修改切片会直接影响原数组 !
+>	和Python的列表的切片区别在于 : Numpy 切片返回的是视图(view) , 修改切片会直接影响原数组 !
 >	
 >	arr = np.array([1, 2, 3, 4, 5]) 
 >	sub = arr[1 : 4] 
@@ -267,6 +267,7 @@ import numpy as np
 >	# 就像给 arr[1 : 4] 这一段取了个别名
 >	sub[0] = 99 #  修改sub的第一个元素
 >	# 明面上改的是 sub [0] 实际上是 arr[1] , 因为它们指向的是同一块内存
+>	print(arr) # [1, 99, 3, 4, 5]
 
 
 
