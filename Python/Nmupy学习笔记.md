@@ -271,6 +271,8 @@ import numpy as np
 >	
 >	# 如果想要个独立副本,使用 .copy()
 >	sub2 = arr[1 : 4].copy()
+>	sub[0] = 0
+>	print(arr) # 原数组不变
 
 
 
