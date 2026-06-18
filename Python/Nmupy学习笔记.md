@@ -248,9 +248,7 @@ print(arr[slice(None, None, -1)])
 	```
 
 <br>
-
-
-	```python
+```python
 	import numpy as np
 		arr = np.array( [1, 2, 3, 4],
 					[5, 6, 7, 8],
@@ -274,8 +272,7 @@ print(arr[slice(None, None, -1)])
 		# 切片索引（1:2）→ 保留该维度，即使只取了一行 意思就是"取第2行那一片区域" → 仍然放在原来的二维格子里
 		print(arr[1,:]) # 第二行全部: [5, 6, 7, 8]
 		print(arr[1:2,:]) # 二维 [[5, 6, 7, 8]] 
-
-	```
+```
 
 >[!Attention] 3.切片是视图, 不是副本 ! 
 >	和Python的列表的切片区别在于 : Numpy 切片返回的是**视图(view)** , 修改切片会直接影响原数组 !
