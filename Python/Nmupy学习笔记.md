@@ -258,7 +258,9 @@ import numpy as np
 
 >[!Attention] 3.切片是视图, 不是副本 ! 
 >	和Python的列表的切片区别在于 : Numpy 切片返回的是**视图(view)** , 修改切片会直接影响原数组 !
+>	
 >	arr = np.array([1, 2, 3, 4, 5]) 
+>	
 
 
 
