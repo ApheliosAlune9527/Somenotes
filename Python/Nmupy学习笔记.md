@@ -198,11 +198,9 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 >**1. 一维数组 : 基本索引与切片**
 ```python
 import numpy as np
-arr = np.arra
+arr = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
 
-```
-
-
+# ========== 基本索引 ==========
 
 
 
