@@ -274,7 +274,7 @@ import numpy as np
 >	sub[0] = 0
 >	print(arr) # 原数组不变
 
-
+>**4.
 
 
 
