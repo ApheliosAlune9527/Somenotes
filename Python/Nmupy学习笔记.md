@@ -82,11 +82,10 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 
 1. ndarray 的创建
 >[!example] 
->	list = [1, 2, 3]`
->	arr = np.array(list)`
->	ps : .copy() 可以创建一个 
+>	list = [1, 2, 3]
+>	arr = np.array(list) # 当然直接把列表写到括号里边也行
+>	ps :  .copy() 可以创建一个副本数组,  修改副本不会影响原数组 
 
->	
 ```python
 import numpy as np
 """ndarry 的创建
