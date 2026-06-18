@@ -228,8 +228,9 @@ print(arr[slice(None, None, -1)])
     - **多维索引 (Multi-dimensional Indexing)**：如 `arr[0, 0, 0]`，NumPy 推荐写法，直接定位，速度极快。
 	
 	<br>
-```
-3D 蛋糕矩阵形式：
+	
+	```
+	3D 蛋糕矩阵形式：
 ┌─────────────────────────┐
 │ Layer 0 (第0层 - A-I)    │
 │  [A, B, C]  <- Row 0    │
@@ -244,18 +245,18 @@ print(arr[slice(None, None, -1)])
 │  [M, N, O]  <- Row 1, Col 1 (N)
 │  [P, Q, R]              │
 └─────────────────────────┘
-```
-
-<br>
-
-```python
-import numpy as np
+	```
+	
+	```python
+	import numpy as np
 arr = np.array( [1, 2, 3, 4]
 				[5, 6, 7, 8]
 				[9, 10, 11, 12])
 # 
+	```
 
-```
+
+
 
 
 
