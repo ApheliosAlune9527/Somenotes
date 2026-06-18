@@ -185,7 +185,8 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 ---
 
 ## 四、ndarray 索引与切片
-
+- 基础知识 :
+	- 索引从**0**开始
 ```python
 import numpy as np
 # 一维数组
