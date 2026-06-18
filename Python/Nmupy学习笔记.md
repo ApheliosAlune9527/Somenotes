@@ -276,7 +276,8 @@ import numpy as np
 
 >**4. 布尔索引**
 
-- 使用布尔数组当"筛子" : True留下 , False 丢掉 。
+使用布尔数组当"筛子" : True留下 , False 丢掉 。
+
 
 
 
