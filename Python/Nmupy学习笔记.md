@@ -89,7 +89,9 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 
 2. 特殊创建 : 通过函数创建(全0 全1 未初始化 固定值(秩1阵))
 
-[!example]
+>[!example]
+>	全0 : np.zeros(shape, dtype=float, order='C')
+>	
 ```python
 import numpy as np
 """ndarry 的创建
