@@ -278,6 +278,9 @@ import numpy as np
 
 使用布尔数组当"筛子" : True留下 , False 丢掉 。
 
+```python
+arr = np.array([3, 7, 1, 9, 4, 8,2])
+```
 
 
 
