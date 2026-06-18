@@ -87,7 +87,7 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 >	arr = np.array(list)  当然直接把列表写到括号里边也行
 >	ps :  .copy() 可以创建一个副本数组,  修改副本不会影响原数组 
 
-2. 特殊创建 : 通过
+2. 特殊创建 : 通过函数创建(全0 全1 未初始化 固定值(秩1阵))
 ```python
 import numpy as np
 """ndarry 的创建
