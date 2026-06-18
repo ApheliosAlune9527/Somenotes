@@ -208,7 +208,7 @@ prtit(f"arr[-1]:{arr[-1]}")
 print(f"arr[-2]:{arr[-2]}")
 
 # ========== 切片 arr[start:stop:step] ==========
-print(arr)
+print(arr[:]) # [10 20 ... 100 ]全部元素
 ```
 
 
