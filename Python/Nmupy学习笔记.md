@@ -203,6 +203,10 @@ print(arr)
 
 # ========== 基本索引 ==========
 print(f"arr[0]:{arr[0]}")
+prtit(f"arr[-1]:{arr[-1]}")
+print(f"arr[-2]:{arr[-2]}")
+
+
 
 ```
 
