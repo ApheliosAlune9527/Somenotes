@@ -202,11 +202,12 @@ arr = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
 print(arr)
 
 # ========== 基本索引 ==========
+
 print(f"arr[0]:{arr[0]}")
 prtit(f"arr[-1]:{arr[-1]}")
 print(f"arr[-2]:{arr[-2]}")
 
-
+# ========== 切片 arr[start:stop:step] ==========
 
 ```
 
