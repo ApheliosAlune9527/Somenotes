@@ -684,7 +684,7 @@ print(np.median(arr))   # 中位数
 
 > [!info] 方差与标准差
 > - **标准差越大**，数据越分散；**标准差越小**，数据越集中
-> - 方差和标准差的关系：`std = $\sqrt{方差}$`
+> - 方差和标准差的关系：`std = √var`
 
 ```python
 print(np.var(arr))   # 方差
