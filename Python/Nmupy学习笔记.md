@@ -859,11 +859,12 @@ print("去重后的数组:", np.unique(arr2))
 
 ### 9.3 拼接
 
-| 函数 | 说明 |
-|------|------|
+| 函数                               | 说明                                  |
+| -------------------------------- | ----------------------------------- |
 | `np.concatenate((a, b), axis=0)` | 沿指定轴连接，默认 `axis=0`（竖直），`axis=1`（水平） |
 
 ```python
+import numpy as np
 a = np.array([1, 2, 3])
 b = np.array([4, 5, 6])
 print("拼接后的数组:", np.concatenate((a, b)))  # [1 2 3 4 5 6]
@@ -877,6 +878,9 @@ print("拼接后的数组:", np.concatenate((a, b)))  # [1 2 3 4 5 6]
 | `np.split(arr, [i, j])` | 在索引位置处分割，返回多个子数组 |
 
 ```python
+import numpy as np
+rng = np.random.default_rng()
+arr = rng.integers(0,10)
 print(np.split(arr, 4))        # 平均分成4份
 print(np.split(arr, [5, 10]))  # 在索引5和10处分割，返回3个子数组
 ```
