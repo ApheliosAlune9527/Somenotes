@@ -550,14 +550,13 @@ arr = np.array([[1, 2], [3, 4]])
 ```
 
 ### 5.4 矩阵运算
-**Numpy里矩阵的运算 : **
-- 元素级运算 : 就是对矩阵的每个元素进行相同的运算 , 比如 加减乘除等 , 这些运算都是逐元素进行的 , 结果也是一个矩阵 , 形状和元素组相同 。
+**Numpy里矩阵运算分两种:**
+- _元素级运算_: 就是对矩阵的每个元素进行相同的运算 , 比如 加减乘除等 , 这些运算都是逐元素进行的 , 结果也是一个矩阵 , 形状和元素组相同 。
+<br>
+- _矩阵乘法_ : 就是按照线性代数中定义的矩阵乘法运算 , 某一行和某一列的元素成绩之和(点积) 。 使用 @ 或者np.dot()函数 。
+
 ```python
-# 矩阵的运算
-"""
-矩阵乘法：就是按照线性代数的定义进行的矩阵乘法运算，就是某一行和某一列的元素乘积之和。(点积)
-符号是 @ 或者 np.dot()函数。矩阵乘法要求第一个矩阵的列数等于第二个矩阵的行数，结果是一个新的矩阵，行数等于第一个矩阵的行数，列数等于第二个矩阵的列数。
-"""
+import numpy as np
 a = np.array([[1, 2], [3, 4]])
 b = np.array([[5, 6], [7, 8]])
 print(a * b)
@@ -568,81 +567,146 @@ print(a @ b)
 
 ## 六、numpy 常用函数
 
+### 6.1 数学运算
+
+| 函数               | 说明           | 示例结果                       |
+| ---------------- | ------------ | -------------------------- |
+| `np.sqrt(x)`     | 算术平方根        | `sqrt(16)` → 4.0           |
+| `np.exp(x)`      | 指数（e 的 x 次方） | `exp(1)` → 2.718...        |
+| `np.log(x)`      | 自然对数 ln      | `log(1)` → 0.0             |
+| `np.power(x, n)` | 次幂           | `power(2, 3)` → 8          |
+| `np.abs(x)`      | 绝对值          | `abs([-1,-2,3])` → [1,2,3] |
+
 ```python
 import numpy as np
-# 计算算数平方根
-print(np.sqrt(16))
-print(np.sqrt([1, 4, 9, 16]))
-arr = np.array([1, 25, 81])
-print(np.sqrt(arr))
 
-# 计算指数
-print(np.exp(1))  # e 的 1 次方
-print(np.exp(-1))
+# 平方根
+print(np.sqrt(16))              # 4.0
+print(np.sqrt([1, 4, 9, 16]))   # [1. 2. 3. 4.]
 
-# 计算对数
-print(np.log(1))  # ln(1) = 0
-print(np.log(np.e))  # ln(e) = 1
+# 指数
+print(np.exp(1))   # 2.718281828...（e 的 1 次方）
+print(np.exp(-1))  # 0.3678...
 
-# 计算三角函数
-print(np.sin(np.pi / 2))
-print(np.cos(0))
-print(np.tan(np.pi / 4))
+# 对数
+print(np.log(1))       # 0.0  （ln(1) = 0）
+print(np.log(np.e))    # 1.0  （ln(e) = 1）
 
-# 计算绝对值
-arr2 = np.array([-1, -2, 3, -4])
-print(np.abs(arr2))
+# 次幂
+print(np.power(2, 3))           # 8
+print(np.power([1, 2, 3], 2))   # [1, 4, 9]  每个元素的平方
 
-# 计算次幂
-print(np.power(2, 3))  # 2 的 3 次方
-print(np.power([1, 2, 3], 2))  # 数组的每个元素的平方
+# 绝对值
+arr = np.array([-1, -2, 3, -4])
+print(np.abs(arr))  # [1 2 3 4]
+```
 
+### 6.2 三角函数
+
+| 函数 | 说明 | 常用值 |
+|------|------|--------|
+| `np.sin(x)` | 正弦 | `sin(π/2)` → 1.0 |
+| `np.cos(x)` | 余弦 | `cos(0)` → 1.0 |
+| `np.tan(x)` | 正切 | `tan(π/4)` → 1.0 |
+
+```python
+print(np.sin(np.pi / 2))  # 1.0
+print(np.cos(0))           # 1.0
+print(np.tan(np.pi / 4))   # 0.9999...（接近 1）
+```
+
+### 6.3 取整与舍入
+
+| 函数 | 说明 | 注意事项 |
+|------|------|---------|
+| `np.round(x, n)` | 四舍五入，保留 n 位小数 | ⚠️ 银行家舍入法：`.5` 向最近的**偶数**靠拢，如 `4.5 → 4`，`5.5 → 6`；但 `4.51 → 5` |
+| `np.ceil(x)` | 向上取整 | `3.1` `3.5` `3.9` 都 → 4 |
+
+```python
 # 四舍五入
-print(np.round(3.14159, 2))  # 保留两位小数
-# 注意 4.5 变成 4 而不是 5，因为numpy的round是银行家舍入法，.5 的情况会向最近的偶数舍入 但是4.51会变成5
-print(np.round(4.5))
+print(np.round(3.14159, 2))  # 3.14  保留两位小数
+print(np.round(4.5))          # 4.0   银行家舍入，向偶数靠拢
+print(np.round(5.5))          # 6.0   同上
 
 # 向上取整
-print(np.ceil([3.1, 3.5, 3.9]))
+print(np.ceil([3.1, 3.5, 3.9]))  # [4. 4. 4.]
+```
 
-# 检测缺失值 np.nan 是一个特殊的浮点数，表示缺失值或者不可用的值。它在数值计算中经常出现，比如除以零、无效的操作或者数据缺失等情况。np.isnan()函数可以用来检测一个数组中的元素是否是np.nan，如果是返回True，否则返回False。
-print(np.isnan(np.array([1, 2, 3, 4])))
-print(np.isnan(np.array([1, 2, np.nan, 4])))
+### 6.4 缺失值检测 & 累加
 
-# 累加和 .cumsum()函数可以计算一个数组的累加和，返回一个新的数组，其中每个元素是原数组中对应位置及之前所有元素的和。
-print(np.cumsum([1, 2, 3, 4]))
+| 函数 | 说明 |
+|------|------|
+| `np.isnan(x)` | 检测 NaN，返回布尔数组（`True` 表示是缺失值） |
+| `np.cumsum(x)` | 累加和，返回等长数组，每个元素是该位置及之前所有元素的和 |
+
+> [!info] 关于 np.nan
+> `np.nan` 是一个特殊的浮点数，表示缺失值或不可用的值。
+> 它在数值计算中经常出现，比如除以零、无效操作或数据缺失等场景。
+
+```python
+# 检测缺失值
+print(np.isnan(np.array([1, 2, 3, 4])))        # [False False False False]
+print(np.isnan(np.array([1, 2, np.nan, 4])))    # [False False  True False]
+
+# 累加和
+print(np.cumsum([1, 2, 3, 4]))  # [ 1  3  6 10]
+#  过程：1, 1+2=3, 1+2+3=6, 1+2+3+4=10
 ```
 
 ---
 
 ## 七、numpy 统计函数
 
+### 7.1 基本统计量
+
+| 函数 | 说明 |
+|------|------|
+| `np.sum(x)` | 求和（可指定 axis 按行或列求和） |
+| `np.mean(x)` | 平均值 |
+| `np.median(x)` | 中位数 |
+
 ```python
 import numpy as np
-# arr = np.random.randint(1, 20, 8)
-# print(arr)
 
-# 求和函数 np.sum() 可以对数组的所有元素进行求和，也可以指定轴进行求和。
-# print(np.sum(arr))
+arr = np.random.randint(1, 20, 8)
+print(arr)
+print(np.sum(arr))      # 求和
+print(np.mean(arr))     # 平均值
+print(np.median(arr))   # 中位数
+```
 
-# 计算平均值 np.mean() 可以计算数组的平均值。
-# print(np.mean(arr))
+### 7.2 离散程度
 
-# 计算中位数 np.median() 可以计算数组的中位数。
-# print(np.median(arr))
+| 函数          | 说明                      |
+| ----------- | ----------------------- |
+| `np.var(x)` | 方差 = 每个数据点与平均值之差的平方的平均值 |
+| `np.std(x)` | 标准差 = $\sqrt{方差}$       |
 
-# 计算标准差和方差 np.std() 可以计算数组的标准差。 np.var() 可以计算数组的方差。
-# 方差是标准差的平方，表示数据的离散程度。标准差越大，数据越分散；标准差越小，数据越集中。
-# 方差 = (每个数据点 - 平均值)的平方的平均值。
-# print(np.var(arr))
-# print(np.std(arr))
+> [!info] 方差与标准差
+> - **标准差越大**，数据越分散；**标准差越小**，数据越集中
+> - 方差和标准差的关系：`std = $\sqrt{方差}$`
 
-# 分位数 np.percentile() 可以计算数组的分位数。分位数是将数据按大小排序后，按照一定比例划分成若干部分的值。例如，25%的分位数（第一四分位数）是将数据划分成四部分后，第一部分的最大值。
+```python
+print(np.var(arr))   # 方差
+print(np.std(arr))   # 标准差
+```
+
+### 7.3 分位数
+
+`np.percentile(x, q)` — 将数据按大小排序后，按比例划分。`q` 是百分比（0~100）
+
+| q 值 | 名称 | 含义 |
+|------|------|------|
+| 25 | 第一四分位数（Q1） | 25% 的数据小于等于该值 |
+| 50 | 中位数（Q2） | 50% 的数据小于等于该值 |
+| 75 | 第三四分位数（Q3） | 75% 的数据小于等于该值 |
+
+```python
 np.random.seed(0)
 arr = np.random.randint(0, 100, 4)
-print(arr)
-print(np.percentile(arr, 25))
-print(np.percentile(arr, 50))
+print(arr)                     # [44 47 64 67]
+print(np.percentile(arr, 25))  # 46.25
+print(np.percentile(arr, 50))  # 55.5
 ```
 
 ---
