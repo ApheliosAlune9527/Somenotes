@@ -714,44 +714,82 @@ print(np.percentile(arr, 50))  # 55.5
 
 ## 八、numpy 比较函数
 
+### 8.1 基本比较
+
+| 函数 | 说明 |
+|------|------|
+| `np.greater(a, b)` | a 是否 **大于** b |
+| `np.less(a, b)` | a 是否 **小于** b |
+| `np.equal(a, b)` | a 是否 **等于** b |
+
+逐元素比较，返回布尔数组。
+
 ```python
 import numpy as np
 
-# 比较是否大于 .greater(a, b) 返回一个布尔值数组，表示a中的元素是否大于b中的对应元素。
+print(np.greater(1, 2)) # False/                    
+print(np.greater([1, 2, 3], [2, 2, 2]))    # [False False  True]
 
-# print(np.greater(1, 2))
-# print(np.greater([1, 2, 3], [2, 2, 2]))
+print(np.less([1, 2, 7, 9, 55], 4))        # [ True  True False False False]
 
-# # 比较是否小于 .less(a, b) 返回一个布尔值数组，表示a中的元素是否小于b中的对应元素。
-# print(np.less([1, 2, 7, 9, 55], 4))
+print(np.equal([5, 6, 7], 8))              # [False False False]
+print(np.equal([1, 2, 3], [1, 2, 4]))      # [ True  True False]
+```
 
-# # 比较是否等于 .equal(a, b) 返回一个布尔值数组，表示a中的元素是否等于b中的对应元素。
-# print(np.equal([5, 6, 7], 8))
-# print(np.equal([1, 2, 3], [1, 2, 4]))
+### 8.2 逻辑运算
 
-# print("分割线".center(50, "-"))
+| 函数 | 说明 |
+|------|------|
+| `np.logical_and(a, b)` | 逻辑 **与** |
+| `np.logical_or(a, b)` | 逻辑 **或** |
+| `np.logical_not(a)` | 逻辑 **非** |
 
-# # 与或非
-# print(np.logical_and([1, 0, 1], [1, 1, 0]))
-# print(np.logical_or([1, 0, 1], [1, 1, 0]))
-# print(np.logical_not([1, 0, 1]))
+```python
+print(np.logical_and([1, 0, 1], [1, 1, 0]))  # [ True False False]
+print(np.logical_or([1, 0, 1], [1, 1, 0]))   # [ True  True  True]
+print(np.logical_not([1, 0, 1]))              # [False  True False]
+```
 
-# # 自定义条件 .where(condition, x, y) 根据条件返回x或y中的元素。 符合条件返回x，不符合条件返回y
-# # 有点像三元运算符。 value_if_true if condition else value_if_false
-# arr = np.array([1, 5, 11, 21, 78, 6])
-# print(np.where(arr > 10, arr, 0))  # 大于10的元素保留，不大于10的元素替换为0
-# print(np.where(arr % 2 == 0, 1, -1))
+### 8.3 条件选择 np.where
 
-# score = np.random.randint(50, 100, 20)
-# print(score)
-# # print(np.where(score >= 60, "及格", "不及格"))
-# print(np.where(score >= 90, "优秀", np.where((score > 60) & (score < 90), "良好", "不及格"))) # 嵌套使用
+| 用法 | 说明 |
+|------|------|
+| `np.where(condition, x, y)` | 满足条件取 `x`，否则取 `y` |
 
-# np.select(conditions, choices, default=0) 根据多个条件返回对应的值。 conditions是一个条件列表，choices是一个值列表，default是默认值。
+类似 Python 三元运算符：`x if condition else y`
 
+```python
+arr = np.array([1, 5, 11, 21, 78, 6])
+
+# 大于10的元素保留，不大于10的替换为0
+print(np.where(arr > 10, arr, 0))    # [ 0  0 11 21 78  0]
+
+# 偶数→1，奇数→-1
+print(np.where(arr % 2 == 0, 1, -1)) # [-1 -1 -1 -1  1  1]
+```
+
+> [!tip] 嵌套使用
+> `np.where` 可以嵌套，实现多级分类：
+>
+> ```python
+> score = np.random.randint(50, 100, 20)
+> # score >= 90 → "优秀"，60~90 → "良好"，< 60 → "不及格"
+> print(np.where(score >= 90, "优秀", np.where((score > 60) & (score < 90), "良好", "不及格")))
+> ```
+
+### 8.4 多条件选择 np.select
+
+| 用法 | 说明 |
+|------|------|
+| `np.select(conditions, choices, default=0)` | 按顺序匹配条件，返回对应的值 |
+
+`conditions` 是条件列表，`choices` 是对应的值列表，`default` 是都不满足时的默认值。
+
+```python
 np.random.seed(0)
 score = np.random.randint(50, 100, 20)
 print(score)
+
 conditions = [score >= 90, (score >= 60) & (score < 90), score < 60]
 choices = ["优秀", "及格", "不及格"]
 print(np.select(conditions, choices, default="未知"))
