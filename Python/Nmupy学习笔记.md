@@ -872,10 +872,11 @@ print("拼接后的数组:", np.concatenate((a, b)))  # [1 2 3 4 5 6]
 
 ### 9.4 分割
 
-| 函数 | 说明 |
-|------|------|
-| `np.split(arr, n)` | 平均分成 `n` 份，无法整除会报错 |
-| `np.split(arr, [i, j])` | 在索引位置处分割，返回多个子数组 |
+| 函数                      | 说明                                      |
+| ----------------------- | --------------------------------------- |
+| `np.split(arr, n)`      | 平均分成 `n` 份，无法整除会报错                      |
+| `np.split(arr, [i, j])` | 在索引位置处分割，返回多个子数组                        |
+|                         | **返回值**：始终是一个 list，里面每个元素是 numpy array。 |
 
 ```python
 import numpy as np
@@ -892,6 +893,8 @@ print(np.split(arr, [5, 10]))  # 在索引5和10处分割，返回3个子数组
 | `arr.reshape(new_shape)` | 返回新形状的数组，元素数量必须保持不变 |
 
 ```python
+import numpt as np
+arr = np.arange(12)
 print(arr.reshape(4, 5))  # 20个元素 → 4行5列
 ```
 
