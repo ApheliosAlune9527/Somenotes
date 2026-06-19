@@ -727,7 +727,7 @@ print(np.percentile(arr, 50))  # 55.5
 ```python
 import numpy as np
 
-print(np.greater(1, 2)) # False/                    
+print(np.greater(1, 2)) # False                    
 print(np.greater([1, 2, 3], [2, 2, 2]))    # [False False  True]
 
 print(np.less([1, 2, 7, 9, 55], 4))        # [ True  True False False False]
