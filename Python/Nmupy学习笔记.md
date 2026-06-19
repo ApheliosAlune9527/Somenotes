@@ -750,7 +750,7 @@ print(np.logical_or([1, 0, 1], [1, 1, 0]))   # [ True  True  True]
 print(np.logical_not([1, 0, 1]))              # [False  True False]
 ```
 
-### 8.3 条件选择 np.where
+### 8.3 ⭐条件选择 np.where
 
 | 用法 | 说明 |
 |------|------|
@@ -768,7 +768,7 @@ print(np.where(arr > 10, arr, 0))    # [ 0  0 11 21 78  0]
 print(np.where(arr % 2 == 0, 1, -1)) # [-1 -1 -1 -1  1  1]
 ```
 
-> [!tip] 嵌套使用
+> [!tip] 嵌套使用（类似 if-elif-else）
 > `np.where` 可以嵌套，实现多级分类：
 >
 > ```python
@@ -786,6 +786,7 @@ print(np.where(arr % 2 == 0, 1, -1)) # [-1 -1 -1 -1  1  1]
 `conditions` 是条件列表，`choices` 是对应的值列表，`default` 是都不满足时的默认值。
 
 ```python
+import numpy as np
 np.random.seed(0)
 score = np.random.randint(50, 100, 20)
 print(score)
