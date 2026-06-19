@@ -787,8 +787,9 @@ print(np.where(arr % 2 == 0, 1, -1)) # [-1 -1 -1 -1  1  1]
 
 ```python
 import numpy as np
-np.random.seed(0)
-score = np.random.randint(50, 100, 20)
+rng = np.random.default_rng()
+score = rng.integers(1, 100, 5)
+
 print(score)
 
 conditions = [score >= 90, (score >= 60) & (score < 90), score < 60]
