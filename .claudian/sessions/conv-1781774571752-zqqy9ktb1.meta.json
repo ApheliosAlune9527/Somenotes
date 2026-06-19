@@ -4,8 +4,8 @@
   "title": "# 随机数组",
   "titleGenerationStatus": "failed",
   "createdAt": 1781774571752,
-  "updatedAt": 1781799555228,
-  "lastResponseAt": 1781799555228,
+  "updatedAt": 1781850360863,
+  "lastResponseAt": 1781850360863,
   "sessionId": "71f617ab-dfbb-42b0-8a5b-ad53ad84c4e8",
   "providerState": {
     "providerSessionId": "71f617ab-dfbb-42b0-8a5b-ad53ad84c4e8"
@@ -13,11 +13,11 @@
   "currentNote": "Python/Nmupy学习笔记.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 189,
+    "inputTokens": 239,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 47168,
+    "cacheReadInputTokens": 52928,
     "contextWindow": 1000000,
-    "contextTokens": 47357,
+    "contextTokens": 53167,
     "percentage": 5,
     "contextWindowIsAuthoritative": true
   }
