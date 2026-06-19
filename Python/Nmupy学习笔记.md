@@ -820,44 +820,77 @@ print(np.select(conditions, choices, default="未知"))
 
 ---
 
-## 九、numpy 排序函数
+## 九、numpy 数组操作
+
+### 9.1 排序与索引 [[#三、ndarray 创建|随机数生成器call back]]
+
+| 函数                | 说明                        |
+| ----------------- | ------------------------- |
+| `arr.sort()`      | 原地排序，返回 `None`，**会修改原数组** |
+| `np.sort(arr)`    | 返回排序后的新数组，**不修改原数组**      |
+| `np.argsort(arr)` | 返回排序后元素在原数组中的索引位置         |
 
 ```python
 import numpy as np
 rng = np.random.default_rng(42)
 arr = rng.choice(range(1, 101), size=20, replace=False)
 
-# print("原始数组:", arr)
-# print(arr.sort()) # 原地排序，返回 None ，会修改原数组
-# print("排序后的数组:", arr)
+# arr.sort() 原地排序，返回 None，会修改原数组
 
-# 如果不想修改原数组，可以使用 np.sort()，它会返回一个新的排序后的数组。
+# np.sort() 返回新数组，原数组不变
 arr1 = np.sort(arr)
 print("原始数组:", arr)
 print("排序后的数组:", arr1)
-print("排序后原始数组:", arr)
-print("索引位置:", np.argsort(arr))  # 返回排序后元素在原数组中的索引位置，长度和 arr 相同
+print("排序后原始数组:", arr)      # 原数组不变
+print("索引位置:", np.argsort(arr)) # 返回排序后元素在原数组中的索引
+```
 
-print("分割线".center(50, "-"))
-# 去重函数 .unique(arr) 返回一个排序后的唯一元素数组，默认升序 (去重但去重后剩下的元素数量会小于原数组)
-arr2 = rng.choice(range(1, 11), size=20, replace=True)
+### 9.2 去重
+
+| 函数               | 说明                |
+| ---------------- | ----------------- |
+| `np.unique(arr)` | 返回去重后的唯一元素数组，默认升序 |
+
+```python
+import numpy as np
+rng = np.random.default_rng(42)
+arr2 = rng.choice(range(1, 11), size=20, replace=True) 
 print("原始数组:", arr2)
 print("去重后的数组:", np.unique(arr2))
+```
 
-# 数组的拼接 .concatenate((a, b)) 将多个数组沿指定轴连接起来，默认 axis=0（竖直连接），也可以指定 axis=1（水平方向连接）
-print("分割线".center(50, "-"))
+### 9.3 拼接
+
+| 函数 | 说明 |
+|------|------|
+| `np.concatenate((a, b), axis=0)` | 沿指定轴连接，默认 `axis=0`（竖直），`axis=1`（水平） |
+
+```python
 a = np.array([1, 2, 3])
 b = np.array([4, 5, 6])
-print("拼接后的数组:", np.concatenate((a, b)))
+print("拼接后的数组:", np.concatenate((a, b)))  # [1 2 3 4 5 6]
+```
 
-# 数组的分割 .split(arr, indices_or_sections) 将数组分割成多个子数组，indices_or_sections 可以是整数（表示平均分成多少份）或一个索引列表（表示在哪些位置分割）
-print("分割线".center(50, "-"))
-print(np.split(arr, 4))  # 平均分成4份，无法平均分会报错
-print(np.split(arr, [5, 10]))  # 在索引位置5和10分割，返回3个子数组
+### 9.4 分割
 
-# 调整数组的形状 .reshape(new_shape) 返回一个新的数组，具有指定的形状，但元素数量必须保持不变
-print("分割线".center(50, "-"))
-print(arr.reshape(4, 5))
+| 函数 | 说明 |
+|------|------|
+| `np.split(arr, n)` | 平均分成 `n` 份，无法整除会报错 |
+| `np.split(arr, [i, j])` | 在索引位置处分割，返回多个子数组 |
+
+```python
+print(np.split(arr, 4))        # 平均分成4份
+print(np.split(arr, [5, 10]))  # 在索引5和10处分割，返回3个子数组
+```
+
+### 9.5 重塑
+
+| 函数 | 说明 |
+|------|------|
+| `arr.reshape(new_shape)` | 返回新形状的数组，元素数量必须保持不变 |
+
+```python
+print(arr.reshape(4, 5))  # 20个元素 → 4行5列
 ```
 
 ---
