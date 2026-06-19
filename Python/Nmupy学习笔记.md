@@ -150,6 +150,13 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 > [!tip]- 4. 随机数组（推荐使用新 Generator API）
 > NumPy 1.17+ 推荐使用 `default_rng()` 创建独立实例，替代旧的 `np.random.xxx()` 全局函数。
 >
+> **旧版 vs 新版**：
+>
+> | | 旧版 | 新版 |
+> |---|---|---|
+> | 写法 | `np.random.seed(42)` + `np.random.randint(...)` | `rng = np.random.default_rng(42)` |
+> | 状态 | 全局共享，容易被其他代码干扰 | 独立实例，各管各的 |
+>
 > **创建 Generator 实例**（可传种子）：
 > ```python
 > rng = np.random.default_rng(42)
@@ -162,6 +169,20 @@ print(f"数组arr1转置后为:{arr1.T}\n数组arr2转置后为:{arr2.T}\n数组
 > | `rng.normal(loc, scale, size)` | 正态分布 | `rng.normal(0, 1, (3, 4))` |
 > | `rng.standard_normal(size)` | 标准正态（= normal(0,1)） | `rng.standard_normal((3, 4))` |
 > | `rng.uniform(low, high, size)` | 均匀分布 | `rng.uniform(0, 10, (3, 4))` |
+> | `rng.choice(a, size, replace, p)` | 随机抽样 | `rng.choice(arr, 5, replace=False)` |
+> | `rng.shuffle(arr)` | 原地打乱（修改原数组） | `rng.shuffle(arr)` |
+> | `rng.permutation(arr)` | 返回打乱后的副本 | `rng.permutation(arr)` |
+>
+> **`rng.choice` 参数详解**：
+>
+> | 参数 | 说明 | 默认值 |
+> |---|---|---|
+> | `a` | 抽样来源（数组、列表、range 或整数） | 必填 |
+> | `size` | 输出形状，如 `5` 或 `(3, 4)` | `None`（单个值） |
+> | `replace` | `True` 有放回（可重复），`False` 无放回 | `True` |
+> | `p` | 每个元素被选中的概率，长度须等于 `a` | `None`（等概率） |
+> | `axis` | 沿哪个轴抽样 | `0` |
+> | `shuffle` | 抽样前是否打乱 | `True` |
 >
 > ```python
 > rng = np.random.default_rng(42)
@@ -802,47 +823,10 @@ print(np.select(conditions, choices, default="未知"))
 ## 九、numpy 排序函数
 
 ```python
-"""
-  # ==================== NumPy 新版随机数生成器 ====================
-  # 旧版用法：np.random.seed(42) + np.random.randint(...)，基于全局状态，容易被其他代码干扰
-  # 新版用法：rng = np.random.default_rng(42)，返回独立的生成器对象，各管各的
-  #
-  # 什么是"独立生成器对象"？
-  #   旧版所有随机操作共享一个全局种子，任何地方调用 np.random.xxx() 都会影响整体状态
-  #   新版每个 rng 对象有自己的内部状态，多个 rng 互不干扰，适合多处需要独立随机的场景
-  #   例如：
-  #     rng1 = np.random.default_rng(1)   # 生成器1，独立状态
-  #     rng2 = np.random.default_rng(2)   # 生成器2，独立状态
-  #     rng1.integers(1,100,5)            # 不影响 rng2
-  #     rng2.integers(1,100,5)            # 不影响 rng1
-  #
-  # 参数说明：
-  #   np.random.default_rng(种子)  - 创建生成器对象，种子可以是整数、字符串，不传则每次随机
-  # 
-  # 常用方法：
-  #   rng.integers(start, end, n)  - 生成 start~end-1 的随机整数数组，长度为 n
-  #   rng.random(n)                - 生成 0~1 之间的随机浮点数数组，长度为 n
-  #   rng.normal(均值, 标准差, n)   - 生成正态分布的随机数数组，长度为 n
-  #   rng.choice(数组, n)          - 从数组中随机抽样 n 个（有放回，可能重复）
-  #   rng.choice(数组, n, replace=False) - 从数组中随机抽样 n 个（无放回，不重复）
-  #   rng.shuffle(arr)             - 原地打乱数组（会修改原数组）
-  #   rng.permutation(arr)         - 返回打乱后的副本（不修改原数组）
-  # ================================================================
-
-
-"""
 import numpy as np
 rng = np.random.default_rng(42)
 arr = rng.choice(range(1, 101), size=20, replace=False)
-"""
-rng.choice(a, size=None, replace=True, p=None, axis=0, shuffle=True)
-    a:必填。抽样来源，可以是数组、列表、range，或一个整数（表示 range(a)）
-    size:输出的形状，比如 5 或 (3, 4)，默认 None（返回单个值）
-    replace:True 有放回（可重复），False 无放回（不重复），默认 True
-    p:每个元素被选中的概率，长度必须和 a 相等，默认 None（等概率）
-    axis:沿哪个轴抽样，默认 0
-    shuffle:抽样前是否打乱，默认 True
-"""
+
 # print("原始数组:", arr)
 # print(arr.sort()) # 原地排序，返回 None ，会修改原数组
 # print("排序后的数组:", arr)
