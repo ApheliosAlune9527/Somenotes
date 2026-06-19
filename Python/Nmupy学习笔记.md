@@ -702,6 +702,7 @@ print(np.std(arr))   # 标准差
 | 75 | 第三四分位数（Q3） | 75% 的数据小于等于该值 |
 
 ```python
+import numpy as np
 np.random.seed(0)
 arr = np.random.randint(0, 100, 4)
 print(arr)                     # [44 47 64 67]
