@@ -1,4 +1,4 @@
-[[Python基础笔记]][[Nmupy学习笔记]]
+[[Python基础笔记]][[🔢 Nmupy 学习笔记]]
 
 > 整理时间：2026-05-05
 > 背景：用户已学完韩顺平 Python 课程 P1~P100（变量、列表、字典、函数、控制流等），正在规划 5 月余下时间如何完成 Python 基础 + numpy + matplotlib + OpenCV + Git，并完成月底的颜色识别项目。
