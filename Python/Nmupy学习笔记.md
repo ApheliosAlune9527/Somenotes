@@ -729,6 +729,64 @@ print(np.percentile(arr, 25))  # 46.25
 print(np.percentile(arr, 50))  # 55.5
 ```
 
+### 7.4 极值位置
+
+| 函数 | 说明 |
+|------|------|
+| `np.argmin(arr)` | 最小值的**索引** |
+| `np.argmax(arr)` | 最大值的**索引** |
+
+```python
+arr = np.array([28, 30, 29, 31, 32, 30, 29])
+
+print(np.argmin(arr))  # 0（最小值28在索引0）
+print(np.argmax(arr))  # 4（最大值32在索引4）
+```
+
+### 7.5 轴（axis）的概念
+
+对 2D 矩阵来说：
+
+| axis | 方向 | 含义 | 记忆方式 |
+|------|------|------|----------|
+| `axis=0` | 沿**列**方向 ↓ | 跨行计算，**压缩行** | 结果列数不变 |
+| `axis=1` | 沿**行**方向 → | 跨列计算，**压缩列** | 结果行数不变 |
+
+```
+         axis=0 (沿列↓)
+           │  │  │
+           ▼  ▼  ▼
+        ┌──1──2──3──┐
+        │  4  5  6  │ ──► axis=1 (沿行→)
+        └──7──8──9──┘
+```
+
+**支持 axis 参数的常用方法：**
+
+| 方法 | 说明 |
+|------|------|
+| `np.sum(arr, axis=)` | 按轴求和 |
+| `np.mean(arr, axis=)` | 按轴求平均 |
+| `np.min(arr, axis=)` | 按轴求最小值 |
+| `np.max(arr, axis=)` | 按轴求最大值 |
+| `np.argmin(arr, axis=)` | 按轴求最小值索引 |
+| `np.argmax(arr, axis=)` | 按轴求最大值索引 |
+| `np.std(arr, axis=)` | 按轴求标准差 |
+| `np.var(arr, axis=)` | 按轴求方差 |
+| `np.sort(arr, axis=)` | 按轴排序 |
+| `np.concatenate((a, b), axis=)` | 按轴拼接 |
+
+```python
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6]])
+
+print(np.sum(matrix, axis=0))  # [5 7 9]   按列求和（行被压缩）
+print(np.sum(matrix, axis=1))  # [6 15]    按行求和（列被压缩）
+
+print(np.max(matrix, axis=0))  # [4 5 6]   每列最大值
+print(np.max(matrix, axis=1))  # [3 6]     每行最大值
+```
+
 ---
 
 ## 八、numpy 比较函数
@@ -769,6 +827,22 @@ print(np.logical_or([1, 0, 1], [1, 1, 0]))   # [ True  True  True]
 print(np.logical_not([1, 0, 1]))              # [False  True False]
 ```
 
+> [!warning] 布尔索引中不能用 `and` / `or`
+> NumPy 底层由 C 驱动，复合条件**必须**用位运算符，且每个条件要加括号：
+>
+> | Python 写法 ❌ | NumPy 写法 ✅ |
+> |---|---|
+> | `arr > 5 and arr < 10` | `(arr > 5) & (arr < 10)` |
+> | `arr < 3 or arr > 8` | `(arr < 3) \| (arr > 8)` |
+>
+> ```python
+> arr = np.array([1, 5, 8, 12, 3])
+> # 正确写法
+> print(arr[(arr > 5) & (arr < 10)])  # [8]
+> # 错误写法：ValueError
+> # print(arr[arr > 5 and arr < 10])
+> ```
+
 ### 8.3 ⭐条件选择 np.where
 
 | 用法 | 说明 |
@@ -786,6 +860,19 @@ print(np.where(arr > 10, arr, 0))    # [ 0  0 11 21 78  0]
 # 偶数→1，奇数→-1
 print(np.where(arr % 2 == 0, 1, -1)) # [-1 -1 -1 -1  1  1]
 ```
+
+> [!warning] 布尔索引会降维，np.where 保持形状
+> 布尔索引过滤会把多维数组**拍平成一维**，`np.where` 则保持原形状：
+>
+> ```python
+> matrix = np.array([[15, 22], [9, 33]])
+>
+> # 布尔索引：2D → 1D（形状丢失）
+> print(matrix[matrix >= 18])          # [22 33]
+>
+> # np.where：保持 2D 形状（不满足条件的用 0 填充）
+> print(np.where(matrix >= 18, matrix, 0))  # [[ 0 22] [ 0 33]]
+> ```
 
 > [!tip] 嵌套使用（类似 if-elif-else）
 > `np.where` 可以嵌套，实现多级分类：

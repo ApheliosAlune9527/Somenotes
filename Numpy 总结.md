@@ -558,4 +558,3 @@ print("座位表保形输出 (2x8 矩阵):\n", structured_adults)
     ```
     
 
-_祝您 NumPy 学习愉快！更多内容请查阅官方文档。_
