@@ -902,65 +902,78 @@ print(arr.reshape(4, 5))  # 20个元素 → 4行5列
 
 ## 十、综合练习一
 
+### 练习一：气温统计
+
+> 有一组数据表示某地7天的最高气温：28, 30, 29, 31, 32, 30, 29
+> 请使用 NumPy 计算：
+> 1. 平均气温
+> 2. 最大气温
+> 3. 最小气温
+> 4. 大于30度的天数
+
 ```python
 import numpy as np
-"""
-练习一:
-有一组数据表示某地7天的最高气温，分别为28, 30, 29, 31, 32, 30, 29。请使用NumPy计算以下内容：
-1. 平均气温
-2. 最大气温
-3. 最小气温
-4. 大于30度的天数
-"""
 
-# arr = np.array([28, 30, 29, 31, 32, 30, 29])
-# print(f"平均气温为:{np.mean(arr)}°")
-# print(f"最大气温为:{np.max(arr)}°")
-# print(f"最小气温为:{np.min(arr)}°")
-# # 1.使用布尔索引
-# print(arr[arr > 30])
-# print(len(arr[arr > 30]))
-# print(f"1.大于30的元素个数为:{len(arr[arr > 30])}")
+arr = np.array([28, 30, 29, 31, 32, 30, 29])
+print(f"平均气温为:{np.mean(arr)}°")
+print(f"最大气温为:{np.max(arr)}°")
+print(f"最小气温为:{np.min(arr)}°")
+```
 
-# # 2.使用广播特性
-# # 广播特性,30是零维数组,广播后变成和arr一样的形状,每个元素都和30进行比较,得到一个布尔数组,再对布尔数组求和,True被当做1,False
-# print(f"2.大于30的元素个数为:{np.sum(arr > 30)}")
+**大于30度的天数 — 4种解法：**
 
-# # 3.或者使用.where()函数来获取满足条件的元素的索引
-# a = np.where(arr > 30, arr, 0)  # 满足条件的元素保留原值,不满足条件的元素替换为0
-# print(a)
-# print(np.sum(a > 0))
+```python
+# 解法1：布尔索引
+print(f"大于30的元素个数为:{len(arr[arr > 30])}")
 
-# # 4.或者让where返回1 然后求累加就行
-# b = np.where(arr > 30, 1, 0)  # 满足条件的元素替换为1,不满足条件的元素替换为0 然后通过索引取到最后一个元素的值就是满足条件的元素个数
-# print(np.cumsum(b)[-1])
+# 解法2：广播 + 求和（True 被当做 1）
+print(f"大于30的元素个数为:{np.sum(arr > 30)}")
 
-#  练习二:矩阵运算 注意区分 元素级乘法 和 矩阵乘法
-# A = np.array([[1, 2], [3, 4]])
-# B = np.array([[5, 6], [7, 8]])
-# print(A + B)
-# print(A * B) # 这是元素级乘法,不是矩阵乘法
-# print(A @ B) # 这是矩阵乘法,也可以使用np.dot(A, B)来实现矩阵乘法
+# 解法3：np.where 保留满足条件的值，其余置0，再求和
+a = np.where(arr > 30, arr, 0)
+print(f"大于30的元素个数为:{np.sum(a > 0)}")
 
+# 解法4：np.where 返回 0/1，再 cumsum 取最后一个
+b = np.where(arr > 30, 1, 0)
+print(f"大于30的元素个数为:{np.cumsum(b)[-1]}")
+```
 
-# 练习三: 生成一个3行4列的随机整数矩阵,元素范围在0到10之间,然后
-# 计算每行和每列的最大值和最小值。
-# 将数组中所有的奇数替换为-1。
+---
+
+### 练习二：矩阵运算
+
+> 给定矩阵 A 和 B，分别计算：
+> 1. 加法（A + B）
+> 2. 元素级乘法（A * B）
+> 3. 矩阵乘法（A @ B）
+
+```python
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+print(A + B)    # 加法
+print(A * B)    # 元素级乘法（对应位置相乘）
+print(A @ B)    # 矩阵乘法（也可用 np.dot(A, B)）
+```
+
+---
+
+### 练习三：随机矩阵操作
+
+> 生成一个 3行4列 的随机整数矩阵（元素范围 0~10），然后：
+> 1. 计算每行和每列的最大值、最小值
+> 2. 将所有奇数替换为 -1
+
+```python
 rng = np.random.default_rng(42)
 arr = rng.integers(0, 11, size=(3, 4))
 print(arr)
 
-# # : 切片操作符 : 表示从哪儿到哪儿 或者 全部的意思 这个0 : 就是第 0行全部
-# print(f"第0行最大值:{np.max(arr[0, :])}", f"最小值: {np.min(arr[0, :])}")
-# print(f"第1行最大值:{np.max(arr[1, :])}", f"最小值: {np.min(arr[1, :])}")
-# print(f"第2行最大值:{np.max(arr[2, :])}", f"最小值: {np.min(arr[2, :])}")
-
-# 或者使用max的参数axis来指定求最大值的轴,axis=0表示 按列 求最大值,axis=1表示 按行 求最大值
+# axis=0 按列求，axis=1 按行求
 print(f"每列的最大值:{np.max(arr, axis=0)}", f"每列的最小值: {np.min(arr, axis=0)}")
 print(f"每行的最大值:{np.max(arr, axis=1)}", f"每行的最小值: {np.min(arr, axis=1)}")
 
-
-# .where(条件,参数1,参数2) 就是如果满足条件则保留原值(参数1), 不满足条件的元素替换为参数2
+# 奇数替换为 -1，偶数保留原值
 matrix1 = np.where(arr % 2 != 0, -1, arr)
 print(matrix1)
 ```
@@ -969,84 +982,99 @@ print(matrix1)
 
 ## 十一、综合练习二
 
+### 练习一：重塑与统计
+
+> 1. 创建一个包含1到12的数组，重塑为 3行4列 的二维数组
+> 2. 计算每行的和
+> 3. 计算每列的平均值
+> 4. 将二维数组重新转换为一维数组
+
 ```python
 import numpy as np
 
-"""
-练习一:
-1. 创建一个包含1到12的数组，并将其重塑为3行4列的二维数组。
-2. 计算每行的和，并打印结果。
-3. 计算每列的平均值，并打印结果。
-4. 将二维数组重新转换为一维数组，并打印结果。
-"""
+arr1 = np.arange(1, 13)
+arr2 = np.reshape(arr1, (3, 4))
+print(arr2)
 
-# arr1 = np.arange(1, 13)
-# arr2 = np.reshape(arr1, (3, 4))
-# print(arr2)
-# row_sum = np.sum(arr2, axis=1)
-# print(f"每行的和为:{row_sum}")
-# col_mean = np.mean(arr2, axis=0)
-# print(f"每列的平均值为:{col_mean}")
-# arr3 = np.reshape(arr2,12)
-# print("3*4矩阵转成一维数组:", arr3)
+print(f"每行的和为:{np.sum(arr2, axis=1)}")
+print(f"每列的平均值为:{np.mean(arr2, axis=0)}")
+print("3*4矩阵转成一维数组:", np.reshape(arr2, 12))
+```
 
+---
 
-"""练习二:
-随机生成一个5x5的整数数组，范围在0到20之间。
-使用布尔索引找出数组中大于10的元素，并将它们替换为0。
+### 练习二：布尔索引替换
 
-"""
-# rng = np.random.default_rng(42)
-# A = rng.integers(0, 20, (5, 5))
-# print(A)
-# print("分隔线".center(50, '-'))
-# # 使用布尔索引找出A中大于10的元素
-# print(A[A > 10])
-# a = A[A > 10] = 0
-# print(a)
+> 随机生成一个 5×5 的整数数组（范围 0~20），使用布尔索引找出大于10的元素，替换为 0
 
-"""
-练习三:
-某公司的6个月的销售数据如下：120, 135, 110, 125, 130, 140。
-1. 将销售数据存储在一个NumPy数组中。
-2. 计算销售数据的总和、平均值和方差，并打印结果。
-3. 找出销售额最高的月份和最低的月份，并打印结果。
-"""
+```python
+import numpy as np
+rng = np.random.default_rng(42)
+A = rng.integers(0, 20, (5, 5))
+print(A)
 
-# sale = np.array([120, 135, 110, 125, 130, 140])
-# print(np.sum(sale))
-# print(np.mean(sale))
-# print(np.var(sale))
-# print(np.argmax(sale))  # 如果不带arg 则返回的是最大值，如果带arg则返回的是最大值的索引
-# print(np.argmin(sale))
+# 布尔索引：A > 10 得到布尔数组，直接赋值替换
+A[A > 10] = 0
+print(A)
+```
 
-"""练习四:
-给两个数组A和B，分别为A = [1, 2, 3]和B = [4, 5, 6]。
-1.水平拼接A和B，得到一个新的数组。
-2.垂直拼接A和B，得到一个新的数组。
-"""
-# A = np.array([1, 2, 3])
-# B = np.array([4, 5, 6])
-# print(np.concatenate((A, B)))  # 默认 axis=0 按行方向移动拼接
-# print(np.concatenate([[A],[B]])) # 先将 A 和 B 包装成二维数组 [[1, 2, 3], [4, 5, 6]]，再按行方向拼接，结果是 [[1, 2, 3], [4, 5, 6]]
+---
 
+### 练习三：销售数据分析
 
-"""练习五:
-给定数组arr = [2, 1, 2, 3, 1, 4, 3]
-1.找出其中的唯一元素
-2.并统计每个唯一元素在原数组中出现的次数。
-"""
+> 某公司6个月销售数据：120, 135, 110, 125, 130, 140
+> 1. 计算总和、平均值、方差
+> 2. 找出销售额最高和最低的月份（索引）
+
+```python
+sale = np.array([120, 135, 110, 125, 130, 140])
+print(f"总和:{np.sum(sale)}")
+print(f"平均值:{np.mean(sale)}")
+print(f"方差:{np.var(sale)}")
+print(f"最高月份索引:{np.argmax(sale)}")  # argmax 返回最大值的索引
+print(f"最低月份索引:{np.argmin(sale)}")  # argmin 返回最小值的索引
+```
+
+---
+
+### 练习四：数组拼接
+
+> 给定 A = [1, 2, 3]，B = [4, 5, 6]
+> 1. 水平拼接
+> 2. 垂直拼接
+
+```python
+A = np.array([1, 2, 3])
+B = np.array([4, 5, 6])
+
+# 水平拼接（默认 axis=0）
+print(np.concatenate((A, B)))        # [1 2 3 4 5 6]
+
+# 垂直拼接（先升维再按行拼接）
+print(np.concatenate([[A], [B]]))    # [[1 2 3] [4 5 6]]
+```
+
+---
+
+### 练习五：去重与计数
+
+> 给定数组 arr = [2, 1, 2, 3, 1, 4, 3]
+> 1. 找出唯一元素
+> 2. 统计每个元素出现的次数
+
+```python
 arr = np.array([2, 1, 2, 3, 1, 4, 3])
-# NumPy 的函数，return_counts=True 表示"顺便告诉我每个数出现了几次"。
-# 它返回两个数组：一个是去重后的唯一元素数组，另一个是对应的计数数组。
+
+# 方法1：np.unique + return_counts=True
 u_arr, counts = np.unique(arr, return_counts=True)
-print(u_arr)  # 去重后的唯一元素数组
-print(counts)  # 每个唯一元素在原数组中出现的次数
-# 或者使用for循环+布尔索引找
+print(u_arr)    # [1 2 3 4]
+print(counts)   # [2 2 2 1]
+
+# 方法2：for 循环 + 布尔索引
 my_list = []
 for i in range(len(u_arr)):
     my_list.append(len(arr[arr == u_arr[i]]))
-print(my_list)
+print(my_list)  # [2, 2, 2, 1]
 ```
 
 ---
