@@ -34,7 +34,7 @@ graph LR
 ```
 
 > [!example] 安装与导入
-> 	pip install matplotlib  # 安装指令
+> 	pip install matplotlib  📌 安装指令
 > 	print(matplotlib.__version__)# 验证安装版本
 
 
@@ -49,18 +49,18 @@ graph LR
 
 > [!example]- 基础折线图画法（原生 List）
 > 	import matplotlib.pyplot as plt
-> 	# 1. 准备数据 (年份与对应的学生数量)
+> 	📌 1. 准备数据 (年份与对应的学生数量)
 > 	years = [2023, 2024, 2025, 2026]
 > 	class_sizes = [15, 25, 30, 20]
-> 	# 2. 映射坐标点
+> 	📌 2. 映射坐标点
 > 	plt.plot(years, class_sizes)
-> 	# 3. 必须调用 show() 才能唤起独立窗口渲染图表
+> 	📌 3. 必须调用 show() 才能唤起独立窗口渲染图表
 > 	plt.show()
 
 > [!example]- NumPy 数组加速版实现
 > 	import numpy as np
 > 	import matplotlib.pyplot as plt
-> 	# 将原生列表转换为更高效的 NumPy 数组
+> 	📌 将原生列表转换为更高效的 NumPy 数组
 > 	x_arr = np.array([2023, 2024, 2025, 2026])
 > 	y_arr = np.array([15, 25, 30, 20])
 > 	plt.plot(x_arr, y_arr)
@@ -109,7 +109,7 @@ graph LR
 > 	y1 = np.array([15, 25, 1000, 20])
 > 	y2 = np.array([10, 20, 800, 10])
 > 	y3 = np.array([5, 15, 500, 5])
-> 	# 这里使用dict()来创建字典,当然花括号也行
+> 	📌 这里使用dict()来创建字典,当然花括号也行
 > 	line_style = dict(
 > 	    marker=".",
 > 	    markersize=20,
@@ -150,10 +150,10 @@ graph LR
 > 	           family="Arial",
 > 	           fontweight="bold",
 > 	           color="#1c5bfc",)
-> 	# 自定义刻度
+> 	📌 自定义刻度
 > 	plt.tick_params(axis="both",
 > 	                colors="#1c5bfc",)
-> 	plt.xticks(x)  # 强制让x轴的刻度只显示在特定数值上
+> 	plt.xticks(x)  📌 强制让x轴的刻度只显示在特定数值上
 > 	plt.plot(x, y1)
 > 	plt.plot(x, y2)
 > 	plt.plot(x, y3)
@@ -198,11 +198,11 @@ graph LR
 > [!example] 垂直和水平条形图代码实战
 > 	import numpy as np
 > 	import matplotlib.pyplot as plt
-> 	# 离散类别与服务数值数据
+> 	📌 离散类别与服务数值数据
 > 	categories = ["Grains", "Vegetables", "Fruits", "Dairy", "Meat", "Sweets"]
 > 	values = [20, 15, 30, 10, 25, 5]
 > 	plt.bar(categories, values)
-> 	# plt.barh(categories, values) # 水平柱状图
+> 	📌 plt.barh(categories, values) 📌 水平柱状图
 > 	plt.title("Daily Consumption")
 > 	plt.xlabel("Food")
 > 	plt.ylabel("Quantity")
@@ -320,14 +320,14 @@ graph LR
 > [!example]- 基础直方图与数据约束
 > 	import numpy as np
 > 	import matplotlib.pyplot as plt
-> 	# 生成100个平均值为75，标准差为10的正态分布数据
+> 	📌 生成100个平均值为75，标准差为10的正态分布数据
 > 	score = np.random.normal(loc=75, scale=10, size=100)
-> 	# 如果标准差不当可能会出现不合适的数,此时我们可以使用.clip()函数来限制数据的范围,比如限制在0到100之间
+> 	📌 如果标准差不当可能会出现不合适的数,此时我们可以使用.clip()函数来限制数据的范围,比如限制在0到100之间
 > 	score = np.clip(score, 0, 100)
-> 	# plt.hist(score, bins=10,
-> 	#                 color="lightgreen",
-> 	#                 edgecolor="black",
-> 	#                 )
+> 	📌 plt.hist(score, bins=10,
+> 	📌                 color="lightgreen",
+> 	📌                 edgecolor="black",
+> 	📌                 )
 > 	counts, bins = plt.hist(score, bins=10,
 > 	                        color="lightgreen",
 > 	                        edgecolor="black",
@@ -342,7 +342,7 @@ graph LR
 > 	plt.title("Exam Scores")
 > 	plt.xlabel("Score")
 > 	plt.ylabel("# of Students")
-> 	plt.tight_layout()  # 调整布局以避免标签重叠
+> 	plt.tight_layout()  📌 调整布局以避免标签重叠
 > 	plt.show()
 >
 > **标注逻辑解析：**
@@ -380,11 +380,11 @@ graph LR
 > [!example] 2x2 网格多维科学曲线排版实战
 > 	import numpy as np
 > 	import matplotlib.pyplot as plt
-> 	# 子图
+> 	📌 子图
 > 	figure, axes = plt.subplots(2, 2)
-> 	# subplot()函数会返回一个包含所有子图的Figure对象和一个包含每个子图的Axes对象的数组
-> 	# 所以我们要操作子图 就是操作axes这个数组
-> 	# axes[0, 0]表示第一行第一列的子图, axes[0, 1]表示第一行第二列的子图, 以此类推
+> 	📌 subplot()函数会返回一个包含所有子图的Figure对象和一个包含每个子图的Axes对象的数组
+> 	📌 所以我们要操作子图 就是操作axes这个数组
+> 	📌 axes[0, 0]表示第一行第一列的子图, axes[0, 1]表示第一行第二列的子图, 以此类推
 > 	x = np.array([1, 2, 3, 4, 5])
 > 	axes[0, 0].plot(x, x * 2, color="red")
 > 	axes[0, 0].set_title("x*2")
@@ -394,7 +394,7 @@ graph LR
 > 	axes[1, 0].set_title("x**3")
 > 	axes[1, 1].plot(x, x ** 4, color="orange")
 > 	axes[1, 1].set_title("x**4")
-> 	plt.tight_layout()  # 调整布局以避免子图重叠
+> 	plt.tight_layout()  📌 调整布局以避免子图重叠
 > 	plt.show()
 
 ---
@@ -406,28 +406,28 @@ graph LR
 > [!example] 初代宝可梦属性数量统计全栈实现
 > 	import pandas as pd
 > 	import matplotlib.pyplot as plt
-> 	# 1. 利用 Pandas 读取宝可梦属性 CSV 报表
-> 	# 确保你的本地运行环境下包含该 data.csv 文件
+> 	📌 1. 利用 Pandas 读取宝可梦属性 CSV 报表
+> 	📌 确保你的本地运行环境下包含该 data.csv 文件
 > 	df = pd.read_csv("data.csv")
-> 	# 2. 提取 'Type 1' (主要属性) 列，并利用 value_counts 计算各属性出现的次数
-> 	# ascending=True 表示升序排序，使出现频率最高的属性位于图表顶部
+> 	📌 2. 提取 'Type 1' (主要属性) 列，并利用 value_counts 计算各属性出现的次数
+> 	📌 ascending=True 表示升序排序，使出现频率最高的属性位于图表顶部
 > 	type_count = df["Type 1"].value_counts(ascending=True)
-> 	# 3. 创建高质感水平条形图 (Horizontal Bar Chart)
-> 	# X轴传入具体的宝可梦数量 (type_count.values)
-> 	# Y轴传入对应的索引属性名称，如 Grass, Fire 等 (type_count.index)
+> 	📌 3. 创建高质感水平条形图 (Horizontal Bar Chart)
+> 	📌 X轴传入具体的宝可梦数量 (type_count.values)
+> 	📌 Y轴传入对应的索引属性名称，如 Grass, Fire 等 (type_count.index)
 > 	plt.barh(
 > 	    type_count.index,
 > 	    type_count.values,
 > 	    color="#3282b8",
 > 	    edgecolor="black"
 > 	)
-> 	# 4. 精细化图表标注
+> 	📌 4. 精细化图表标注
 > 	plt.title("Distribution of Pokemon by Primary Type (Original 150)", fontsize=16, fontweight="bold")
 > 	plt.xlabel("Total Count", fontsize=12)
 > 	plt.ylabel("Primary Type (Type 1)", fontsize=12)
-> 	# 5. 应用布局紧凑化优化，确保所有文字均完整包含在生成的图片画幅内
+> 	📌 5. 应用布局紧凑化优化，确保所有文字均完整包含在生成的图片画幅内
 > 	plt.tight_layout()
-> 	# 6. 渲染图形
+> 	📌 6. 渲染图形
 > 	plt.show()
 
 ---
