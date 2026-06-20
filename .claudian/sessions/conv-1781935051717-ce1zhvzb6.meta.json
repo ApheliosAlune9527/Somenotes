@@ -1,0 +1,23 @@
+{
+  "id": "conv-1781935051717-ce1zhvzb6",
+  "providerId": "claude",
+  "title": "E:\\All_Projects\\pycharm_project\\Data _analysis_stu...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1781935051718,
+  "updatedAt": 1781935764243,
+  "lastResponseAt": 1781935764243,
+  "sessionId": "a9b8436f-fcce-4f3b-9f1c-314dfd2601c4",
+  "providerState": {
+    "providerSessionId": "a9b8436f-fcce-4f3b-9f1c-314dfd2601c4"
+  },
+  "currentNote": "Python/📊 Matplotlib 学习笔记.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 2278,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 67840,
+    "contextWindow": 1000000,
+    "contextTokens": 70118,
+    "percentage": 7
+  }
+}
