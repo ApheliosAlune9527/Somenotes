@@ -27,24 +27,16 @@
 
 **绘图基础工作流**
 
-```
-【输入数据】           【创建/配置图表】                【渲染输出】
-X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  plt.show() 
-(List 或 Array)          (设置标记、颜色、标签等)             (弹出图形窗口)
+```mermaid
+graph LR
+    A["📊 输入数据<br/>X / Y 轴 (List 或 Array)"] -->|"plt.plot(x, y)<br/>plt.bar(...) 设置标记、颜色、标签等"| B["⚙️ 创建/配置图表"]
+    B -->|"plt.show()"| C["🖥️ 渲染输出<br/>弹出图形窗口"]
 ```
 
 > [!example] 安装与导入
-> ```python
-> # 安装指令
-> pip install matplotlib
-> ```
-> ```python
-> import matplotlib
-> import matplotlib.pyplot as plt
->
-> # 验证安装版本 (视频演示版本为 3.10.6)
-> print(matplotlib.__version__)
-> ```
+> 	pip install matplotlib  # 安装指令
+> 	print(matplotlib.__version__)# 验证安装版本
+
 
 
 ## 二、折线图 (Line Plot) 基础与 NumPy 整合
@@ -56,32 +48,23 @@ X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  
 3. **NumPy 强力支持**：虽然 Python 基础 `list` 可直接画图，但在真实数据科学场景中，**NumPy Array** 因为连续内存存储和底层向量化计算，速度极快，是更标准和推荐的数据载体。
 
 > [!example]- 基础折线图画法（原生 List）
-> ```python
-> import matplotlib.pyplot as plt
->
-> # 1. 准备数据 (年份与对应的学生数量)
-> years = [2023, 2024, 2025, 2026]
-> class_sizes = [15, 25, 30, 20]
->
-> # 2. 映射坐标点
-> plt.plot(years, class_sizes)
->
-> # 3. 必须调用 show() 才能唤起独立窗口渲染图表
-> plt.show()
-> ```
+> 	import matplotlib.pyplot as plt
+> 	# 1. 准备数据 (年份与对应的学生数量)
+> 	years = [2023, 2024, 2025, 2026]
+> 	class_sizes = [15, 25, 30, 20]
+> 	# 2. 映射坐标点
+> 	plt.plot(years, class_sizes)
+> 	# 3. 必须调用 show() 才能唤起独立窗口渲染图表
+> 	plt.show()
 
 > [!example]- NumPy 数组加速版实现
-> ```python
-> import numpy as np
-> import matplotlib.pyplot as plt
->
-> # 将原生列表转换为更高效的 NumPy 数组
-> x_arr = np.array([2023, 2024, 2025, 2026])
-> y_arr = np.array([15, 25, 30, 20])
->
-> plt.plot(x_arr, y_arr)
-> plt.show()
-> ```
+> 	import numpy as np
+> 	import matplotlib.pyplot as plt
+> 	# 将原生列表转换为更高效的 NumPy 数组
+> 	x_arr = np.array([2023, 2024, 2025, 2026])
+> 	y_arr = np.array([15, 25, 30, 20])
+> 	plt.plot(x_arr, y_arr)
+> 	plt.show()
 
 ---
     
@@ -120,28 +103,25 @@ X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  
 | `color` | `c` | 颜色名、RGB元组、十六进制代码 | 折线的整体颜色 |
 
 > [!example] 字典解包实战：统一多条折线的外观样式
-> ```python
-> import matplotlib.pyplot as plt
-> import numpy as np
-> x = np.array([2023, 2024, 2025, 2026])
-> y1 = np.array([15, 25, 1000, 20])
-> y2 = np.array([10, 20, 800, 10])
-> y3 = np.array([5, 15, 500, 5])
-> # 这里使用dict()来创建字典,当然花括号也行
-> line_style = dict(
->     marker=".",
->     markersize=20,
->     mfc="#1cd3fc",
->     mec="#1cd3fc",
->     linestyle="solid",
->     linewidth="4",
-> )
->
-> plt.plot(x, y1, color="#1cfca2", **line_style)
-> plt.plot(x, y2, color="#1c5bfc", **line_style)
-> plt.plot(x, y3, color="#fc491c", **line_style)
-> plt.show()
-> ```
+> 	import matplotlib.pyplot as plt
+> 	import numpy as np
+> 	x = np.array([2023, 2024, 2025, 2026])
+> 	y1 = np.array([15, 25, 1000, 20])
+> 	y2 = np.array([10, 20, 800, 10])
+> 	y3 = np.array([5, 15, 500, 5])
+> 	# 这里使用dict()来创建字典,当然花括号也行
+> 	line_style = dict(
+> 	    marker=".",
+> 	    markersize=20,
+> 	    mfc="#1cd3fc",
+> 	    mec="#1cd3fc",
+> 	    linestyle="solid",
+> 	    linewidth="4",
+> 	)
+> 	plt.plot(x, y1, color="#1cfca2", **line_style)
+> 	plt.plot(x, y2, color="#1c5bfc", **line_style)
+> 	plt.plot(x, y3, color="#fc491c", **line_style)
+> 	plt.show()
 
 ---
     
@@ -155,35 +135,29 @@ X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  
 3. **刻度全局修改 (`tick_params`)**：不仅可以调节坐标系外圈的标签，还可以快速对两轴的物理刻度线颜色、粗细进行整顿。
 
 > [!example] 轴文字修饰与刻度精准约束实战
-> ```python
-> plt.title("Class Size",
->           fontsize=20,
->           family="Arial",
->           fontweight="bold",
->           color="#1c5bfc",)
-> plt.xlabel("Year",
->            fontsize=15,
->            family="Arial",
->            fontweight="bold",
->            color="#1c5bfc",)
->
-> plt.ylabel("Students",
->            fontsize=15,
->            family="Arial",
->            fontweight="bold",
->            color="#1c5bfc",)
->
-> # 自定义刻度
-> plt.tick_params(axis="both",
->                 colors="#1c5bfc",)
->
-> plt.xticks(x)  # 强制让x轴的刻度只显示在特定数值上
->
-> plt.plot(x, y1)
-> plt.plot(x, y2)
-> plt.plot(x, y3)
-> plt.show()
-> ```
+> 	plt.title("Class Size",
+> 	          fontsize=20,
+> 	          family="Arial",
+> 	          fontweight="bold",
+> 	          color="#1c5bfc",)
+> 	plt.xlabel("Year",
+> 	           fontsize=15,
+> 	           family="Arial",
+> 	           fontweight="bold",
+> 	           color="#1c5bfc",)
+> 	plt.ylabel("Students",
+> 	           fontsize=15,
+> 	           family="Arial",
+> 	           fontweight="bold",
+> 	           color="#1c5bfc",)
+> 	# 自定义刻度
+> 	plt.tick_params(axis="both",
+> 	                colors="#1c5bfc",)
+> 	plt.xticks(x)  # 强制让x轴的刻度只显示在特定数值上
+> 	plt.plot(x, y1)
+> 	plt.plot(x, y2)
+> 	plt.plot(x, y3)
+> 	plt.show()
 
 ---
     
@@ -204,17 +178,14 @@ X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  
 ```
 
 > [!example] 网格线配置实战
-> ```python
-> x = [1, 2, 3, 4, 5]
-> y = [5, 10, 15, 20, 25]
->
-> plt.grid(axis="y",
->          color="lightgray",
->          linestyle="dashed",
->          linewidth=2,)
-> plt.plot(x, y)
-> plt.show()
-> ```
+> 	x = [1, 2, 3, 4, 5]
+> 	y = [5, 10, 15, 20, 25]
+> 	plt.grid(axis="y",
+> 	         color="lightgray",
+> 	         linestyle="dashed",
+> 	         linewidth=2,)
+> 	plt.plot(x, y)
+> 	plt.show()
 
 ---
 
@@ -225,21 +196,17 @@ X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  
 2. **水平条形图 (`barh`)**：适合类别名称文字非常长、或是类别数量很多时的展示，可以有效防止 $X$ 轴文字发生拥挤重叠。
 
 > [!example] 垂直和水平条形图代码实战
-> ```python
-> import numpy as np
-> import matplotlib.pyplot as plt
->
-> # 离散类别与服务数值数据
-> categories = ["Grains", "Vegetables", "Fruits", "Dairy", "Meat", "Sweets"]
-> values = [20, 15, 30, 10, 25, 5]
->
-> plt.bar(categories, values)
-> # plt.barh(categories, values) # 水平柱状图
-> plt.title("Daily Consumption")
-> plt.xlabel("Food")
-> plt.ylabel("Quantity")
-> plt.show()
-> ```
+> 	import numpy as np
+> 	import matplotlib.pyplot as plt
+> 	# 离散类别与服务数值数据
+> 	categories = ["Grains", "Vegetables", "Fruits", "Dairy", "Meat", "Sweets"]
+> 	values = [20, 15, 30, 10, 25, 5]
+> 	plt.bar(categories, values)
+> 	# plt.barh(categories, values) # 水平柱状图
+> 	plt.title("Daily Consumption")
+> 	plt.xlabel("Food")
+> 	plt.ylabel("Quantity")
+> 	plt.show()
 
 ---
     
@@ -270,22 +237,19 @@ X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  
 ```
 
 > [!example] 多维度个性化饼图实战
-> ```python
-> import numpy as np
-> import matplotlib.pyplot as plt
->
-> categories = np.array(["Freshman",
->                        "Sophomore", "Junior", "Senior"])
-> values = np.array([150, 375, 800, 650])
-> colors = ["#1c5bfc", "#1cfca2", "#fc491c", "#1cd3fc"]
-> plt.title("Bro Code Class")
-> plt.pie(values, labels=categories,
->         autopct="%1.1f%%", startangle=90,
->         colors=colors,
->         shadow=True,
->         explode=[0, 0.1, 0, 0],)
-> plt.show()
-> ```
+> 	import numpy as np
+> 	import matplotlib.pyplot as plt
+> 	categories = np.array(["Freshman",
+> 	                       "Sophomore", "Junior", "Senior"])
+> 	values = np.array([150, 375, 800, 650])
+> 	colors = ["#1c5bfc", "#1cfca2", "#fc491c", "#1cd3fc"]
+> 	plt.title("Bro Code Class")
+> 	plt.pie(values, labels=categories,
+> 	        autopct="%1.1f%%", startangle=90,
+> 	        colors=colors,
+> 	        shadow=True,
+> 	        explode=[0, 0.1, 0, 0],)
+> 	plt.show()
 
 ---
     
@@ -299,33 +263,27 @@ X 轴 / Y 轴 数据  ───►  plt.plot(x, y) / plt.bar(...) ───►  
 3. **图例 (Legend)**：当一个坐标系内包含两个不同的群体点集（如 A 班和 B 班）时，使用标签标记并通过 `plt.legend()` 将其显示出来，实现多维对比。
 
 > [!example] 双班级对比散点图实战
-> ```python
-> import numpy as np
-> import matplotlib.pyplot as plt
->
-> x1 = np.array([0, 1, 1, 2, 3, 4, 5, 6, 7, 7, 8])
-> y1 = np.array([55, 60, 65, 62, 68,  70, 75, 78, 82, 85, 87])
->
-> x2 = np.array([0, 1, 2, 2, 3, 4, 5, 6, 7, 7, 8])
-> y2 = np.array([50, 58, 65, 70, 72,  78, 83, 88, 92, 95, 98])
->
-> plt.scatter(x1, y1,
->             color=”skyblue”,
->             alpha=0.5,
->             s=200,
->             label=”Student A”)
-> plt.scatter(x2, y2,
->             color=”pink”,
->             alpha=0.5,
->             s=200,
->             label=”Student B”)
-> plt.title(“Test Scores”)
-> plt.xlabel(“Hours Studied”)
-> plt.ylabel(“Grade”)
-> plt.legend()
->
-> plt.show()
-> ```
+> 	import numpy as np
+> 	import matplotlib.pyplot as plt
+> 	x1 = np.array([0, 1, 1, 2, 3, 4, 5, 6, 7, 7, 8])
+> 	y1 = np.array([55, 60, 65, 62, 68,  70, 75, 78, 82, 85, 87])
+> 	x2 = np.array([0, 1, 2, 2, 3, 4, 5, 6, 7, 7, 8])
+> 	y2 = np.array([50, 58, 65, 70, 72,  78, 83, 88, 92, 95, 98])
+> 	plt.scatter(x1, y1,
+> 	            color=”skyblue”,
+> 	            alpha=0.5,
+> 	            s=200,
+> 	            label=”Student A”)
+> 	plt.scatter(x2, y2,
+> 	            color=”pink”,
+> 	            alpha=0.5,
+> 	            s=200,
+> 	            label=”Student B”)
+> 	plt.title(“Test Scores”)
+> 	plt.xlabel(“Hours Studied”)
+> 	plt.ylabel(“Grade”)
+> 	plt.legend()
+> 	plt.show()
 
 ---
     
