@@ -119,7 +119,50 @@ docker-compose.yml下载
 
 如果有自己的模型提供商可以直接选择，如果是第三方也可以选择custom (direct API)来配置baseUrl 和 apiKey
 ![[Pasted image 20260620151653.png]]
+> 图: 输入deepseek官网的apiKey 然后回车
+
 
 ![[Pasted image 20260620151657.png]]
+>图: #### 默认官网baseUrl无需修改 直接回车
 
 ![[Pasted image 20260620151701.png]]
+> 图: 默认的模型 此处选deepseek-v4-flash
+
+![[Pasted image 20260620151753.png]]
+> 图: 选择终端运行环境为local
+
+此处的local即代表容器内:
+![[Pasted image 20260620151759.png]]
+> 图: 工作目录 直接回车确认
+
+![[Pasted image 20260620151830.png]]
+
+如果开启sudo 则agent执行一些安装操作则无需进行二次确认，如果你们觉得危险的话可以关闭，此处是容器内部署，我觉得问题不大。选择y的话输入设置sudo密码即可
+
+![[Pasted image 20260620151840.png]]
+
+![[Pasted image 20260620151843.png]]
+
+把常用的消息平台翻译标识在后边了，大家可以按需去激活（可以同时开启多个消息渠道的）
+
+![[Pasted image 20260620151854.png]]
+
+![[Pasted image 20260620151900.png]]
+
+![[Pasted image 20260620151904.png]]
+
+![[Pasted image 20260620151907.png]]
+
+![[Pasted image 20260620151911.png]]
+> 图:选第二个 允许所有的消息
+
+![[Pasted image 20260620151927.png]]
+
+![[Pasted image 20260620151930.png]]
+> 图:设置你的微信账号为home channel 直接输入y 按回车
+
+home channel是主消息渠道  定时任务和主要的消息通知会走主消息同步过来
+
+![[Pasted image 20260620151950.png]]
+
+![[Pasted image 20260620151957.png]]
