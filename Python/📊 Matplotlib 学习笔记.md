@@ -318,38 +318,32 @@ graph LR
 ```
 
 > [!example]- 基础直方图与数据约束
-> ```python
-> import numpy as np
-> import matplotlib.pyplot as plt
->
-> # 生成100个平均值为75，标准差为10的正态分布数据
-> score = np.random.normal(loc=75, scale=10, size=100)
-> # 如果标准差不当可能会出现不合适的数,此时我们可以使用.clip()函数来限制数据的范围,比如限制在0到100之间
-> score = np.clip(score, 0, 100)
->
-> # plt.hist(score, bins=10,
-> #                 color="lightgreen",
-> #                 edgecolor="black",
-> #                 )
-> counts, bins = plt.hist(score, bins=10,
->                         color="lightgreen",
->                         edgecolor="black",
->                         )
-> ```
+> 	import numpy as np
+> 	import matplotlib.pyplot as plt
+> 	# 生成100个平均值为75，标准差为10的正态分布数据
+> 	score = np.random.normal(loc=75, scale=10, size=100)
+> 	# 如果标准差不当可能会出现不合适的数,此时我们可以使用.clip()函数来限制数据的范围,比如限制在0到100之间
+> 	score = np.clip(score, 0, 100)
+> 	# plt.hist(score, bins=10,
+> 	#                 color="lightgreen",
+> 	#                 edgecolor="black",
+> 	#                 )
+> 	counts, bins = plt.hist(score, bins=10,
+> 	                        color="lightgreen",
+> 	                        edgecolor="black",
+> 	                        )
 
 > [!tip]- 柱子上方标注频数值
 > `plt.hist()` 会返回三个值：`counts`（每个柱子的高度/频数）、`bins`（柱子的边界数组）。利用这两个返回值，配合 `plt.text()` 可以在每个柱子上方精确标注数值。
 >
-> ```python
-> for count, bin_edge in zip(counts, bins[:-1]):
->     plt.text(bin_edge + (bins[1] - bins[0]) / 2, count + 0.3,
->              str(int(count)), ha="center", fontsize=9)
-> plt.title("Exam Scores")
-> plt.xlabel("Score")
-> plt.ylabel("# of Students")
-> plt.tight_layout()  # 调整布局以避免标签重叠
-> plt.show()
-> ```
+> 	for count, bin_edge in zip(counts, bins[:-1]):
+> 	    plt.text(bin_edge + (bins[1] - bins[0]) / 2, count + 0.3,
+> 	             str(int(count)), ha="center", fontsize=9)
+> 	plt.title("Exam Scores")
+> 	plt.xlabel("Score")
+> 	plt.ylabel("# of Students")
+> 	plt.tight_layout()  # 调整布局以避免标签重叠
+> 	plt.show()
 >
 > **标注逻辑解析：**
 > 1. **写什么数字？** → 柱子的高度，正好 `.hist` 函数返回的第一个参数就是柱子的高度，定义变量 `counts` 接收即可
@@ -384,31 +378,24 @@ graph LR
 ```
 
 > [!example] 2x2 网格多维科学曲线排版实战
-> ```python
-> import numpy as np
-> import matplotlib.pyplot as plt
->
-> # 子图
-> figure, axes = plt.subplots(2, 2)
-> # subplot()函数会返回一个包含所有子图的Figure对象和一个包含每个子图的Axes对象的数组
-> # 所以我们要操作子图 就是操作axes这个数组
-> # axes[0, 0]表示第一行第一列的子图, axes[0, 1]表示第一行第二列的子图, 以此类推
-> x = np.array([1, 2, 3, 4, 5])
->
-> axes[0, 0].plot(x, x * 2, color="red")
-> axes[0, 0].set_title("x*2")
->
-> axes[0, 1].plot(x, x ** 2, color="blue")
-> axes[0, 1].set_title("x**2")
->
-> axes[1, 0].plot(x, x ** 3, color="green")
-> axes[1, 0].set_title("x**3")
->
-> axes[1, 1].plot(x, x ** 4, color="orange")
-> axes[1, 1].set_title("x**4")
-> plt.tight_layout()  # 调整布局以避免子图重叠
-> plt.show()
-> ```
+> 	import numpy as np
+> 	import matplotlib.pyplot as plt
+> 	# 子图
+> 	figure, axes = plt.subplots(2, 2)
+> 	# subplot()函数会返回一个包含所有子图的Figure对象和一个包含每个子图的Axes对象的数组
+> 	# 所以我们要操作子图 就是操作axes这个数组
+> 	# axes[0, 0]表示第一行第一列的子图, axes[0, 1]表示第一行第二列的子图, 以此类推
+> 	x = np.array([1, 2, 3, 4, 5])
+> 	axes[0, 0].plot(x, x * 2, color="red")
+> 	axes[0, 0].set_title("x*2")
+> 	axes[0, 1].plot(x, x ** 2, color="blue")
+> 	axes[0, 1].set_title("x**2")
+> 	axes[1, 0].plot(x, x ** 3, color="green")
+> 	axes[1, 0].set_title("x**3")
+> 	axes[1, 1].plot(x, x ** 4, color="orange")
+> 	axes[1, 1].set_title("x**4")
+> 	plt.tight_layout()  # 调整布局以避免子图重叠
+> 	plt.show()
 
 ---
 
@@ -417,39 +404,31 @@ graph LR
 > 我们将复现教程中的终极综合实战项目：导入包含前 **150 只初代宝可梦各项属性** 的 `data.csv` 文件，利用 **Pandas** 提取并统计初代宝可梦的**主要属性（Type 1）分布数量**，随后使用 **Matplotlib** 绘制一张具有极高可读性的水平排名分布条形图。
 
 > [!example] 初代宝可梦属性数量统计全栈实现
-> ```python
-> import pandas as pd
-> import matplotlib.pyplot as plt
->
-> # 1. 利用 Pandas 读取宝可梦属性 CSV 报表
-> # 确保你的本地运行环境下包含该 data.csv 文件
-> df = pd.read_csv("data.csv")
->
-> # 2. 提取 'Type 1' (主要属性) 列，并利用 value_counts 计算各属性出现的次数
-> # ascending=True 表示升序排序，使出现频率最高的属性位于图表顶部
-> type_count = df["Type 1"].value_counts(ascending=True)
->
-> # 3. 创建高质感水平条形图 (Horizontal Bar Chart)
-> # X轴传入具体的宝可梦数量 (type_count.values)
-> # Y轴传入对应的索引属性名称，如 Grass, Fire 等 (type_count.index)
-> plt.barh(
->     type_count.index,
->     type_count.values,
->     color="#3282b8",
->     edgecolor="black"
-> )
->
-> # 4. 精细化图表标注
-> plt.title("Distribution of Pokemon by Primary Type (Original 150)", fontsize=16, fontweight="bold")
-> plt.xlabel("Total Count", fontsize=12)
-> plt.ylabel("Primary Type (Type 1)", fontsize=12)
->
-> # 5. 应用布局紧凑化优化，确保所有文字均完整包含在生成的图片画幅内
-> plt.tight_layout()
->
-> # 6. 渲染图形
-> plt.show()
-> ```
+> 	import pandas as pd
+> 	import matplotlib.pyplot as plt
+> 	# 1. 利用 Pandas 读取宝可梦属性 CSV 报表
+> 	# 确保你的本地运行环境下包含该 data.csv 文件
+> 	df = pd.read_csv("data.csv")
+> 	# 2. 提取 'Type 1' (主要属性) 列，并利用 value_counts 计算各属性出现的次数
+> 	# ascending=True 表示升序排序，使出现频率最高的属性位于图表顶部
+> 	type_count = df["Type 1"].value_counts(ascending=True)
+> 	# 3. 创建高质感水平条形图 (Horizontal Bar Chart)
+> 	# X轴传入具体的宝可梦数量 (type_count.values)
+> 	# Y轴传入对应的索引属性名称，如 Grass, Fire 等 (type_count.index)
+> 	plt.barh(
+> 	    type_count.index,
+> 	    type_count.values,
+> 	    color="#3282b8",
+> 	    edgecolor="black"
+> 	)
+> 	# 4. 精细化图表标注
+> 	plt.title("Distribution of Pokemon by Primary Type (Original 150)", fontsize=16, fontweight="bold")
+> 	plt.xlabel("Total Count", fontsize=12)
+> 	plt.ylabel("Primary Type (Type 1)", fontsize=12)
+> 	# 5. 应用布局紧凑化优化，确保所有文字均完整包含在生成的图片画幅内
+> 	plt.tight_layout()
+> 	# 6. 渲染图形
+> 	plt.show()
 
 ---
 
