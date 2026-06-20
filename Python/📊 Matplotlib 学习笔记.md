@@ -35,7 +35,8 @@ graph LR
 
 > [!example] 安装与导入
 > 	pip install matplotlib  📌 安装指令
-> 	print(matplotlib.__version__)# 验证安装版本
+> 
+> 	print(matplotlib.__version__) 📌 验证安装版本
 
 
 
@@ -49,21 +50,34 @@ graph LR
 
 > [!example]- 基础折线图画法（原生 List）
 > 	import matplotlib.pyplot as plt
+> 
 > 	📌 1. 准备数据 (年份与对应的学生数量)
+> 
 > 	years = [2023, 2024, 2025, 2026]
+> 
 > 	class_sizes = [15, 25, 30, 20]
+> 
 > 	📌 2. 映射坐标点
+> 
 > 	plt.plot(years, class_sizes)
+> 
 > 	📌 3. 必须调用 show() 才能唤起独立窗口渲染图表
+> 
 > 	plt.show()
 
 > [!example]- NumPy 数组加速版实现
 > 	import numpy as np
+> 
 > 	import matplotlib.pyplot as plt
+> 
 > 	📌 将原生列表转换为更高效的 NumPy 数组
+> 
 > 	x_arr = np.array([2023, 2024, 2025, 2026])
+> 
 > 	y_arr = np.array([15, 25, 30, 20])
+> 
 > 	plt.plot(x_arr, y_arr)
+> 
 > 	plt.show()
 
 ---
@@ -104,23 +118,41 @@ graph LR
 
 > [!example] 字典解包实战：统一多条折线的外观样式
 > 	import matplotlib.pyplot as plt
+> 
 > 	import numpy as np
+> 
 > 	x = np.array([2023, 2024, 2025, 2026])
+> 
 > 	y1 = np.array([15, 25, 1000, 20])
+> 
 > 	y2 = np.array([10, 20, 800, 10])
+> 
 > 	y3 = np.array([5, 15, 500, 5])
+> 
 > 	📌 这里使用dict()来创建字典,当然花括号也行
+> 
 > 	line_style = dict(
+> 
 > 	    marker=".",
+> 
 > 	    markersize=20,
+> 
 > 	    mfc="#1cd3fc",
+> 
 > 	    mec="#1cd3fc",
+> 
 > 	    linestyle="solid",
+> 
 > 	    linewidth="4",
+> 
 > 	)
+> 
 > 	plt.plot(x, y1, color="#1cfca2", **line_style)
+> 
 > 	plt.plot(x, y2, color="#1c5bfc", **line_style)
+> 
 > 	plt.plot(x, y3, color="#fc491c", **line_style)
+> 
 > 	plt.show()
 
 ---
@@ -136,27 +168,49 @@ graph LR
 
 > [!example] 轴文字修饰与刻度精准约束实战
 > 	plt.title("Class Size",
+> 
 > 	          fontsize=20,
+> 
 > 	          family="Arial",
+> 
 > 	          fontweight="bold",
+> 
 > 	          color="#1c5bfc",)
+> 
 > 	plt.xlabel("Year",
+> 
 > 	           fontsize=15,
+> 
 > 	           family="Arial",
+> 
 > 	           fontweight="bold",
+> 
 > 	           color="#1c5bfc",)
+> 
 > 	plt.ylabel("Students",
+> 
 > 	           fontsize=15,
+> 
 > 	           family="Arial",
+> 
 > 	           fontweight="bold",
+> 
 > 	           color="#1c5bfc",)
+> 
 > 	📌 自定义刻度
+> 
 > 	plt.tick_params(axis="both",
+> 
 > 	                colors="#1c5bfc",)
+> 
 > 	plt.xticks(x)  📌 强制让x轴的刻度只显示在特定数值上
+> 
 > 	plt.plot(x, y1)
+> 
 > 	plt.plot(x, y2)
+> 
 > 	plt.plot(x, y3)
+> 
 > 	plt.show()
 
 ---
@@ -179,12 +233,19 @@ graph LR
 
 > [!example] 网格线配置实战
 > 	x = [1, 2, 3, 4, 5]
+> 
 > 	y = [5, 10, 15, 20, 25]
+> 
 > 	plt.grid(axis="y",
+> 
 > 	         color="lightgray",
+> 
 > 	         linestyle="dashed",
+> 
 > 	         linewidth=2,)
+> 
 > 	plt.plot(x, y)
+> 
 > 	plt.show()
 
 ---
@@ -197,15 +258,25 @@ graph LR
 
 > [!example] 垂直和水平条形图代码实战
 > 	import numpy as np
+> 
 > 	import matplotlib.pyplot as plt
+> 
 > 	📌 离散类别与服务数值数据
+> 
 > 	categories = ["Grains", "Vegetables", "Fruits", "Dairy", "Meat", "Sweets"]
+> 
 > 	values = [20, 15, 30, 10, 25, 5]
+> 
 > 	plt.bar(categories, values)
+> 
 > 	📌 plt.barh(categories, values) 📌 水平柱状图
+> 
 > 	plt.title("Daily Consumption")
+> 
 > 	plt.xlabel("Food")
+> 
 > 	plt.ylabel("Quantity")
+> 
 > 	plt.show()
 
 ---
@@ -238,17 +309,29 @@ graph LR
 
 > [!example] 多维度个性化饼图实战
 > 	import numpy as np
+> 
 > 	import matplotlib.pyplot as plt
+> 
 > 	categories = np.array(["Freshman",
+> 
 > 	                       "Sophomore", "Junior", "Senior"])
+> 
 > 	values = np.array([150, 375, 800, 650])
+> 
 > 	colors = ["#1c5bfc", "#1cfca2", "#fc491c", "#1cd3fc"]
+> 
 > 	plt.title("Bro Code Class")
+> 
 > 	plt.pie(values, labels=categories,
+> 
 > 	        autopct="%1.1f%%", startangle=90,
+> 
 > 	        colors=colors,
+> 
 > 	        shadow=True,
+> 
 > 	        explode=[0, 0.1, 0, 0],)
+> 
 > 	plt.show()
 
 ---
@@ -264,25 +347,45 @@ graph LR
 
 > [!example] 双班级对比散点图实战
 > 	import numpy as np
+> 
 > 	import matplotlib.pyplot as plt
+> 
 > 	x1 = np.array([0, 1, 1, 2, 3, 4, 5, 6, 7, 7, 8])
+> 
 > 	y1 = np.array([55, 60, 65, 62, 68,  70, 75, 78, 82, 85, 87])
+> 
 > 	x2 = np.array([0, 1, 2, 2, 3, 4, 5, 6, 7, 7, 8])
+> 
 > 	y2 = np.array([50, 58, 65, 70, 72,  78, 83, 88, 92, 95, 98])
+> 
 > 	plt.scatter(x1, y1,
+> 
 > 	            color=”skyblue”,
+> 
 > 	            alpha=0.5,
+> 
 > 	            s=200,
+> 
 > 	            label=”Student A”)
+> 
 > 	plt.scatter(x2, y2,
+> 
 > 	            color=”pink”,
+> 
 > 	            alpha=0.5,
+> 
 > 	            s=200,
+> 
 > 	            label=”Student B”)
+> 
 > 	plt.title(“Test Scores”)
+> 
 > 	plt.xlabel(“Hours Studied”)
+> 
 > 	plt.ylabel(“Grade”)
+> 
 > 	plt.legend()
+> 
 > 	plt.show()
 
 ---
@@ -319,36 +422,60 @@ graph LR
 
 > [!example]- 基础直方图与数据约束
 > 	import numpy as np
+> 
 > 	import matplotlib.pyplot as plt
+> 
 > 	📌 生成100个平均值为75，标准差为10的正态分布数据
+> 
 > 	score = np.random.normal(loc=75, scale=10, size=100)
+> 
 > 	📌 如果标准差不当可能会出现不合适的数,此时我们可以使用.clip()函数来限制数据的范围,比如限制在0到100之间
+> 
 > 	score = np.clip(score, 0, 100)
+> 
 > 	📌 plt.hist(score, bins=10,
+> 
 > 	📌                 color="lightgreen",
+> 
 > 	📌                 edgecolor="black",
+> 
 > 	📌                 )
+> 
 > 	counts, bins = plt.hist(score, bins=10,
+> 
 > 	                        color="lightgreen",
+> 
 > 	                        edgecolor="black",
+> 
 > 	                        )
 
 > [!tip]- 柱子上方标注频数值
 > `plt.hist()` 会返回三个值：`counts`（每个柱子的高度/频数）、`bins`（柱子的边界数组）。利用这两个返回值，配合 `plt.text()` 可以在每个柱子上方精确标注数值。
->
+> 
 > 	for count, bin_edge in zip(counts, bins[:-1]):
+> 
 > 	    plt.text(bin_edge + (bins[1] - bins[0]) / 2, count + 0.3,
+> 
 > 	             str(int(count)), ha="center", fontsize=9)
+> 
 > 	plt.title("Exam Scores")
+> 
 > 	plt.xlabel("Score")
+> 
 > 	plt.ylabel("# of Students")
+> 
 > 	plt.tight_layout()  📌 调整布局以避免标签重叠
+> 
 > 	plt.show()
->
+> 
 > **标注逻辑解析：**
+> 
 > 1. **写什么数字？** → 柱子的高度，正好 `.hist` 函数返回的第一个参数就是柱子的高度，定义变量 `counts` 接收即可
+> 
 > 2. **写在哪里？** → 柱子的中间位置。水平坐标 `x = bin_edge + (bins[1] - bins[0]) / 2`（左边界 + 柱子宽度的一半），垂直坐标 `y = count + 0.3`（柱子高度 + 小偏移量）
+> 
 > 3. **如何配对？** → 使用 `zip()` 函数将 `counts` 和 `bins[:-1]` 两个数组内的元素进行配对，确保每个数值正确显示到对应的柱子上
+> 
 > 4. `str(int(count))` → 将高度转换为字符串类型，因为 `.text()` 函数要求文本参数是字符串；`ha="center"` → 水平居中对齐
 
 ---
@@ -379,22 +506,39 @@ graph LR
 
 > [!example] 2x2 网格多维科学曲线排版实战
 > 	import numpy as np
+> 
 > 	import matplotlib.pyplot as plt
+> 
 > 	📌 子图
+> 
 > 	figure, axes = plt.subplots(2, 2)
+> 
 > 	📌 subplot()函数会返回一个包含所有子图的Figure对象和一个包含每个子图的Axes对象的数组
+> 
 > 	📌 所以我们要操作子图 就是操作axes这个数组
+> 
 > 	📌 axes[0, 0]表示第一行第一列的子图, axes[0, 1]表示第一行第二列的子图, 以此类推
+> 
 > 	x = np.array([1, 2, 3, 4, 5])
+> 
 > 	axes[0, 0].plot(x, x * 2, color="red")
+> 
 > 	axes[0, 0].set_title("x*2")
+> 
 > 	axes[0, 1].plot(x, x ** 2, color="blue")
+> 
 > 	axes[0, 1].set_title("x**2")
+> 
 > 	axes[1, 0].plot(x, x ** 3, color="green")
+> 
 > 	axes[1, 0].set_title("x**3")
+> 
 > 	axes[1, 1].plot(x, x ** 4, color="orange")
+> 
 > 	axes[1, 1].set_title("x**4")
+> 
 > 	plt.tight_layout()  📌 调整布局以避免子图重叠
+> 
 > 	plt.show()
 
 ---
@@ -405,29 +549,53 @@ graph LR
 
 > [!example] 初代宝可梦属性数量统计全栈实现
 > 	import pandas as pd
+> 
 > 	import matplotlib.pyplot as plt
+> 
 > 	📌 1. 利用 Pandas 读取宝可梦属性 CSV 报表
+> 
 > 	📌 确保你的本地运行环境下包含该 data.csv 文件
+> 
 > 	df = pd.read_csv("data.csv")
+> 
 > 	📌 2. 提取 'Type 1' (主要属性) 列，并利用 value_counts 计算各属性出现的次数
+> 
 > 	📌 ascending=True 表示升序排序，使出现频率最高的属性位于图表顶部
+> 
 > 	type_count = df["Type 1"].value_counts(ascending=True)
+> 
 > 	📌 3. 创建高质感水平条形图 (Horizontal Bar Chart)
+> 
 > 	📌 X轴传入具体的宝可梦数量 (type_count.values)
+> 
 > 	📌 Y轴传入对应的索引属性名称，如 Grass, Fire 等 (type_count.index)
+> 
 > 	plt.barh(
+> 
 > 	    type_count.index,
+> 
 > 	    type_count.values,
+> 
 > 	    color="#3282b8",
+> 
 > 	    edgecolor="black"
+> 
 > 	)
+> 
 > 	📌 4. 精细化图表标注
+> 
 > 	plt.title("Distribution of Pokemon by Primary Type (Original 150)", fontsize=16, fontweight="bold")
+> 
 > 	plt.xlabel("Total Count", fontsize=12)
+> 
 > 	plt.ylabel("Primary Type (Type 1)", fontsize=12)
+> 
 > 	📌 5. 应用布局紧凑化优化，确保所有文字均完整包含在生成的图片画幅内
+> 
 > 	plt.tight_layout()
+> 
 > 	📌 6. 渲染图形
+> 
 > 	plt.show()
 
 ---
