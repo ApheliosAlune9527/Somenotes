@@ -332,7 +332,7 @@ graph LR
 > 
 > 	plt.pie(values, labels=categories,
 > 
-> 	        autopct="%1.1f%%", startangle=90,
+> 	        autopct="%1.1f\%\%", startangle=90,
 > 
 > 	        colors=colors,
 > 
