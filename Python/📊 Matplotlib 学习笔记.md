@@ -536,17 +536,17 @@ graph LR
 > 
 > 	axes[0, 0].set_title("x*2")
 > 
-> 	axes[0, 1].plot(x, x ** 2, color="blue")
+> 	axes[0, 1].plot(x, x \*\* 2, color="blue")
 > 
-> 	axes[0, 1].set_title("x**2")
+> 	axes[0, 1].set_title("x\*\*2")
 > 
-> 	axes[1, 0].plot(x, x ** 3, color="green")
+> 	axes[1, 0].plot(x, x \*\* 3, color="green")
 > 
-> 	axes[1, 0].set_title("x**3")
+> 	axes[1, 0].set_title("x\*\*3")
 > 
-> 	axes[1, 1].plot(x, x ** 4, color="orange")
+> 	axes[1, 1].plot(x, x \*\* 4, color="orange")
 > 
-> 	axes[1, 1].set_title("x**4")
+> 	axes[1, 1].set_title("x\*\*4")
 > 
 > 	plt.tight_layout()  📌 调整布局以避免子图重叠
 > 
