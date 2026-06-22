@@ -49,6 +49,7 @@ graph LR
 3. **NumPy 强力支持**：虽然 Python 基础 `list` 可直接画图，但在真实数据科学场景中，**NumPy Array** 因为连续内存存储和底层向量化计算，速度极快，是更标准和推荐的数据载体。
 
 > [!example]- 基础折线图画法（原生 List）
+> 
 > 	import matplotlib.pyplot as plt
 > 
 > 	📌 1. 准备数据 (年份与对应的学生数量)
@@ -117,6 +118,7 @@ graph LR
 | `color` | `c` | 颜色名、RGB元组、十六进制代码 | 折线的整体颜色 |
 
 > [!example] 字典解包实战：统一多条折线的外观样式
+> 
 > 	import matplotlib.pyplot as plt
 > 
 > 	import numpy as np
@@ -167,6 +169,7 @@ graph LR
 3. **刻度全局修改 (`tick_params`)**：不仅可以调节坐标系外圈的标签，还可以快速对两轴的物理刻度线颜色、粗细进行整顿。
 
 > [!example] 轴文字修饰与刻度精准约束实战
+> 
 > 	plt.title("Class Size",
 > 
 > 	          fontsize=20,
@@ -232,6 +235,9 @@ graph LR
 ```
 
 > [!example] 网格线配置实战
+> 
+> 	import matplotlib.pyplot as plts
+> 	
 > 	x = [1, 2, 3, 4, 5]
 > 
 > 	y = [5, 10, 15, 20, 25]
@@ -257,6 +263,7 @@ graph LR
 2. **水平条形图 (`barh`)**：适合类别名称文字非常长、或是类别数量很多时的展示，可以有效防止 $X$ 轴文字发生拥挤重叠。
 
 > [!example] 垂直和水平条形图代码实战
+> 
 > 	import numpy as np
 > 
 > 	import matplotlib.pyplot as plt
@@ -308,6 +315,7 @@ graph LR
 ```
 
 > [!example] 多维度个性化饼图实战
+> 
 > 	import numpy as np
 > 
 > 	import matplotlib.pyplot as plt
@@ -346,6 +354,7 @@ graph LR
 3. **图例 (Legend)**：当一个坐标系内包含两个不同的群体点集（如 A 班和 B 班）时，使用标签标记并通过 `plt.legend()` 将其显示出来，实现多维对比。
 
 > [!example] 双班级对比散点图实战
+> 
 > 	import numpy as np
 > 
 > 	import matplotlib.pyplot as plt
@@ -421,6 +430,7 @@ graph LR
 ```
 
 > [!example]- 基础直方图与数据约束
+> 
 > 	import numpy as np
 > 
 > 	import matplotlib.pyplot as plt
@@ -505,6 +515,7 @@ graph LR
 ```
 
 > [!example] 2x2 网格多维科学曲线排版实战
+> 
 > 	import numpy as np
 > 
 > 	import matplotlib.pyplot as plt
@@ -548,6 +559,7 @@ graph LR
 > 我们将复现教程中的终极综合实战项目：导入包含前 **150 只初代宝可梦各项属性** 的 `data.csv` 文件，利用 **Pandas** 提取并统计初代宝可梦的**主要属性（Type 1）分布数量**，随后使用 **Matplotlib** 绘制一张具有极高可读性的水平排名分布条形图。
 
 > [!example] 初代宝可梦属性数量统计全栈实现
+> 
 > 	import pandas as pd
 > 
 > 	import matplotlib.pyplot as plt

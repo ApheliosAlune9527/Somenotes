@@ -4,8 +4,8 @@
   "title": "E:\\All_Projects\\pycharm_project\\Data _analysis_stu...",
   "titleGenerationStatus": "failed",
   "createdAt": 1781935051718,
-  "updatedAt": 1781952447711,
-  "lastResponseAt": 1781952447711,
+  "updatedAt": 1782099956089,
+  "lastResponseAt": 1782099956089,
   "sessionId": "a9b8436f-fcce-4f3b-9f1c-314dfd2601c4",
   "providerState": {
     "providerSessionId": "a9b8436f-fcce-4f3b-9f1c-314dfd2601c4"
@@ -13,12 +13,11 @@
   "currentNote": "Python/📊 Matplotlib 学习笔记.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 373,
+    "inputTokens": 0,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 144320,
+    "cacheReadInputTokens": 0,
     "contextWindow": 1000000,
-    "contextTokens": 144693,
-    "percentage": 14,
-    "contextWindowIsAuthoritative": true
+    "contextTokens": 0,
+    "percentage": 0
   }
 }
