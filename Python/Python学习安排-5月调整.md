@@ -126,12 +126,12 @@
 
 ## 六、OOP 内容与 ROS/机械臂的关联
 
-| OOP 概念 | 在 ROS/机械臂中的应用 |
-|----------|----------------------|
-| 封装 | 机械臂节点封装传感器数据、关节状态、控制指令 |
-| 继承 | `class MyNode(rclpy.node.Node)`、`class MyArm(LifecycleNode)`、MoveIt2 规划插件继承基类 |
-| 多态 | 不同型号机械臂统一 `move_to()` 接口，上层任务规划不关心底层实现 |
-| 抽象类 | ros2_control 的 `ControllerInterface`，你要写控制器必须实现其抽象方法 |
+| OOP 概念 | 在 ROS/机械臂中的应用                                                                                   |
+| ------ | ----------------------------------------------------------------------------------------------- |
+| 封装     | 机械臂节点封装传感器数据、关节状态、控制指令                                                                          |
+| 继承     | `class MyNode(rclpy.node.Node)`、`class MyArm(LifecycleNode)`、MoveIt2 规划插件继承基类                   |
+| 多态     | 不同型号机械臂统一 `move_to()` 接口，上层任务规划不关心底层实现                                                          |
+| 抽象类    | ros2_control 的 `ControllerInterface`，你要写控制器必须实现其抽象方法                                            |
 | 模板设计模式 | ros2_control 控制器生命周期 `on_configure → on_activate → update → on_deactivate → on_cleanup`；状态机监督控制 |
 
 ---
