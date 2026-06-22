@@ -638,5 +638,3 @@ graph LR
 4. **alpha 透明度**：散点图密集时用 `alpha` 解决重叠问题
 
 ---
-
-> 📁 项目路径：`E:\All_Projects\pycharm_project\Data _analysis_study\matplotlib_course\`

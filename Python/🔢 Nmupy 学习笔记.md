@@ -1194,5 +1194,4 @@ print(my_list)  # [2, 2, 2, 1]
 
 ---
 
-> 📁 项目路径：`E:\All_Projects\pycharm_project\Data _analysis_study\numpy_course\`
 

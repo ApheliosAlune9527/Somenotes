@@ -4,6 +4,20 @@
   "title": "参照\"F:\\obsidiannote\\Alune\\Python\\📊 Matplotlib 学习笔记",
   "titleGenerationStatus": "failed",
   "createdAt": 1782103786583,
-  "updatedAt": 1782103789693,
-  "sessionId": null
+  "updatedAt": 1782104048495,
+  "lastResponseAt": 1782104048495,
+  "sessionId": "ff943ba9-12a6-405a-a840-c94fb20964a4",
+  "providerState": {
+    "providerSessionId": "ff943ba9-12a6-405a-a840-c94fb20964a4"
+  },
+  "currentNote": "Python/🐼 Pandas 学习笔记.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 216,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 54784,
+    "contextWindow": 1000000,
+    "contextTokens": 55000,
+    "percentage": 6
+  }
 }
