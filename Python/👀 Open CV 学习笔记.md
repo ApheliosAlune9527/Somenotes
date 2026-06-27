@@ -66,12 +66,12 @@ cap = cv.VideoCapture(path2)
 📌 因为是视频是一帧一帧读取的, 所以需要使用while循环
 while True:
 	isTrue, frame = cap.read()
-	if not True:
+	if not isTrue:
 		print("📹 视频播放结束，或者摄像头已断开连接。安全退出中...")
 		break
 	cv.imshow("video", frame)
 	
-	if cv.waitKey(20) & 0xFF = ord('0')
+	if cv.waitKey(20) & 0xFF == ord('0')
 		break
 		
 cap.release()
@@ -101,13 +101,14 @@ cv.destroyAllWindows()
 > -  `ord()` 是 Python 的一个内置函数，它的全称是 **ordinal（序号/顺序）**。**作用:** 输入一个字符,返回ASCII 码值。
 > 	<br>
 > 	- `& 0xFF` 是 **按位与** 操作, 作用是保留低8位, 屏蔽高位。
-> 	- - 在 64 位操作系统上，`cv.waitKey()` 返回的可能是一个 32 位的整数（而不仅仅是 8 位的 ASCII 码）。- `0xFF` 的二进制是 `11111111`（即低 8 位全为 1，高位全为 0）。
-- 通过按位与运算 `& 0xFF`，可以将返回的 32 位整数的高 24 位全部清零，只保留最右边的 8 位。
-    
-- 这样可以确保在不同操作系统（如 Windows, Linux, macOS）或不同架构（32位/64位）下，获取到的按键值都是标准的 ASCII 码，避免因系统差异导致比对失败。
->   
->   
->   
->   
+> 	<br>
+> 	- 在 64 位操作系统上，`cv.waitKey()` 返回的可能是一个 32 位的整数（而不仅仅是 8 位的 ASCII 码）。
+> 	<br>
+> 	- `0xFF` 的二进制是 `11111111`（即低 8 位全为 1，高位全为 0）。
+> 	<br>
+> 	- 通过按位与运算 `& 0xFF`，可以将返回的 32 位整数的高 24 位全部清零，只保留最右边的 8 位。
+> 	<br>
+> 	- 这样可以确保在不同操作系统（如 Windows, Linux, macOS）或不同架构（32位/64位）下，获取到的按键值都是标准的 ASCII 码，避免因系统差异导致比对失败。
+> 	<br>
 
 
