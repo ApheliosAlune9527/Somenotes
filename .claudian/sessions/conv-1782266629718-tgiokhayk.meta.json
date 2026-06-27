@@ -4,8 +4,8 @@
   "title": "Explain selected line",
   "titleGenerationStatus": "success",
   "createdAt": 1782266629718,
-  "updatedAt": 1782266904364,
-  "lastResponseAt": 1782266904364,
+  "updatedAt": 1782268248072,
+  "lastResponseAt": 1782268248072,
   "sessionId": "1b10035d-9449-4bcd-a0e2-e85727bc8295",
   "providerState": {
     "providerSessionId": "1b10035d-9449-4bcd-a0e2-e85727bc8295"
@@ -13,11 +13,11 @@
   "currentNote": "自动控制理论/第01章 自动控制的一般概念.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 9916,
-    "cacheCreationInputTokens": 4673,
-    "cacheReadInputTokens": 32711,
+    "inputTokens": 9513,
+    "cacheCreationInputTokens": 5046,
+    "cacheReadInputTokens": 35326,
     "contextWindow": 1000000,
-    "contextTokens": 47300,
+    "contextTokens": 49885,
     "percentage": 5,
     "contextWindowIsAuthoritative": true
   }
