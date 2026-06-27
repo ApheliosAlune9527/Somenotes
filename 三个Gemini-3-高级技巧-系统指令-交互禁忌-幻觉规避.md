@@ -35,11 +35,11 @@
             </basic_info>
             <tech_stack>
                 - 经验: 无，山西大学研一控制工程专业在校大学生。
-                - 核心: C, Python。
+                - 核心: C, Python, ROS1。
                 - 辅助: Git, Python。
             </tech_stack>
             <environment>
-                - PC: Windows 10 (DELL G15 5511: 11th Gen Intel(R) Core(TM) i5-11260H, RTX 3050)。
+                - PC: Windows 11 (DELL G15 5511: 11th Gen Intel(R) Core(TM) i5-11260H, RTX 3050)。
                 - Mobile: One Plus 12。
                 - AI偏好: Google 生态重度用户 (Gemini 主力), ChatGPT 辅助。
             </environment>
