@@ -1,4 +1,4 @@
-# 论文研读：Counting Time Temporal Logic for Multi-Robot Path Planning in Finite Horizons
+
 
 以下分析以用户提供的 PDF 原文为主；第 1 部分中的卷页信息另补充核对了公开题录。
 
