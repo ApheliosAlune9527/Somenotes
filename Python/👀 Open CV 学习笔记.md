@@ -1,3 +1,18 @@
+> [!warning] NumPy vs OpenCV：宽高顺序的"暗坑"
+> 
+> 这是 OpenCV 初学者最容易犯的错，**贯穿所有后续操作**（画图、缩放、裁剪等），务必牢记。
+> 
+> | 来源 | 顺序 | 代码写法 |
+> |:---:|:---:|------|
+> | **NumPy**（`shape`） | **(高, 宽)** | `frame.shape[0]` = 高度，`frame.shape[1]` = 宽度 |
+> | **OpenCV**（`resize`、`circle` 等） | **(宽, 高)** | `dimensions = (width, height)` |
+> 
+> **为什么顺序不同？**
+> *   **NumPy 的视角（矩阵视角）**：把图片看作矩阵，规格是"行 × 列"，行数 = 高度，列数 = 宽度 → 所以是 **(高, 宽)**。
+> *   **OpenCV 的视角（几何视角）**：使用数学课上的**笛卡尔坐标系 $(X, Y)$**，$X$ = 宽度，$Y$ = 高度 → 所以是 **(宽, 高)**。
+> 
+> **口诀：读 shape 是"高宽"，传参数是"宽高"。** 懂了这一个坑，你就超越了 90% 的 OpenCV 初学者。
+
 ## 一、Open CV 的安装
 
 可以在虚拟环境下安装也可以全局安装 <br>
@@ -197,3 +212,24 @@ cv.destroyAllWindows()
 > 	<br>
 
 
+## 三、resize和rescale视频和图片
+
+```mermaid
+graph TD
+    A["① 拿到原图的宽和高
+    shape[0] = 高, shape[1] = 宽"] --> B["② 乘以缩放比例，转换成整数
+    int(宽 * scale), int(高 * scale)"]
+    B --> C["③ 打包成 (宽, 高) 的元组
+    dimensions = (width, height)"]
+    C --> D["④ 调用 cv.resize 缩小并返回
+    return cv.resize(frame, dimensions, interpolation=cv.INTER_AREA)"]
+```
+
+
+```python
+import cv2 as cv
+path2 = 
+
+def rescaleFrame(frame, scale=0.75)
+width = 
+```
