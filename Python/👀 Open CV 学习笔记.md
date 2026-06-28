@@ -165,7 +165,7 @@ cap = cv.VideoCapture(path2)
 
 📌 因为是视频是一帧一帧读取的, 所以需要使用while循环
 while True:
-	isTrue, frame = cap.read()
+	isTrue, frame = cap.read() # dou
 	if not isTrue:
 		print("📹 视频播放结束，或者摄像头已断开连接。安全退出中...")
 		break
@@ -228,8 +228,44 @@ graph TD
 
 ```python
 import cv2 as cv
-path2 = 
 
 def rescaleFrame(frame, scale=0.75)
-width = 
+	width = int(frame.shape[1] * scale) # 拿到原图的宽然后缩小
+	height = int(frame.shape[0] * scale) # 拿到原图的高然后缩小
+	dimensions = (width,height) # OpenCV 缩放函数需要的尺寸参数是一个元组（Tuple），所以把算好的宽和高用圆括号 () 打包在一起。
+return cv.resize(frame, dimensions, interpolation=cv.INTER_AREA)
+
+path2 = "E:/All_Projects/pycharm_project/Data _analysis_study/Opencv/attachments/5.1-2025-深圳大学(2).mp4"
+
+cap = cv.VedioCapture(path2)
+
+while True:
+	isTrue, frame = cap.read() 
+
 ```
+
+> [!tip]
+> - 我们不需要自己写复杂的图像缩放数学公式，OpenCV 提供了一个现成的 API 叫 `cv.resize(frame, dimensions, interpolation = cv.INTER_AREA)`。
+> 	<br>
+>  - 只需要去查它的**函数签名（接口说明）**，知道它需要三个参数：
+> 	  - 参数1：frame（原图）
+> 	  - 参数2：dimensions（新尺寸）
+> 	  - 参数3：interpolation（插值算法）。代码里用的 `cv.INTER_AREA` 是 OpenCV 官方推荐的 **最适合缩小图像** 的数学算法。
+> 	  - 类似的还有 :
+>		  - `cv.INTER_NEAREST`（最近邻插值）：直接复制最近的像素，不计算。**最快但最粗糙**，适合放大像素画。
+>		  - `cv.INTER_LINEAR`（双线性插值）：用周围 4 个像素加权平均。**默认值**，速度和质量平衡。
+>		  - `cv.INTER_CUBIC`（双三次插值）：用周围 16 个像素加权平均。比 LINEAR 更平滑，适合**放大**图像。
+>		  - `cv.INTER_LANCZOS4`（Lanczos 插值）：用周围 8×8 像素计算。**质量最高但最慢**。
+>
+>	**选择口诀：**
+>	  - **缩小**图像 → 用 `INTER_AREA`（避免波纹伪影）
+>	  - **放大**图像 → 用 `INTER_CUBIC` 或 `INTER_LANCZOS4`（更清晰）
+>	  - **速度优先** → 用 `INTER_NEAREST`（最快）
+>	  - **不确定** → 不写这个参数，默认 `INTER_LINEAR`（够用）
+
+    
+
+        
+    
+        
+    
