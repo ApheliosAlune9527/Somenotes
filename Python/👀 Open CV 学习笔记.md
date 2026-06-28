@@ -328,6 +328,8 @@ import cv2 as cv
 import numpy as np
 
 blank_image = np.zeros((500, 500, 3), dtype='uint8')  # 500x500 的黑色图像
+
+white_image = np.ones((500, 500, 3), dtype='uint8') * 255 # 500×500 的白色图像
 ```
 
 *   `np.zeros()` 创建一个全零数组（全零 = 全黑）
@@ -346,61 +348,103 @@ blank_image[200:300, 300:400] = 0, 0, 255
 cv.imshow('Green with Red Square', blank_image)
 ```
 
-> [!tip] 数组切片上色的原理
-> 还记得"药盒"类比吗？`blank_image[200:300, 300:400]` 就是选中第 200\~300 行、第 300\~400 列的所有药盒，然后把它们统一换成新颜色。
-
 ### 3. 绘制矩形
+
+**函数签名：**
+
+```python
+cv.rectangle(img, pt1, pt2, color, thickness=1, lineType=LINE_8, shift=0)
+```
+
+**逐个参数解释：**
+
+*   **`img`**：要绘制的图像（NumPy 数组）。这里是 `blank_image`。
+*   **`pt1`**：矩形的**左上角**坐标，格式为 `(x, y)`。这里写 `(0, 0)` 表示从图像左上角开始画。
+*   **`pt2`**：矩形的**右下角**坐标，格式为 `(x, y)`。这里写 `(blank_image.shape[1]//2, blank_image.shape[0]//2)`，即宽的一半、高的一半，画到图像中心。
+    *   ⚠️ 注意：又是那个**宽高顺序**的坑！`shape[1]` 是宽（X），`shape[0]` 是高（Y）。
+    *   `//` 是整除运算符，保证坐标是整数（像素不能是小数）。
+*   **`color`**：矩形的颜色，格式为 `(B, G, R)`。这里写 `(46, 123, 85)`。
+*   **`thickness`**：线条粗细（像素）。这里写 `5`。如果设为 **`-1`**，则**填充满整个矩形**，不画边框。
+*   **`lineType`**：线条类型，一般用默认值就好，不需要改。
+*   **`shift`**：坐标小数点位数，一般用默认值 `0`，不需要改。
 
 ```python
 cv.rectangle(blank_image, (0, 0), (blank_image.shape[1]//2, blank_image.shape[0]//2), (46, 123, 85), thickness=5)
 cv.imshow("Rectangle", blank_image)
 ```
 
-| 参数 | 含义 |
-|------|------|
-| `(0, 0)` | 左上角坐标 (x, y) |
-| `(shape[1]//2, shape[0]//2)` | 右下角坐标（注意：宽高顺序！用整除 `//` 保证是整数） |
-| `(46, 123, 85)` | 颜色（BGR） |
-| `thickness=5` | 线宽，设为 `-1` 则填满整个矩形 |
-
 ### 4. 绘制圆形
+
+**函数签名：**
+
+```python
+cv.circle(img, center, radius, color, thickness=1, lineType=LINE_8, shift=0)
+```
+
+**逐个参数解释：**
+
+*   **`img`**：要绘制的图像。这里是 `blank_image`。
+*   **`center`**：圆心坐标，格式为 `(x, y)`。这里写 `(blank_image.shape[1]//2, blank_image.shape[0]//2)`，即图像正中心。
+*   **`radius`**：半径（像素）。这里写 `40`。
+*   **`color`**：颜色，格式为 `(B, G, R)`。这里写 `(0, 0, 255)`，纯红色。
+*   **`thickness`**：线条粗细。这里写 **`-1`**，表示**填充实心圆**。如果写正数（比如 `3`），则只画一个空心圆环。
+*   **`lineType`**：线条类型，默认值即可。
+*   **`shift`**：坐标小数点位数，默认值 `0` 即可。
 
 ```python
 cv.circle(blank_image, (blank_image.shape[1]//2, blank_image.shape[0]//2), 40, (0, 0, 255), thickness=-1)
 cv.imshow("Circle", blank_image)
 ```
 
-| 参数 | 含义 |
-|------|------|
-| `(shape[1]//2, shape[0]//2)` | 圆心坐标（图片正中心） |
-| `40` | 半径（像素） |
-| `(0, 0, 255)` | 颜色（红色） |
-| `thickness=-1` | `-1` 表示**填充实心圆**，正数则只画边框 |
-
 ### 5. 绘制线条
+
+**函数签名：**
+
+```python
+cv.line(img, pt1, pt2, color, thickness=1, lineType=LINE_8, shift=0)
+```
+
+**逐个参数解释：**
+
+*   **`img`**：要绘制的图像。这里是 `blank_image`。
+*   **`pt1`**：起点坐标，格式为 `(x, y)`。这里写 `(0, 0)`，即左上角。
+*   **`pt2`**：终点坐标，格式为 `(x, y)`。这里写 `(blank_image.shape[1]//2, blank_image.shape[0]//2)`，即图像中心。
+*   **`color`**：颜色，格式为 `(B, G, R)`。这里写 `(255, 255, 255)`，纯白色。
+*   **`thickness`**：线条粗细（像素）。这里写 `3`。
+*   **`lineType`**：线条类型，默认值即可。
+*   **`shift`**：坐标小数点位数，默认值 `0` 即可。
 
 ```python
 cv.line(blank_image, (0, 0), (blank_image.shape[1]//2, blank_image.shape[0]//2), (255, 255, 255), thickness=3)
 cv.imshow("Line", blank_image)
 ```
 
-*   起点 `(0, 0)` → 终点 `(宽的一半, 高的一半)`，画一条从左上角到中心的白线。
-
 ### 6. 绘制文字
+
+**函数签名：**
+
+```python
+cv.putText(img, text, org, fontFace, fontScale, color, thickness=1, lineType=LINE_8, bottomLeftOrigin=False)
+```
+
+**逐个参数解释：**
+
+*   **`img`**：要绘制的图像。这里是 `blank_image`。
+*   **`text`**：要写的文字内容。这里写 `"Hello World"`。
+*   **`org`**：文字**左下角**的坐标，格式为 `(x, y)`。这里写 `(225, 225)`。
+    *   ⚠️ 注意：不是左上角，是**左下角**！这是 OpenCV 文字绘制的特殊约定。
+*   **`fontFace`**：字体样式。这里写 `cv.FONT_HERSHEY_TRIPLEX`（三线体，最常用的字体）。
+    *   其他可选值：`FONT_HERSHEY_SIMPLEX`（简体）、`FONT_HERSHEY_COMPLEX`（复体）等。
+*   **`fontScale`**：字体大小（缩放倍数）。这里写 `1.0`，即原始大小。写 `2.0` 就放大一倍。
+*   **`color`**：颜色，格式为 `(B, G, R)`。这里写 `(255, 255, 255)`，纯白色。
+*   **`thickness`**：笔画粗细（像素）。这里写 `2`。
+*   **`lineType`**：线条类型，默认值即可。
+*   **`bottomLeftOrigin`**：坐标原点是否在左下角，默认 `False`，一般不需要改。
 
 ```python
 cv.putText(blank_image, "Hello World", (225, 225), cv.FONT_HERSHEY_TRIPLEX, 1.0, (255, 255, 255), thickness=2)
 cv.imshow("Text", blank_image)
 ```
-
-| 参数 | 含义 |
-|------|------|
-| `"Hello World"` | 要写的文字 |
-| `(225, 225)` | 文字左下角的坐标 |
-| `cv.FONT_HERSHEY_TRIPLEX` | 字体样式 |
-| `1.0` | 字体大小（缩放倍数） |
-| `(255, 255, 255)` | 颜色（白色） |
-| `thickness=2` | 笔画粗细 |
 
 ### 完整代码
 
@@ -436,3 +480,4 @@ cv.imshow("Text", blank_image)
 cv.waitKey(0)
 ```
 
+ 
