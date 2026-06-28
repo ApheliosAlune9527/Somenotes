@@ -319,3 +319,120 @@ changeRes(1280, 720)
 
 ## 四、在图像上绘制形状和书写文字 
 
+### 1. 创建画布
+
+OpenCV 里没有"新建画布"按钮，但可以用 NumPy 创建一张纯黑的空白图像：
+
+```python
+import cv2 as cv
+import numpy as np
+
+blank_image = np.zeros((500, 500, 3), dtype='uint8')  # 500x500 的黑色图像
+```
+
+*   `np.zeros()` 创建一个全零数组（全零 = 全黑）
+*   `(500, 500, 3)` → 高500、宽500、3个颜色通道（BGR）
+*   `dtype='uint8'` → 每个像素值范围 0\~255（无符号8位整数）
+
+### 2. 给图像上色
+
+```python
+# 全图铺满颜色（注意 BGR 顺序，不是 RGB）
+blank_image[:] = 34, 139, 34
+cv.imshow('Green', blank_image)
+
+# 部分区域上色：200到300行，300到400列的区域涂成红色
+blank_image[200:300, 300:400] = 0, 0, 255
+cv.imshow('Green with Red Square', blank_image)
+```
+
+> [!tip] 数组切片上色的原理
+> 还记得"药盒"类比吗？`blank_image[200:300, 300:400]` 就是选中第 200\~300 行、第 300\~400 列的所有药盒，然后把它们统一换成新颜色。
+
+### 3. 绘制矩形
+
+```python
+cv.rectangle(blank_image, (0, 0), (blank_image.shape[1]//2, blank_image.shape[0]//2), (46, 123, 85), thickness=5)
+cv.imshow("Rectangle", blank_image)
+```
+
+| 参数 | 含义 |
+|------|------|
+| `(0, 0)` | 左上角坐标 (x, y) |
+| `(shape[1]//2, shape[0]//2)` | 右下角坐标（注意：宽高顺序！用整除 `//` 保证是整数） |
+| `(46, 123, 85)` | 颜色（BGR） |
+| `thickness=5` | 线宽，设为 `-1` 则填满整个矩形 |
+
+### 4. 绘制圆形
+
+```python
+cv.circle(blank_image, (blank_image.shape[1]//2, blank_image.shape[0]//2), 40, (0, 0, 255), thickness=-1)
+cv.imshow("Circle", blank_image)
+```
+
+| 参数 | 含义 |
+|------|------|
+| `(shape[1]//2, shape[0]//2)` | 圆心坐标（图片正中心） |
+| `40` | 半径（像素） |
+| `(0, 0, 255)` | 颜色（红色） |
+| `thickness=-1` | `-1` 表示**填充实心圆**，正数则只画边框 |
+
+### 5. 绘制线条
+
+```python
+cv.line(blank_image, (0, 0), (blank_image.shape[1]//2, blank_image.shape[0]//2), (255, 255, 255), thickness=3)
+cv.imshow("Line", blank_image)
+```
+
+*   起点 `(0, 0)` → 终点 `(宽的一半, 高的一半)`，画一条从左上角到中心的白线。
+
+### 6. 绘制文字
+
+```python
+cv.putText(blank_image, "Hello World", (225, 225), cv.FONT_HERSHEY_TRIPLEX, 1.0, (255, 255, 255), thickness=2)
+cv.imshow("Text", blank_image)
+```
+
+| 参数 | 含义 |
+|------|------|
+| `"Hello World"` | 要写的文字 |
+| `(225, 225)` | 文字左下角的坐标 |
+| `cv.FONT_HERSHEY_TRIPLEX` | 字体样式 |
+| `1.0` | 字体大小（缩放倍数） |
+| `(255, 255, 255)` | 颜色（白色） |
+| `thickness=2` | 笔画粗细 |
+
+### 完整代码
+
+```python
+import cv2 as cv
+import numpy as np
+
+blank_image = np.zeros((500, 500, 3), dtype='uint8')
+
+# 1. 给图像上色
+blank_image[:] = 34, 139, 34
+cv.imshow('Green', blank_image)
+
+blank_image[200:300, 300:400] = 0, 0, 255
+cv.imshow('Green with Red Square', blank_image)
+
+# 2. 绘制矩形
+cv.rectangle(blank_image, (0, 0), (blank_image.shape[1]//2, blank_image.shape[0]//2), (46, 123, 85), thickness=5)
+cv.imshow("Rectangle", blank_image)
+
+# 3. 绘制圆形
+cv.circle(blank_image, (blank_image.shape[1]//2, blank_image.shape[0]//2), 40, (0, 0, 255), thickness=-1)
+cv.imshow("Circle", blank_image)
+
+# 4. 绘制线条
+cv.line(blank_image, (0, 0), (blank_image.shape[1]//2, blank_image.shape[0]//2), (255, 255, 255), thickness=3)
+cv.imshow("Line", blank_image)
+
+# 5. 绘制文字
+cv.putText(blank_image, "Hello World", (225, 225), cv.FONT_HERSHEY_TRIPLEX, 1.0, (255, 255, 255), thickness=2)
+cv.imshow("Text", blank_image)
+
+cv.waitKey(0)
+```
+

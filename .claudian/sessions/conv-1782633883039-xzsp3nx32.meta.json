@@ -4,8 +4,8 @@
   "title": "我们把这个抽象的数学概念，拆解成一个**看得见、摸得着的物理模型**。",
   "titleGenerationStatus": "failed",
   "createdAt": 1782633883040,
-  "updatedAt": 1782638505328,
-  "lastResponseAt": 1782638505328,
+  "updatedAt": 1782651862565,
+  "lastResponseAt": 1782651862565,
   "sessionId": "7bb4b9a6-d449-47e9-9197-f6be6a8beba6",
   "providerState": {
     "providerSessionId": "7bb4b9a6-d449-47e9-9197-f6be6a8beba6"
@@ -13,11 +13,12 @@
   "currentNote": "Python/👀 Open CV 学习笔记.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 435,
+    "inputTokens": 178,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 90944,
+    "cacheReadInputTokens": 94144,
     "contextWindow": 1000000,
-    "contextTokens": 91379,
-    "percentage": 9
+    "contextTokens": 94322,
+    "percentage": 9,
+    "contextWindowIsAuthoritative": true
   }
 }
