@@ -165,7 +165,7 @@ cap = cv.VideoCapture(path2)
 
 📌 因为是视频是一帧一帧读取的, 所以需要使用while循环
 while True:
-	isTrue, frame = cap.read() # dou
+	isTrue, frame = cap.read() # 首先读取视频
 	if not isTrue:
 		print("📹 视频播放结束，或者摄像头已断开连接。安全退出中...")
 		break
