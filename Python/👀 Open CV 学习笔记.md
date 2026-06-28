@@ -214,6 +214,15 @@ cv.destroyAllWindows()
 
 ## 三、resize和rescale视频和图片
 
+### 为什么需要缩放？
+
+在控制工程和机器人视觉中，摄像头的原始画面可能非常大（比如 $1920 \times 1080$）。如果直接让算法去处理这么大的图片，电脑会非常卡（**实时性变差**）。
+
+所以我们需要一个工具：**把每一帧画面等比例缩小（比如缩小到 75%），从而提高程序的运行速度。**
+
+> [!tip] 核心思路
+> 不要去死记硬背整段代码。把写代码的过程想象成 **"把人类的语言，翻译成计算机的步骤"**。下面这个流程图，就是从中文逻辑翻译到代码的完整过程：
+
 ```mermaid
 graph TD
     A["① 拿到原图的宽和高
@@ -229,7 +238,10 @@ graph TD
 ```python
 import cv2 as cv
 
+📌 因为是个重复动作,以后可能会复用,所以写成函数而不是直接塞进while循环
+
 def rescaleFrame(frame, scale=0.75)
+
 	width = int(frame.shape[1] * scale) # 拿到原图的宽然后缩小
 	height = int(frame.shape[0] * scale) # 拿到原图的高然后缩小
 	dimensions = (width,height) # OpenCV 缩放函数需要的尺寸参数是一个元组（Tuple），所以把算好的宽和高用圆括号 () 打包在一起。
@@ -241,7 +253,19 @@ cap = cv.VedioCapture(path2)
 
 while True:
 	isTrue, frame = cap.read() 
+	frame_resized = rescaleFrame(frame)
+	if not isTrue:
+		print("📹 视频播放结束，或者摄像头已断开连接。安全退出中...")
+		break
+	
+	cv.imshow("ori_video", frame)
+	cv.imshow("resized_video", frame_resized)
+	
+	if cv.waitKey(20) & 0xFF == ord('0')
+		break
 
+cap.realse()
+cv.destoryAllWindows()
 ```
 
 > [!tip]
@@ -263,9 +287,6 @@ while True:
 >	  - **速度优先** → 用 `INTER_NEAREST`（最快）
 >	  - **不确定** → 不写这个参数，默认 `INTER_LINEAR`（够用）
 
-    
-
-        
-    
-        
-    
+---
+<br>
+> 还有一种**专门针对实时视频流（如摄像头实时画面）修改分辨率**的方法
