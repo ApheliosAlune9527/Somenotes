@@ -212,7 +212,7 @@ cv.destroyAllWindows()
 > 	<br>
 
 
-## 三、resize和rescale视频和图片
+## 三、调整和缩放视频帧与图像尺寸/
 
 ### 为什么需要缩放？
 
@@ -220,7 +220,7 @@ cv.destroyAllWindows()
 
 所以我们需要一个工具：**把每一帧画面等比例缩小（比如缩小到 75%），从而提高程序的运行速度。**
 
-> [!tip] 核心思路
+> [!tip] 1.缩放本地视频文件或静态图片
 > 不要去死记硬背整段代码。把写代码的过程想象成 **"把人类的语言，翻译成计算机的步骤"**。下面这个流程图，就是从中文逻辑翻译到代码的完整过程：
 
 ```mermaid
@@ -288,5 +288,31 @@ cv.destoryAllWindows()
 >	  - **不确定** → 不写这个参数，默认 `INTER_LINEAR`（够用）
 
 ---
-<br>
-> 还有一种**专门针对实时视频流（如摄像头实时画面）修改分辨率**的方法
+
+> [!tip] 2. 专门针对实时视频流（如摄像头实时画面）修改分辨率 的方法
+> - **直接修改摄像头等硬件的采集参数**。即在画面还没采集出来前，通知摄像头按指定的宽高捕获画面。
+> - **仅适用于实时视频（Live Video）**：
+
+即 `capture.set(propId, value)` ,该方法用于直接设置视频流的各种硬件/流属性：
+
+```python
+
+📌 1. 开启摄像头（0 代表默认摄像头） 
+capture = cv.VideoCapture(0)
+
+📌 直接在硬件级别设置摄像头帧的宽高
+def changeRes(width, height):
+    capture.set(3, width)
+    capture.set(4, height)
+    
+📌 将摄像头的捕获分辨率强制更改为 $1280 \times 720$ (720P 高清) 
+changeRes(1280, 720)
+    
+📌 这里的 `capture` 是通过 `cv.VideoCapture` 创建的视频捕获对象。
+```
+
+- **参数 `3`**：代表宽度属性，在 OpenCV 中对应的常量是 `cv.CAP_PROP_FRAME_WIDTH`。这行代码的意思是将视频流的帧宽度设置为传入的 `width`。
+    
+- **参数 `4`**：代表高度属性，在 OpenCV 中对应的常量是 `cv.CAP_PROP_FRAME_HEIGHT`。这行代码的意思是将视频流的帧高度设置为传入的 `height`。
+    
+- **参数 `10`**  可能代表亮度属性 `cv.CAP_PROP_BRIGHTNESS`，传入数值可以调节画面的采集亮度。
