@@ -110,7 +110,52 @@ from pathlib import Path
 path = Path(__file__).parent / "attachments" / "Ellie.png"
 ```
 
-一行顶两行，`/` 就是拼路径，不是除法。`Path(__file__).parent` 等价于 `os.path.dirname(os.path.abspath(__file__))`。
+一行顶两行，`Path(__file__).parent` 等价于 `os.path.dirname(os.path.abspath(__file__))`。
+
+下面我们把这行优雅的代码像拆机械零件一样，**从左到右、一个字一个字**地拆开，看看每一个零件在计算机里到底代表什么、起什么作用。
+
+### 零件逐个拆解
+
+#### ⚙️ 零件 1：`Path` —— "点石成金的魔法箱"
+*   **它是什么**：从 `pathlib` 库里导入的**类（Class）**。
+*   **它的作用**：把任何普通字符串包裹在 `Path(...)` 里面，就能把这个字符串**实例化（Object Instantiation）**为一个智能的"路径对象"。
+
+#### ⚙️ 零件 2：`__file__` —— "定位锚点 / GPS 坐标"
+*   **它是什么**：Python 的**内置变量（Built-in Variable）**。
+*   **它的值**：当前正在运行的这个代码文件的文件名（例如：`"04_basic.py"`）。
+*   **它的作用**：告诉计算机："以我（当前文件）在硬盘上的物理位置作为参考系。"
+
+#### ⚙️ 零件 3：`Path(__file__)` —— "把文件打包成智能对象"
+*   把 `04_basic.py` 丢进 `Path` 魔法箱，变成一个智能的路径对象，拥有了各种探测硬盘的超能力（获取父目录、检查文件是否存在……）。
+
+#### ⚙️ 零件 4：`.parent` —— "往上退一级（找爸爸）"
+*   **它是什么**：`Path` 对象的一个**属性（Property）**。
+*   **它的作用**：获取当前文件所在的**父文件夹路径**——切掉文件名 `04_basic.py`，只留下它所在的 `Opencv` 文件夹。
+
+#### ⚙️ 零件 5：`/` —— "智能胶水（跨平台路径拼接器）"
+*   **它是什么**：一个被**重载的除法运算符（Operator Overloading）**。
+*   **它的作用**：
+    *   在数学里，`/` 做除法（如 `6 / 2`）。
+    *   但在 `Path` 对象后面，`/` 被赋予了全新行为：**根据操作系统，自动选择正确的斜杠拼接路径**（Windows 下自动用 `\`，Linux 下自动用 `/`）。
+
+#### ⚙️ 零件 6：`"attachments" / "Ellie.png"` —— "子文件夹与目标文件"
+*   顺着父文件夹继续往下拼：子文件夹 `attachments` → 具体文件 `Ellie.png`。
+
+### 计算机的"脑路历程"（单步模拟）
+
+Python 解释器执行这行代码时，内存里的数据变化：
+
+| 步骤 | 操作 | 内存中的值 |
+|:---:|------|------|
+| 1 | 读取 `__file__` | `"Opencv/04_basic.py"` |
+| 2 | 包装成 `Path` 对象 | `WindowsPath('Opencv/04_basic.py')` |
+| 3 | 取 `.parent` 属性 | `WindowsPath('Opencv')` |
+| 4 | `/ "attachments"` 拼接 | `WindowsPath('Opencv/attachments')` |
+| 5 | `/ "Ellie.png"` 拼接 | `WindowsPath('Opencv/attachments/Ellie.png')` |
+| 6 | `str(path)` 转字符串 | `"E:\...\Opencv\attachments\Ellie.png"` → 交给 `cv.imread()` |
+
+> [!tip] 为什么比 os.path 更优雅？
+> 整条链式调用读起来就像一句自然语言："找到我的位置 → 退到父目录 → 进 attachments → 取 Ellie.png"。没有函数嵌套，没有手动拼斜杠。
 
 ### 常用属性（不加括号）
 

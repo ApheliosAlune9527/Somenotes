@@ -1,0 +1,23 @@
+{
+  "id": "conv-1782716997335-rspf8w7ti",
+  "providerId": "claude",
+  "title": "我们现在把这行优雅的代码像拆机械零件一样，**从左到右、一个字一个字**地拆开，看看每一个零件在计算...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782716997335,
+  "updatedAt": 1782717091552,
+  "lastResponseAt": 1782717091552,
+  "sessionId": "dc4ee101-d14b-41d6-978d-0cd6dfbe1aba",
+  "providerState": {
+    "providerSessionId": "dc4ee101-d14b-41d6-978d-0cd6dfbe1aba"
+  },
+  "currentNote": "Python/📁 Python 路径拼接（os.path vs pathlib）.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1617,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 68928,
+    "contextWindow": 1000000,
+    "contextTokens": 70545,
+    "percentage": 7
+  }
+}
