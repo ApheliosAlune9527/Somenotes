@@ -151,9 +151,8 @@ print(img.shape) # 输出图片的尺寸信息
 | **B. 像素/颜色** | 凑近看，里面每一个格子里存的数字（0\~255），决定了那个位置发什么光 | 图像的像素值 |
 
 图片在计算机里**根本不是什么艺术品**，它就是一个**整整齐齐码放数字的、有长宽深的立方体盒子**。理解了这一点，你就真正入门了计算机视觉（CV）。
-> 
 
-
+---
 
 2. 视频的读取:<br>
 		`.VideoCapture():` 打开视频,即 python 拿到一个视频对象
@@ -750,53 +749,34 @@ transMat = cv.getAffineTransform(pts_src, pts_dst)
 
 ```python
 
-# 第三个参数 (w, h) 是你希望输出的新画布大小，通常和原图一致，也可以自行调整 
-dst = cv.warpAffine(src, M, (w, h))
+📌 第三个参数 (w, h) 是你希望输出的新画布大小，通常和原图一致，也可以自行调整
 
-```
+dst = cv.warpAffine(src, M, dsize, flags)
 
-
-
-```python
-import cv2 as cv
-import numpy as np
-
-# ==========================================
-# 【步骤一】读取原图
-# ==========================================
-img = cv.imread("test.jpg") 
-
-# ==========================================
-# 【步骤二】获取原图尺寸
-# ==========================================
-h, w = img.shape[:2] # 注意Numpy视角下为先高后宽
-
-# ==========================================
-# 【步骤三】构建矩阵 M（根据需求更换这里的函数即可）
-# ==========================================
-# 比如选型A (旋转): 调用cv函数自动计算
-rotPoint = (w // 2, h // 2)
-M = cv.getRotationMatrix2D(rotPoint, angle=30, scale=0.8)
-
-# 选型B (平移) : 手动定义 2 × 3 矩阵
-M = np.array([[1, 0, dx], [0, 1, dy]], dtype = np.float32)
-
-# 选型C (仿射/三点对齐) : 通过三个点变形
-M = cv.getAffineTransform(prs_src, pts_dst)
-
-# ==========================================
-# 【步骤四】调用固定核心函数
-# ==========================================
-result = cv.warpAffine(src, M, dsize, flags)
+📌 各参数含义:
 src: 输入图像（源图像）
 M: 2×3 仿射变换矩阵
 dsize: 输出图像尺寸，格式 (width, height)，注意是宽在前
-flags: 插值方法，默认 cv2.INTER_LINEAR（双线性插值）。常用值：cv2.INTER_NEAREST —最近邻<br>cv2.INTER_LINEAR — 双线性cv2.INTER_CUBIC — 双三次<br>cv2.INTER_LANCZOS4 — Lanczos
+interpolation: 插值方法，默认 cv2.INTER_LINEAR（双线性插值）。常用值：cv2.INTER_NEAREST —最近邻<br>cv2.INTER_LINEAR — 双线性cv2.INTER_CUBIC — 双三次<br>cv2.INTER_LANCZOS4 — Lanczos
 
-# ==========================================
-# 【步骤五】输出看效果
-# ==========================================
-cv.imshow("Output", result)
-cv.waitKey(0)
-cv.destroyAllWindows()
 ```
+
+
+> **图形缩放**
+
+```python
+📌cv.resize(src, dsize, interpolation)
+resized = cv.resize(img, (500, 500), interpolation=cv.INTER_CUBIC)
+imshow = cv.imshow('Ellie Resized', resize)
+```
+
+> **图像翻转**
+
+```python
+flip = cv.flip(src, -1) # 1表示水平翻转，0表示垂直翻转，-1表示水平+垂直翻转
+```
+
+> **- 图像裁剪**
+
+
+
