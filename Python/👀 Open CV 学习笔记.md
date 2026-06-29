@@ -700,14 +700,28 @@ trans_matrix = np.array([[1, 0, dx],
 
 总结来说，图像平移的底层逻辑就是：**通过增加虚拟维度（齐次坐标），将平移变换伪装成高维空间的矩阵乘法。**
 
+---
+> [!important]  几何变换标准五步法
 
+**第一步 : 读取原图**
 
+> - 把想变形的图片加载到内存中。
 
+```python
+import cv2 as cv
+import numpy as np
+from pathlib import Path
+path = Path.(__file__).parent / "attachments" / "Ellie.png"
+src = cv.imread(path)
+```
 
+**第二步 : 获取原图尺寸**
 
+> - 需要拿到原图的高(heigh)和宽(weigh), 后边限制"画布"时要用
 
-
-
+```python
+h, w = src.shape[:2] # 这里一定要注意 在Numpy的视角下是先高再宽(因为是Numpy是先看行(高)再看列(宽)的)
+```
 
 
 
@@ -717,7 +731,6 @@ trans_matrix = np.array([[1, 0, dx],
 
 
 ```python
-
 import cv2 as cv
 import numpy as np
 
