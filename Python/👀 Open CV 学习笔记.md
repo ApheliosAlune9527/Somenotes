@@ -713,6 +713,8 @@ import numpy as np
 from pathlib import Path
 path = Path.(__file__).parent / "attachments" / "Ellie.png"
 src = cv.imread(path)
+if src is None:
+	raise FileNotFoundError(f"图片读取失败:{path}")
 ```
 
 **第二步 : 获取原图尺寸**
@@ -723,10 +725,35 @@ src = cv.imread(path)
 h, w = src.shape[:2] # 这里一定要注意 在Numpy的视角下是先高再宽(因为是Numpy是先看行(高)再看列(宽)的)
 ```
 
+> [!todo] **第三步 : 获取变换矩阵 M (全过程唯一需要动脑的地方)**
 
+> - 根据业务需求选择下方任意一种方式生成矩阵 transMat 
 
+- **选型 A  (平移) :**   自己手动定义 2×3 矩阵
+```python
+transMat = np.array([[1, 0, dx], [0, 1, dy]], dtype = np.float32)
+```
 
+- **选型B (旋转/缩放) :** 调用opencv的函数自动计算
+```python
+rotMat = cv.getRotationMatrix2D(rotPoint, angle, scale)
+```
 
+- **选型C (仿射/三点对齐) :** 通过三个点变形
+```python
+transMat = cv.getAffineTransform(pts_src, pts_dst)
+```
+
+**第四步 : 送入重映射函数执行变换**
+
+> - 调用对应的重映射函数。绝大多数情况用 `cv.warpAffine`；如果是透视变换，换成 `cv.warpPerspective`。
+
+```python
+
+# 第三个参数 (w, h) 是你希望输出的新画布大小，通常和原图一致，也可以自行调整 
+dst = cv.warpAffine(src, M, (w, h))
+
+```
 
 
 
