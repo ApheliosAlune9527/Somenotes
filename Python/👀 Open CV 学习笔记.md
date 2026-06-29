@@ -797,7 +797,7 @@ imshow = cv.imshow('Ellie Resized', resize)
 flip = cv.flip(src, -1) # 1表示水平翻转，0表示垂直翻转，-1表示水平+垂直翻转
 ```
 
-> **- 图像裁剪 : **
+> **图像裁剪 : **
 
 ```python
 cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
