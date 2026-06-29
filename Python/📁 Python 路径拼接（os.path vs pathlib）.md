@@ -118,7 +118,7 @@ path = Path(__file__).parent / "attachments" / "Ellie.png"
 
 #### ⚙️ 零件 1：`Path` —— "点石成金的魔法箱"
 *   **它是什么**：从 `pathlib` 库里导入的**类（Class）**。
-*   **它的作用**：把任何普通字符串包裹在 `Path(...)` 里面，就能把这个字符串**实例化（Object Instantiation）**为一个智能的"路径对象"。
+*   **它的作用**：把任何普通字符串包裹在 `Path(...)` 里面，就能把这个字符串 **实例化（Object Instantiation）** 为一个智能的"路径对象"。
 
 #### ⚙️ 零件 2：`__file__` —— "定位锚点 / GPS 坐标"
 *   **它是什么**：Python 的**内置变量（Built-in Variable）**。
@@ -203,5 +203,8 @@ for f in folder.rglob("*.png"):     # 递归找（包含子文件夹）
 | 判断存在 | `os.path.exists(p)` | `p.exists()` |
 | 取绝对路径 | `os.path.abspath(p)` | `p.resolve()` |
 
-> [!info] 结论
-> 新项目一律用 `pathlib`，老项目维护才用 `os.path`。
+> [!warning] 
+> 为了防止某些老版本 OpenCV 库不认识 Path 对象，建议加一个 str() 强转为字符串 
+> ```python
+> img = cv.imread(str(path)
+> ```

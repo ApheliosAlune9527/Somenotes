@@ -638,3 +638,5 @@ cv.imshow("Eroded", eroded)
 > 	import numpy as np
 > 	kernel = np.ones((5, 5), dtype='uint8')  # 全 1 的 5x5 矩形核，等价于 MORPH_RECT
 > 	```
+
+
