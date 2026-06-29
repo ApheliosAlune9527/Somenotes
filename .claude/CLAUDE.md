@@ -58,12 +58,12 @@ AI 生成的 Excalidraw 图表必须保存到 `附件/excalidraw/` 目录。
 
 **存放位置**：所有新建文档存放在 `cc内容/` 文件夹中
 
-**作者标注**：frontmatter 中 author 字段统一写 `cc`
+**作者标注**：frontmatter 中 author 字段统一写 `Alune`
 
 ```yaml
 ---
 title: "标题"
-author: cc
+author: Alune
 url: "来源链接"
 created: YYYY-MM-DD
 tags: [标签1, 标签2]
@@ -120,7 +120,7 @@ tags: [标签1, 标签2]
 ```yaml
 ---
 title: "标题"
-author: cc
+author: Alune
 url: "来源链接"
 created: YYYY-MM-DD
 tags: [标签1, 标签2]
