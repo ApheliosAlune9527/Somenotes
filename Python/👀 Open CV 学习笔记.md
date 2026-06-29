@@ -739,7 +739,7 @@ rotPoint = (w // 2, h // 2)
 M = cv.getRotationMatrix2D(rotPoint, angle=30, scale=0.8)
 
 # 选型B (平移) : 手动定义 2 × 3 矩阵
-M = np.array([[1, 0, dx],[0, 1, dy]], dtype = np.float32)
+M = np.array([[1, 0, dx], [0, 1, dy]], dtype = np.float32)
 
 # 选型C (仿射/三点对齐) : 通过三个点变形
 M = cv.getAffineTransform(prs_src, pts_dst)
