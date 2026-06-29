@@ -641,6 +641,80 @@ cv.imshow("Eroded", eroded)
 
 ## 六、图形变换
 
+图像平移的底层核心，其实是**线性代数**中的**矩阵乘法**。
+
+不过这里有一个很有趣的数学矛盾：在普通的二维向量空间中，矩阵乘法只能表示旋转、缩放、剪切等**线性变换**，却**无法直接表示平移**。
+
+为了解决这个问题，数学家们引入了一个非常精妙的概念——**齐次坐标（Homogeneous Coordinates）**。
+
+### 1. 为什么二维矩阵无法搞定平移？
+
+在二维空间中，一个像素点的位置可以用向量 $\begin{bmatrix} x \\ y \end{bmatrix}$ 来表示。
+
+如果我们用一个 $2 \times 2$ 的矩阵去乘以它：
+$$
+
+\begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} ax + by \\ cx + dy \end{bmatrix}
+
+$$
+
+你会发现，无论你怎么凑 $a, b, c, d$ 的数值，都无法给 $x$ 和 $y$ 后面凭空**加上一个常数**（也就是平移量 $dx$ 和 $dy$）。在二维线性代数里，平移必须写成“矩阵乘法 + 向量加法”的形式：
+
+$$
+
+X_{new} = A \cdot X + B
+
+$$
+
+但对于计算机来说，既要做乘法又要做加法非常低效。图形学和 OpenCV 希望将**所有变换（旋转、缩放、平移）统一成一个单一的矩阵乘法**。
+
+### 2. 升维打击：齐次坐标
+
+为了把“加法”合并到“乘法”里，线性代数使用了一个技巧：**向高维投影**。
+
+既然二维装不下平移量，我们就给二维坐标强制增加第三个维度，常数设为 `1`。
+- 二维坐标：$\begin{bmatrix} x \\ y \end{bmatrix}$
+
+- **齐次坐标**：$\begin{bmatrix} x \\ y \\ 1 \end{bmatrix}$
+
+此时，我们就可以构建一个 $3 \times 3$ 的平移矩阵。当你用这个矩阵乘以齐次坐标时，奇迹发生了：
+
+$$
+
+\begin{bmatrix} 1 & 0 & dx \\ 0 & 1 & dy \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \cdot x + 0 \cdot y + dx \cdot 1 \\ 0 \cdot x + 1 \cdot y + dy \cdot 1 \\ 0 \cdot x + 0 \cdot y + 1 \cdot 1 \end{bmatrix} = \begin{bmatrix} x + dx \\ y + dy \\ 1 \end{bmatrix}
+
+$$
+
+通过引入第三行和第三列，**原本的“加法”在更高维度里，巧妙地变成了“乘法”的一部分**。展开后的结果第一行正是 $x + dx$，第二行正是 $y + dy$，完美实现了平移！
+
+### 3. 对接 OpenCV 的代码
+
+既然理论上需要 $3 \times 3$ 的矩阵，为什么你在 OpenCV 代码里写的 `trans_matrix` 却是一个 $2 \times 3$ 的矩阵呢？
+
+```python
+trans_matrix = np.array([[1, 0, dx],
+                         [0, 1, dy]], dtype=np.float32)
+```
+
+因为齐次坐标矩阵的最后一行永远是固定的 `[0, 0, 1]`，它不携带任何多余的平移或旋转信息。为了节省内存和计算量，OpenCV 的 `cv.warpAffine` 函数**砍掉了最后一行**，只让你提供前两行。在函数内部运算时，它会自动帮你当成完整的齐次矩阵去和像素坐标相乘。
+
+总结来说，图像平移的底层逻辑就是：**通过增加虚拟维度（齐次坐标），将平移变换伪装成高维空间的矩阵乘法。**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```python
 
@@ -655,19 +729,29 @@ img = cv.imread("test.jpg")
 # ==========================================
 # 【步骤二】获取原图尺寸
 # ==========================================
-h, w = img.shape[:2] # 注意Numpy视角下为先
+h, w = img.shape[:2] # 注意Numpy视角下为先高后宽
 
 # ==========================================
 # 【步骤三】构建矩阵 M（根据需求更换这里的函数即可）
 # ==========================================
-# 比如今天我想做旋转：
-center = (w // 2, h // 2)
-M = cv.getRotationMatrix2D(center, angle=30, scale=0.8)
+# 比如选型A (旋转): 调用cv函数自动计算
+rotPoint = (w // 2, h // 2)
+M = cv.getRotationMatrix2D(rotPoint, angle=30, scale=0.8)
+
+# 选型B (平移) : 手动定义 2 × 3 矩阵
+M = np.array([[1, 0, dx],[0, 1, dy]], dtype = np.float32)
+
+# 选型C (仿射/三点对齐) : 通过三个点变形
+M = cv.getAffineTransform(prs_src, pts_dst)
 
 # ==========================================
 # 【步骤四】调用固定核心函数
 # ==========================================
-result = cv.warpAffine(img, M, (w, h))
+result = cv.warpAffine(src, M, dsize, flags)
+src: 输入图像（源图像）
+M: 2×3 仿射变换矩阵
+dsize: 输出图像尺寸，格式 (width, height)，注意是宽在前
+flags: 插值方法，默认 cv2.INTER_LINEAR（双线性插值）。常用值：cv2.INTER_NEAREST —最近邻<br>cv2.INTER_LINEAR — 双线性cv2.INTER_CUBIC — 双三次<br>cv2.INTER_LANCZOS4 — Lanczos
 
 # ==========================================
 # 【步骤五】输出看效果
