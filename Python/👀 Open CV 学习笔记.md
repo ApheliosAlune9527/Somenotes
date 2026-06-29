@@ -783,7 +783,7 @@ interpolation: 插值方法，默认 cv2.INTER_LINEAR（双线性插值）。常
 ```
 
 
-> **图形缩放**
+> **图形缩放 : **
 
 ```python
 📌cv.resize(src, dsize, interpolation)
@@ -791,13 +791,13 @@ resized = cv.resize(img, (500, 500), interpolation=cv.INTER_CUBIC)
 imshow = cv.imshow('Ellie Resized', resize)
 ```
 
-> **图像翻转**
+> **图像翻转 : **
 
 ```python
 flip = cv.flip(src, -1) # 1表示水平翻转，0表示垂直翻转，-1表示水平+垂直翻转
 ```
 
-> **- 图像裁剪**
+> **- 图像裁剪 : **
 
 ```python
 cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
