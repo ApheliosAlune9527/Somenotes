@@ -639,4 +639,6 @@ cv.imshow("Eroded", eroded)
 > 	kernel = np.ones((5, 5), dtype='uint8')  # 全 1 的 5x5 矩形核，等价于 MORPH_RECT
 > 	```
 
+## 六、图形变换
 
+1. 平移(水平dun'hao)
