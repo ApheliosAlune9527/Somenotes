@@ -669,14 +669,35 @@ cv.imshow("Eroded", eroded)
 
 ### 1. 为什么二维矩阵无法搞定平移？
 
-在二维空间中，一个像素点的位置可以用向量  $\begin{bmatrix} x \\ y \end{bmatrix}$  来表示。
+在二维空间中，一个像素点的位置可以用向量表示：
+
+$$
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+$$
 
 如果我们用一个 $2 \times 2$ 的矩阵去乘以它：
+
 $$
-\begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} ax + by \\ cx + dy \end{bmatrix}
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+ax + by \\
+cx + dy
+\end{bmatrix}
 $$
 
 你会发现，无论你怎么凑 $a, b, c, d$ 的数值，都无法给 $x$ 和 $y$ 后面凭空**加上一个常数**（也就是平移量 $dx$ 和 $dy$）。在二维线性代数里，平移必须写成“矩阵乘法 + 向量加法”的形式：
+
 $$
 X_{new} = A \cdot X + B
 $$
@@ -688,13 +709,50 @@ $$
 为了把“加法”合并到“乘法”里，线性代数使用了一个技巧：**向高维投影**。
 
 既然二维装不下平移量，我们就给二维坐标强制增加第三个维度，常数设为 `1`。
-- 二维坐标：$\begin{bmatrix} x \\ y \end{bmatrix}$
+- 二维坐标：
 
-- **齐次坐标**：$\begin{bmatrix} x \\ y \\ 1 \end{bmatrix}$
+$$
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+$$
+
+- **齐次坐标**：
+
+$$
+\begin{bmatrix}
+x \\
+y \\
+1
+\end{bmatrix}
+$$
 
 此时，我们就可以构建一个 $3 \times 3$ 的平移矩阵。当你用这个矩阵乘以齐次坐标时，奇迹发生了：
+
 $$
-\begin{bmatrix} 1 & 0 & dx \\ 0 & 1 & dy \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \cdot x + 0 \cdot y + dx \cdot 1 \\ 0 \cdot x + 1 \cdot y + dy \cdot 1 \\ 0 \cdot x + 0 \cdot y + 1 \cdot 1 \end{bmatrix} = \begin{bmatrix} x + dx \\ y + dy \\ 1 \end{bmatrix}
+\begin{bmatrix}
+1 & 0 & dx \\
+0 & 1 & dy \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \cdot x + 0 \cdot y + dx \cdot 1 \\
+0 \cdot x + 1 \cdot y + dy \cdot 1 \\
+0 \cdot x + 0 \cdot y + 1 \cdot 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+x + dx \\
+y + dy \\
+1
+\end{bmatrix}
 $$
 
 通过引入第三行和第三列，**原本的“加法”在更高维度里，巧妙地变成了“乘法”的一部分**。展开后的结果第一行正是 $x + dx$，第二行正是 $y + dy$，完美实现了平移！
@@ -705,7 +763,7 @@ $$
 
 ```python
 trans_matrix = np.array([[1, 0, dx],
-                         [0, 1, dy]], dtype=np.float32)
+                         [0, 1, dy]], dtype=np.float32)
 ```
 
 因为齐次坐标矩阵的最后一行永远是固定的 `[0, 0, 1]`，它不携带任何多余的平移或旋转信息。为了节省内存和计算量，OpenCV 的 `cv.warpAffine` 函数**砍掉了最后一行**，只让你提供前两行。在函数内部运算时，它会自动帮你当成完整的齐次矩阵去和像素坐标相乘。
