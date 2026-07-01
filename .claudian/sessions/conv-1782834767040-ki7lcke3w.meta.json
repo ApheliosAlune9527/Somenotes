@@ -2,10 +2,10 @@
   "id": "conv-1782834767040-ki7lcke3w",
   "providerId": "claude",
   "title": "你是谁",
-  "titleGenerationStatus": "pending",
+  "titleGenerationStatus": "failed",
   "createdAt": 1782834767040,
-  "updatedAt": 1782834782144,
-  "lastResponseAt": 1782834782144,
+  "updatedAt": 1782834991570,
+  "lastResponseAt": 1782834991570,
   "sessionId": "50d14d32-c97e-47cd-96c6-9744095c9537",
   "providerState": {
     "providerSessionId": "50d14d32-c97e-47cd-96c6-9744095c9537"
@@ -13,12 +13,12 @@
   "currentNote": "Python/👀 Open CV 学习笔记.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 3064,
-    "cacheCreationInputTokens": 40519,
-    "cacheReadInputTokens": 7141,
+    "inputTokens": 55,
+    "cacheCreationInputTokens": 2011,
+    "cacheReadInputTokens": 94568,
     "contextWindow": 1000000,
-    "contextTokens": 50724,
-    "percentage": 5,
+    "contextTokens": 96634,
+    "percentage": 10,
     "contextWindowIsAuthoritative": true
   }
 }

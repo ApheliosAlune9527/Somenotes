@@ -146,3 +146,139 @@ tags: [标签1, 标签2]
 5. **归档处理**：
    - 将原文章移动到 `已归档/` 文件夹（如不存在则创建）
    - 重命名原文件，标题前加上处理日期，格式：`YYYY-MM-DD-原标题.md`
+
+## GitHub Markdown 公式写法规范
+
+整理 Markdown 笔记并准备上传 GitHub 时，数学公式要按 GitHub 兼容写法处理。
+
+### 1. 块级公式不要写在正文同一行
+
+不要这样写：
+
+```markdown
+正文： $$ X_{new} = A \cdot X + B $$
+```
+
+要这样写：
+
+```markdown
+正文：
+
+$$
+X_{new} = A \cdot X + B
+$$
+```
+
+### 2. 矩阵公式必须用标准 LaTeX 写法
+
+列之间用 `&`，行之间用 `\\`。
+
+正确写法：
+
+```markdown
+$$
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+$$
+```
+
+不要写成：
+
+```markdown
+$$
+\begin{bmatrix} a & b \ c & d \end{bmatrix}
+$$
+```
+
+单个 `\` 不表示矩阵换行，GitHub 上很容易渲染失败。
+
+### 3. 不要让 `=` 单独占一行
+
+GitHub Markdown 可能会把单独一行的 `=` 当成“标题下划线”语法，导致公式被截断或部分变成标题。
+
+不要这样写：
+
+```markdown
+$$
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+x + dx \\
+y + dy
+\end{bmatrix}
+$$
+```
+
+要这样写：
+
+```markdown
+$$
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix} =
+\begin{bmatrix}
+x + dx \\
+y + dy
+\end{bmatrix}
+$$
+```
+
+### 4. 长公式建议拆成多行，但运算符不要孤立成一行
+
+推荐：
+
+```markdown
+$$
+\begin{bmatrix}
+1 & 0 & dx \\
+0 & 1 & dy \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+1
+\end{bmatrix} =
+\begin{bmatrix}
+x + dx \\
+y + dy \\
+1
+\end{bmatrix}
+$$
+```
+
+### 5. 行内公式只放短表达式
+
+短公式可以写成：
+
+```markdown
+$2 \times 2$
+
+$x + dx$
+
+$X_{new}$
+```
+
+不要把复杂矩阵塞进行内公式。复杂矩阵统一改成块级公式。
+
+### 6. GitHub 最稳的规则
+
+- `$$` 单独占一行。
+- 矩阵用 `\begin{bmatrix} ... \end{bmatrix}`。
+- 矩阵换行用 `\\`。
+- 矩阵列分隔用 `&`。
+- 不要有单独一行的 `=`。
+- 不要把复杂公式写成一整行。
+- 不要把 Obsidian 能显示的写法直接当成 GitHub 一定能显示。
+
+核心原则：Obsidian 对 LaTeX 容错更宽，GitHub 更严格。整理笔记时要优先按 GitHub Markdown + MathJax 的标准写法输出。
