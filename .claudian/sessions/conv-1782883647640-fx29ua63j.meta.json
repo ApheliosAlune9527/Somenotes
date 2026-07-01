@@ -4,8 +4,8 @@
   "title": "这篇笔记的第六部分讲的内容你觉得应该用什么标题,我自己先写的图形变换用来占位",
   "titleGenerationStatus": "failed",
   "createdAt": 1782883647640,
-  "updatedAt": 1782883773535,
-  "lastResponseAt": 1782883773535,
+  "updatedAt": 1782887296471,
+  "lastResponseAt": 1782887296471,
   "sessionId": "1bd7eeac-a108-43bd-a4c6-c8517117dc76",
   "providerState": {
     "providerSessionId": "1bd7eeac-a108-43bd-a4c6-c8517117dc76"
@@ -13,11 +13,11 @@
   "currentNote": "Python/👀 Open CV 学习笔记.md",
   "usage": {
     "model": "opus[1m]",
-    "inputTokens": 404,
+    "inputTokens": 681,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 79872,
+    "cacheReadInputTokens": 80448,
     "contextWindow": 1000000,
-    "contextTokens": 80276,
+    "contextTokens": 81129,
     "percentage": 8
   }
 }
