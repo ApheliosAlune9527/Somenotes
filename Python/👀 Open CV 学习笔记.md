@@ -875,7 +875,7 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 
 1. **Canny** 边缘检测流向(推荐,边界平滑)
 
-![](excalidraw/边缘提取与轮廓闭合流程图.excalidraw.png)
+![](Python/附件/excalidraw/边缘提取与轮廓闭合流程图.excalidraw.png)
 <br>
 2. **Threshold** 二值化流向(适合高对比度物体提取)
 
