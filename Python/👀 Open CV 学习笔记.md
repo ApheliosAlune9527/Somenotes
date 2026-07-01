@@ -874,12 +874,12 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 > _Opencv 中提取并绘制轮廓有两种主流的管道流向_
 
 1. **Canny** 边缘检测流向(推荐,边界平滑)
-
-![](附件/excalidraw/Canny边缘检测流向.png)
+	
+	![](附件/excalidraw/Canny边缘检测流向.png)
 <br>
 2. **Threshold** 二值化流向(适合高对比度物体提取)
-
-![](附件/excalidraw/Threshold二值化流向.png)
+	
+	![](附件/excalidraw/Threshold二值化流向.png)
 
 
 
@@ -899,4 +899,4 @@ cv2.findContours(image, mode, method) # 用于在二值图像中查找轮廓。
 	- 注: 函数在提取轮廓时会直接把输入当作二进制矩阵来处理据。
 <br>
 -  `mode: 轮廓检索模式`
-	-  
+	-  `cv2.RETR_LIST` : 
