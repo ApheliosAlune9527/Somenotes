@@ -899,4 +899,8 @@ cv2.findContours(image, mode, method) # 用于在二值图像中查找轮廓。
 	- 注: 函数在提取轮廓时会直接把输入当作二进制矩阵来处理据。
 <br>
 -  `mode: 轮廓检索模式`
-	-  `cv2.RETR_LIST` : 
+	-  `cv2.RETR_LIST` : 检索所有轮廓, 但不建立任何层级(Hierarchy)关系。 所有的轮廓都被放在同一平级。
+		<br>
+	- `cv2.RETR_EXTERNAL` : 仅检索最外层的轮廓。如果一个大轮廓内部还有小轮廓, 内部的将被忽略。
+		<br>
+	- `cv2.RETR_TREE` : 检索所有轮廓, 并重建极其完整的嵌套层级继承树关系。
