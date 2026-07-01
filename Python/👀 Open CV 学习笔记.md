@@ -875,24 +875,27 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 
 1. **Canny** 边缘检测流向(推荐,边界平滑)
 
-```mermaid
-graph TD
-  subgraph s1[" "]
-    direction LR
-    A["1、原始图"] --> B["2、灰度化"]
-    B --> C["3、高斯模糊<br/>降噪关键"]
-  end
 
-  subgraph s2[" "]
-    direction LR
-    D["4、Canny 边缘检测"] --> E["5、轮廓提取"]
-    E --> F["6、轮廓绘制"]
-  end
 
-  C --> D
+
+
+
+
+
+### 完整的 API 与参数详解
+
+**函数签名：**
+
+```python
+cv2.findContours(image, mode, method) # 用于在二值图像中查找轮廓。
 ```
 
+**逐个参数解释 :**
 
-
-
-
+-  `image: ` 
+	- 输入后的 **二值图像** (通常是 Canny 边缘检测后的输出, 或是经过 Thershold 处理后的黑白图)。
+		<br>
+	- 注: 函数在提取轮廓时会直接把输入当作二进制矩阵来处理据。
+<br>
+-  `mode: 轮廓检索模式`
+	-  
