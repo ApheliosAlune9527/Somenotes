@@ -944,28 +944,55 @@ cv2.drawContours(image, contours, contourIdx, color, thickness)
 cv2.threshold(src, thresh, maxval, type)
 ```
 
-**逐个元素解释:**
+- **逐个元素解释:**
 
-- `src` : 单通道 **灰度** 图像
-<br>
-- `thresh` : 设定的阈值分界线
-<br>
-- `maxval` : 当像素值满足条件时被赋予的目标值(通常设置为`255` 表示白色)
-<br>
-- `type` : 阈值类型, 本节使用 `cv2.THRESH_BINARY` 。 如果像素值大于 `thresh` , 则设为 `maxval` (白色), 否则设置为 `0` (黑色) 。
+	- `src` : 单通道 **灰度** 图像
+	<br>
+	- `thresh` : 设定的阈值分界线
+	<br>
+	- `maxval` : 当像素值满足条件时被赋予的目标值(通常设置为`255` 表示白色)
+	<br>
+	- `type` : 阈值类型, 本节使用 `cv2.THRESH_BINARY` 。 如果像素值大于 `thresh` , 则设为 `maxval` (白色), 否则设置为 `0` (黑色) 。
+	<br>
+- **返回值:**
 
+> 该函数有两个返回值: `retval` 和 `dst` :  
+
+- `retval` : 实际使用的阈值, 如果参数 `type = cv.THRESH_BINARY ` 就是我们自己传入的 `thresh`。 但是如果使用 `cv2.THRESH_OTSU` 等自适应方法, 这个返回值就是算法自动计算出来的。
+	<br>
+- `dst` : 阈值处理后的输出图像(和 src 同尺寸同类型) 
+
+---
 > *完整代码*
 
 ```python
 import cv2 as cv
 from pathlib import Path
-imp
+import numpy as np
 path = Path(__file__).parent / "attachments" / "Ellie.png"
 
 src = cv.imread(path)
 if src is None:
 	raise FileNotFoundError(f"图片读取失败:{path}")
 	
-📌 先模糊图片
-blank = n
+📌 用Numpy建立一个新的画布图像
+blank = np.zeros(src.shape, dtype=up.uint8)
+cv.imshow(blank)
+
+📌 我选择的图片比较大,所以先resize一下,然后后续使用 重新缩放 的图片进行轮廓检测
+src_resized = cv.resize(src, (900, 600), interpolation = cv.INTER_CUBIC)
+
+📌 先进行图片灰度化
+Src_Gray = cv.cvtcolor(src_resized, cv.COLOR_BGR2GRAY)
+cv.imshow()
+
+📌 方法一:使用 cv.Canny() 函数进行边缘检测
+src_canny = cv.Canny(src_gray)
+cv.imshow(src_canny)
+
+📌 方法二: 使用 cv.threshold()函数进行阈值分析,将图像进行简单的二值化处理
+
+retval, dst = 
+
+
 ```
