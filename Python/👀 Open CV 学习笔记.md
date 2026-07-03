@@ -33,6 +33,12 @@
   - [[#六、仿射变换：从数学原理到 OpenCV 实现#1. 为什么二维矩阵无法搞定平移？|1. 为什么二维矩阵无法搞定平移？]]
   - [[#六、仿射变换：从数学原理到 OpenCV 实现#2. 升维打击：齐次坐标|2. 升维打击：齐次坐标]]
   - [[#六、仿射变换：从数学原理到 OpenCV 实现#3. 对接 OpenCV 的代码|3. 对接 OpenCV 的代码]]
+- [[#七、轮廓检测|七、轮廓检测]]
+	- [[#1. 什么是轮廓(Contours)|1. 什么是轮廓(Contours)]]
+	- [[#2. 轮廓(Contours)与边界(Edge)|2. 轮廓(Contours)与边界(Edge)]]
+	- [[#3. 对接 OpenCV 的代码|3. 对接 OpenCV 的代码]]
+	- [[#4. 完整的 API 与参数详解|4. 完整的 API 与参数详解]]
+
 
 ## 一、Open CV 的安装
 
@@ -853,11 +859,11 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 
 ## 七、轮廓检测
 
-### 什么是轮廓(Contours)
+### 1. 什么是轮廓(Contours)
 
 - 从数学和几何的角度看 , **轮廓** 是连接具有相同颜色或强度的所有连续点(沿着边界)的曲线 . 它就像是物体的几何外形边界 . 
 
-### 轮廓(Contours)与边界(Edge)
+### 2. 轮廓(Contours)与边界(Edge)
 
 > _尽管在变成时我们经常讲边缘图直接传给轮廓寻找函数, 但它们在数学和应用层面上截然不同 ._
 
@@ -869,7 +875,7 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 	- **定义 :** 是一个闭合或者连续的边界点集, 代表一个完整的对象边界。
 	- **特点 :** 轮廓是连续且具有 **层次结构(Hierarchy)** 的实体, 可以直接进行 **形状分析**、计算 **周长与面积** 、 计算 **图像矩(Moments)** 、进行 **模板匹配** 等高级操作 。
 
-### 图解处理流向
+### 3. 图解处理流向
 
 > _Opencv 中提取并绘制轮廓有两种主流的管道流向_
 
@@ -883,10 +889,9 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 
 
 
-### 完整的 API 与参数详解
+### 4. 完整的 API 与参数详解
 
-**1. 函数签名：**
-> 用于在二值图像中查找轮廓。
+> _1. 用于在二值图像中查找轮廓。_
 ```python
 cv2.findContours(image, mode, method)  
 ```
@@ -914,11 +919,12 @@ cv2.findContours(image, mode, method)
 	- `contours` : 一个 Python 列表, 其中每个元素都是一个 Numpy 数组(形状为`(N, 1, 2)`), 代表一个独立轮廓的所有顶点坐标。
 ---
 
-**2. 函数签名:**
-> _用于在图像上绘制找到的轮廓_
+> _2. 用于在图像上绘制找到的轮廓_
 ```python
 cv2.drawContours(image, contours, contourIdx, color, thickness)
 ```
+
+**逐个参数解释 :**
 
 - `image` : 目标画布图像。 可以是原始的彩色 BGR 图像(轮廓将叠加在原图上), 也可以是新建的空包黑色画布。
 
@@ -930,4 +936,36 @@ cv2.drawContours(image, contours, contourIdx, color, thickness)
 -  `color` : 绘制轮廓的颜色,采用BGR格式(例如 `(0,0,225)` 是为红色)
 	<br>
 - `thickness` : 线条的粗细。如果设置为 `-1` 或 `cv2.FILLED`, 则会 **填充** 整个轮廓内部。
+---
 
+> _3.用于对图像进行简单的二值化处理_
+
+```python
+cv2.threshold(src, thresh, maxval, type)
+```
+
+**逐个元素解释:**
+
+- `src` : 单通道 **灰度** 图像
+<br>
+- `thresh` : 设定的阈值分界线
+<br>
+- `maxval` : 当像素值满足条件时被赋予的目标值(通常设置为`255` 表示白色)
+<br>
+- `type` : 阈值类型, 本节使用 `cv2.THRESH_BINARY` 。 如果像素值大于 `thresh` , 则设为 `maxval` (白色), 否则设置为 `0` (黑色) 。
+
+> *完整代码*
+
+```python
+import cv2 as cv
+from pathlib import Path
+imp
+path = Path(__file__).parent / "attachments" / "Ellie.png"
+
+src = cv.imread(path)
+if src is None:
+	raise FileNotFoundError(f"图片读取失败:{path}")
+	
+📌 先模糊图片
+blank = n
+```
