@@ -885,10 +885,10 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 
 ### 完整的 API 与参数详解
 
-**函数签名：**
-
+**1. 函数签名：**
+> 用于在二值图像中查找轮廓。
 ```python
-cv2.findContours(image, mode, method) # 用于在二值图像中查找轮廓。
+cv2.findContours(image, mode, method)  
 ```
 
 **逐个参数解释 :**
@@ -911,4 +911,23 @@ cv2.findContours(image, mode, method) # 用于在二值图像中查找轮廓。
 	- `cv2.CHAIN_APPROX_SIMPLE` : 压缩水平、垂直和对焦线段, 仅保留其终点坐标。 例如, 一个矩形轮廓只需要 4 个顶点即可精确表示, 能极大地节省内存和加快后续计算。
 <br>
 -  返回值: 
-	- `contours` : 一个 Python 列表, 其中每个元素都是一个 Numpy 数组(形状为`(N, 1, 2)`), 代表一个独立轮廓的所有顶点坐标
+	- `contours` : 一个 Python 列表, 其中每个元素都是一个 Numpy 数组(形状为`(N, 1, 2)`), 代表一个独立轮廓的所有顶点坐标。
+---
+
+**2. 函数签名:**
+> _用于在图像上绘制找到的轮廓_
+```python
+cv2.drawContours(image, contours, contourIdx, color, thickness)
+```
+
+- `image` : 目标画布图像。 可以是原始的彩色 BGR 图像(轮廓将叠加在原图上), 也可以是新建的空包黑色画布。
+
+	<br>
+- `contours` : 由 `cv2.findContours` 传出的轮廓列表。
+	<br>
+- `contourIdx` : 需要绘制的轮廓索引。 如果设置为 `-1`, 则表示绘制列表中的 **所有轮廓** 。
+	<br>
+-  `color` : 绘制轮廓的颜色,采用BGR格式(例如 `(0,0,225)` 是为红色)
+	<br>
+- `thickness` : 线条的粗细。如果设置为 `-1` 或 `cv2.FILLED`, 则会 **填充** 整个轮廓内部。
+
