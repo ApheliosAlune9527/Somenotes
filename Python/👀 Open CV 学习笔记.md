@@ -992,7 +992,45 @@ cv.imshow(src_canny)
 
 📌 方法二: 使用 cv.threshold()函数进行阈值分析,将图像进行简单的二值化处理
 
-retval, dst = 
+retval, dst = cv.threshold(gray, 125, 255, cv.THRESH_BINARY)
+cv.imshow("Threshold", thresh)
 
+vontours, hierarchy = cv.findContours(Canny, cv.RETR_LIST, cv.CHAIN_APPROX_NONE)
+print(f"轮廓数量:{len{contours}}")
+
+cv.drawContours(blank, contours, -1, (0, 255, 0), 1)
+cv.imshow("Contours Drawn", blank)
+
+cv.waitKey(0)
+cv.destoryAllwindows()
 
 ```
+
+
+## 八、图像颜色通道分割与合并(Split & Merge)
+
+> _在数字图像处理中, 彩色图像通常由多个颜色通道叠加而成_
+
+### OpenCV的 BGR 存储机制
+- 大多数现代图像库、浏览器和屏幕显示默认使用 **RGB**（红、绿、蓝）顺序。然而，由于历史遗留原因，**OpenCV 默认以 BGR（蓝、绿、红）的顺序读取和存储彩色图像**。
+
+### 为什么拆分出的单通道图像显示未 "灰度图"
+- 当我们使用 `cv2.split()` 提取出单个通道（例如 Blue 通道）并用 `cv2.imshow()` 显示时，我们会发现它是一张**黑白灰度图**，而不是蓝色图。这是由通道的维度（Shape）决定的：
+
+	- **彩色原图的 Shape**：`(height, width, 3)` —— 拥有 3 个颜色通道，每个像素点由三个数值 $[B, G, R]$ 决定色彩。
+	    <br>
+	- **单通道的 Shape**：`(height, width)` —— 维度只有 1。 对于单通道图像，OpenCV 只能将其解释为**灰度强度图（Grayscale Intensity）**：
+	    <br>
+	- 像素值越接近 $255$**（纯白）**，代表该通道在这个位置的颜色强度越强；
+	    <br>
+	- 像素值越接近 $0$**（纯黑）**，代表该通道在这个位置的颜色强度越弱（甚至没有）。
+	<br>
+### 彩色单通道可视化原理
+
+> _如果我们想直观地看到 "纯蓝色" 的单通道图像, 就必须重建一个三通道图像_
+
+先使用 `blank = np.zeros(src.shape[:2], dtype = np.uint8)` 建立一个和源图像尺寸相同的画布。
+
+- **纯蓝色 :** 将原图的 Blue 数据放到第一通道, 再用充满 0 (黑色) 的空白数据取填充 Green 和 Red 通道。其像素结构即为 `[B, blank, blank]`
+- **纯绿通道图像**：其像素结构为 `[blank, G, blank]`
+- **纯红通道图像**：其像素结构为 `[blank, blank, R]`
