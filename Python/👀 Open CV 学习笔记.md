@@ -1405,3 +1405,9 @@ cv.imshow("Bilateral Filter", bilateral_optimized)
 
 ### 完整的 API 与参数详解
 1. `cv2.bitwise_and:(src1, src2, dst = None, mask=None)` 
+
+在 掩膜 操作中, 该函数通常以 自相与(self-AND) 的形式被调用:  `masked_img = cv.bitwise_and(img, img, mask=mask)`
+- **`src1`**：第一个输入矩阵。在抠图场景中，直接传彩色原图 `img`。
+<br>
+
+- **`src2`**：第二个输入矩阵。同样传彩色原图 `img`。由于相同的数字进行按位与运算结果不变（$X \cdot X = X$），因此自相与的目的就是保持原色不变，仅仅借用 `mask` 参数作为开关通道。
