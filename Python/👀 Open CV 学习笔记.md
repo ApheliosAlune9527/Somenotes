@@ -1156,3 +1156,61 @@ cv.destroyAllWindows
 	- **`sigmaColor`**：颜色空间滤波器标准差。这个值越大，代表越宽的颜色区间会被混在一起（即只要色差在这个范围内，就被认为是可以平滑的同色区）。
 	
 	- **`sigmaSpace`**：坐标空间滤波器标准差。值越大，意味着越远的像素会互相影响（前提是它们的颜色足够相似）。
+---
+> _完整代码_
+
+```python
+import cv2 as cv
+import numpy as np
+from pathlib as Path
+
+path = Path(__file__).parent /"attachments" / "Elden Ring_Stormveil Castle.png"
+
+src = cv.imread(path)
+if src is None:
+	raise FileNotFoundError(f"图片未找到:{path}")
+	
+📌 我习惯做一个缩放
+resized = cv.resize(src, (900, 600),interpolation=cv.INTER_AREA)
+cv.imshow("Original Image")
+
+📌 均值模糊 - 最基本的平滑
+ava_blur = cv.blur(resized, (3, 3))
+ava_blur = cv.blur(resized, (7, 7))
+cv.imshow("Averaging Blur", ava_blur)
+
+📌 高斯模糊 - 最自然的平滑
+
+gaussian_blur = cv.GaussianBlur(resized, (7, 7), 0)
+cv.imshow("Gaussian Blur", gaussian_blur)
+
+📌 中值模糊 - 消除孤立噪点、椒盐噪声
+📌 注意 该模糊的 核大小 是 单个整数,比如 3 ,代表(3,3)矩阵
+
+median_blur = cv.medianBlur(resized, 7) # 7 会发现图像产生了类似"水彩涂抹"的效果
+
+median_blur2 = cv.medianBlur(resized, 3)
+
+cv.imshow("Median Blur(ks=7)", median_blur)
+
+cv.imshow("Median Blur(ks=3)", median_blur2)
+
+📌 进阶- 双边滤波 - 在保留边缘的同时进行平滑
+
+📌 d=10(局部搜索直径), sigmaColor=35(较小色差内混合), sigmaSpace=25(空间平滑跨度)
+
+bilateral_optimized = cv.bilateralFilter(resized, d=10, sigmaColor=35, sigmaSpace=25)
+
+cv.imshow("Bilateral Filter", bilateral_optimized)
+
+```
+
+>[!abstract] 总结与调参对比
+>1.  **均值模糊 :** 计算最快，但会无差别地糊掉所有细节。
+>2.  **高斯模糊 :** 最符合镜头自然散景效果，最常用。
+> 3. **中值模糊 :** 不参与均值计算，适合暴力清除单像素死点（椒盐噪点）
+> 4. **双边滤波 :** 虽然计算耗时最高，但是美颜、边缘提取前置滤波的“神兵利器”。
+> 
+
+### 为什么要模糊、什么时候该用什么时候不该用?
+> __
