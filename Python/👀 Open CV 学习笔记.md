@@ -1059,4 +1059,28 @@ cv.destoryAllwindows()
 - `shape` : 输出矩阵的形状。在构建单通道空白北京时, 我们使用原图的前两个维度 : `img.shape[:2]`, 即`(height, weight)` 。
 	<br>
 - `dtype` : 数据类型。为了匹配OpenCV 图像格式,必须指定为 `uint8` (即无符号8为整型, 范围 0 - 255)。
+---
+> _完整代码_
+
+```python
+import cv2 as cv
+import numpy as np
+from pathlib import Path
+
+path = Path(_file_).parent /"attachments" / "Elden Ring_Stormveil Castle.png"
+
+src = cv.imread(path)
+if src is None:
+	raise FileNotFoundError(f"图片未找到:{path}")
+	
+b, g, r = cv.split(src)
+cv.imshow("Split B", b)
+cv.imshow("Split G", g)
+cv.imshow("Split R", r)
+
+merge_img = cv.merge(b, g, r)
+cv.imshow("Merge Image", merge_img)
+
+
+
 
