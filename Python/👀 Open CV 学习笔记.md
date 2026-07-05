@@ -38,6 +38,11 @@
 	- [[#2. 轮廓(Contours)与边界(Edge)|2. 轮廓(Contours)与边界(Edge)]]
 	- [[#3. 对接 OpenCV 的代码|3. 对接 OpenCV 的代码]]
 	- [[#4. 完整的 API 与参数详解|4. 完整的 API 与参数详解]]
+- [[#八、图像颜色通道分割与合并(Split & Merge)|八、图像颜色通道分割与合并(Split & Merge)]]
+	- [[#OpenCV的 BGR 存储机制|1. OpenCV的 BGR 存储机制]] 
+	- [[#为什么拆分出的单通道图像显示未 "灰度图"|2. 为什么拆分出的单通道图像显示未 "灰度图"]]
+	- [[#彩色单通道可视化原理|3. 彩色单通道可视化原理]]
+	- [[#完整的 API 与参数详解|4. 完整的 API 与参数详解]]
 
 
 ## 一、Open CV 的安装
@@ -1081,6 +1086,20 @@ cv.imshow("Split R", r)
 merge_img = cv.merge(b, g, r)
 cv.imshow("Merge Image", merge_img)
 
+📌 建立一个全新画布,来重构纯B, G, R 彩色图像
 
+blank = np.zeros(src.shape[:2], dtype = uint8)
+
+blue_img = cv.merge(b, blank, blank)
+cv.imshow("Pure Blue", blue_img)
+
+green_img = cv.merge([blank, g, blank])
+cv.imshow("Pure Green", green_img)
+
+red_img = cv.merge([blank, blank, r])
+cv.imshow("Pure Red", red_img)
+
+cv.waitKey(0)
+cv.destroyAllWindows()
 
 
