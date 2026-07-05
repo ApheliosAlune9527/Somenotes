@@ -1404,4 +1404,4 @@ cv.imshow("Bilateral Filter", bilateral_optimized)
 | **计算复杂度** | 略高（需进行逐像素位运算，或通过硬件加速级逻辑门执行）。 | 极低（仅涉及内存指针和内存视图的切片移动）。 |
 
 ### 完整的 API 与参数详解
-1. `cv2.bitwise_and`
+1. `cv2.bitwise_and:(src1, src2, dst = None, mask=None)` 
