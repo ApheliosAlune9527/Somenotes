@@ -1371,11 +1371,10 @@ cv.imshow("Bilateral Filter", bilateral_optimized)
 3. `cv2.bitwise_xor(src1, src2, dst=None, mask=None)`
 	- 对两个矩阵执行按像素的逻辑“异或”操作，参数约束同上。
 
-
-
-
-
-
+4. `cv2.bitwise_not(src, dst=None, mask=None)`
+	- `src`: 输入图像矩阵。
+	
+	- 注: 作为一元操作符, 它只需要传入一个输入源, 返回图像像素值 取反 后的结果(即用 255 减去当前像素值)。  
 
 ### 为什么要使用它?
 1. 为什么不能用普通图像数学加减法？
