@@ -1288,13 +1288,10 @@ cv.imshow("Bilateral Filter", bilateral_optimized)
 
 ## 十、 图像位运算（Bitwise Operators）
 - 在 OpenCV 的图像处理中，位运算是在二进制（Binary）层面按像素（Pixel-by-pixel）独立进行的。对于 8 位无符号单通道图像（`uint8`），其逻辑建立在以下两个状态的控制之上：
-		<br>
 	
 	- $0$ **（纯黑，二进制表示 `00000000`）**：表示该像素处于 **”关闭（OFF）”** 状态，在逻辑运算中视作 `False`。
-		<br>
 	
 	-  $255$  **（纯白，二进制表示 `11111111`）**：表示该像素处于 **“开启（ON）”** 状态，在逻辑运算中视作 `True`。
-<br>
 
 ### 四大位运算符逻辑模型
 
@@ -1357,6 +1354,28 @@ cv.imshow("Bilateral Filter", bilateral_optimized)
 1. 经典几何图形分布
 
 ![](附件/excalidraw/位运算叠层与结果网格组合方案.excalidraw.png)
+
+---
+
+### 完整的 API 与参数详解
+1. `cv2.bitwise_and(src1, src2, dst=None, mask=None)`
+	- **`src1`**：第一个输入图像矩阵（可以是单通道灰度图，也可以是彩色图）。
+	
+	- **`src2`**：第二个输入图像矩阵。尺寸、通道数和深度必须与 `src1` 完全一致。
+	
+	- **`mask`**：可选参数，一个 8 位单通道二进制掩膜图像。只有掩膜中对应像素值不为 $0$ 的区域才参与运算。 
+
+2. `cv2.bitwise_or(src1, src2, dst=None, mask=None)`
+	- 对两个矩阵执行 按像素 的逻辑"或"操作, 参数约束同上。
+
+3. `cv2.bitwise_xor(src1, src2, dst=None, mask=None)`
+	- 对两个矩阵执行按像素的逻辑“异或”操作，参数约束同上。
+
+
+
+
+
+
 
 ### 为什么要使用它?
 1. 为什么不能用普通图像数学加减法？
