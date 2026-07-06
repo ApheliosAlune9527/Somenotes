@@ -1569,8 +1569,9 @@ cv.destroyAllWindows()
 - 返回值 `hist`：一个形状为 `(histSize, 1)` 的 NumPy 二维数组。其中每一个元素代表对应 Bin 的像素计数值。
 
 2. `plt.plot(y, color)`
-> Matplotlib 提供绘制核心折线绘制接口, 在实时 CV 调试中必不可少。
-> [[📊 Matplotlib 学习笔记#九、直方图 (Histogram) 与分布可视化]]
+
+> [!Warning] 注意我们画的是折线而不是直方图 
+> [[📊 Matplotlib 学习笔记#二、折线图 (Line Plot) 基础与 NumPy 整合]]]
 
 - `y`：要绘制的数据向量。在直方图可视化中，直接传入 `cv2.calcHist` 返回的 `hist` 矩阵。
     
