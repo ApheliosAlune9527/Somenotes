@@ -1576,3 +1576,163 @@ cv.destroyAllWindows()
 - `y`：要绘制的数据向量。在直方图可视化中，直接传入 `cv2.calcHist` 返回的 `hist` 矩阵。
     
 - `color`：折线的颜色。为了在同一个图表上直观展示 B、G、R 的物理分布，我们可以传入 `'b'` (蓝色)、`'g'` (绿色)、`'r'` (红色)。
+
+---
+
+>_完整代码_
+
+```python
+import cv2 as cv
+import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+path = Path(__file__).parent / "attachments" / "wallpaper.png"
+
+src = cv.imread(path)
+if src is None:
+    raise FileNotFoundError(f"图片读取失败:{path}")
+resized = cv.resize(src, (900, 600), interpolation=cv.INTER_AREA)
+
+# 将图像转换为单通道灰度图, 用于基础灰度分布分析
+
+gray = cv.cvtColor(resized, cv.COLOR_BGR2GRAY)
+cv.imshow("Gray Image", gray)
+
+# 初始化 Matplotlib 图表, 设定科学研究级分辨率
+plt.figure(figsize=(10, 6))
+
+plt.title("Grauscale & Color Histogram")
+
+plt.xlabel('Intensity / Bins (0-255) ')
+
+plt.ylabel('Number of Pixels(Count)')
+# ==========================================================
+
+# 场景 A: 经典单通道灰度直方图计算与绘制
+# ==========================================================
+# 注意：calcHist 的前五个参数必须被包裹在方括号 [] 中传入！
+
+# gray_hist = cv.calcHist([gray],[0],None,[256], [0,256])
+
+# 绘制一条黑色曲线代表灰度整体亮度分布
+
+# plt.plot(gray_hist, color='black', label='Grayscale Total')
+
+# plt.xlim([0,256])
+
+# ==========================================================
+
+# 场景 B: 进阶方案 —— BGR 三通道独立彩色直方图并行绘制
+
+# ==========================================================
+
+# 定义对应的 Matplotlib 绘制颜色
+
+  
+
+# colors = ('b', 'g', 'r')
+
+# channel_labels = ('Blue', 'Green', 'Red')
+
+  
+  
+
+# # enumerate 同时拿到索引(i)和值(colors) 0->Blue 1->Green 2->Red
+
+# for i, col in enumerate(colors):
+
+#     # 使用循环让cv.calcHist 可以并行处理三个通道
+
+#     color_hist = cv.calcHist([resized], [i], None, [256], [0, 256])
+
+  
+
+#     plt.plot(color_hist, color=col, label=channel_labels[i], linestyle='--', linewidth=2)
+
+#     plt.legend()  # 显示图例
+
+#     # 背景加参考网格线，方便读数值 linestyle=":" 点状线, alpha=0.6 透明度
+
+#     plt.grid(True, linestyle=":", alpha=0.6)
+
+#     plt.draw()
+
+  
+
+# ==========================================================
+
+# 场景 C: 闭环方案 —— 引入空间掩膜 (Mask) 进行局部感兴趣区域(ROI)直方图统计
+
+# ==========================================================
+
+# 步骤 1: 创建与原图高、宽完全一致的单通道纯黑掩膜板 (尺寸为 600x900)
+
+  
+
+blank = np.zeros(resized.shape[:2], dtype=np.uint8)
+
+  
+
+# 步骤 2: 在掩膜板中心雕刻出半径为 150 的纯白透光圆形区域 (值为 255)
+
+circle_mask = cv.circle(blank.copy(), (450, 300), 150, 255, -1)
+
+  
+  
+
+# 步骤 3: 使用 bitwise_and 提取出局部可视化的 ROI，方便对比观察
+
+  
+
+masked_roi = cv.bitwise_and(gray, gray, mask=circle_mask)
+
+cv.imshow("Masked ROI", masked_roi)
+
+  
+  
+
+# 步骤 4: 创建独立的图标绘制局部 ROI 灰度分布直方图
+
+  
+
+plt.figure(figsize=(10, 6))
+
+plt.title('Masked Region Grauscale Histogram')
+
+plt.xlabel('Intensity / Bins (0-255) ')
+
+plt.ylabel('Pixel Count')
+
+  
+
+# 将圆形掩膜板传入 cv.calcHist 的第三个参数 直接挂载到直方图计算器中
+
+masked_hist = cv.calcHist([gray], [0], circle_mask, [256], [0, 256])
+
+  
+  
+
+plt.plot(masked_hist, color='black', label='Masked ROI Grayscale')
+
+plt.xlim(0, 256)  # 设置 x 轴范围为 0-256
+
+plt.legend()
+
+plt.grid(True, linestyle=":", alpha=0.6)
+
+  
+  
+
+plt.show()
+
+cv.waitKey(0)
+
+cv.destroyAllWindows()
+
+
+
+
+
+
+```
