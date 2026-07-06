@@ -1423,3 +1423,9 @@ cv.imshow("Bilateral Filter", bilateral_optimized)
 	- **底层闭门机制**：当 `mask(x, y) == 0` 时，函数直接跳过位运算，强制将输出像素的各个通道直接写为 `0`；只有当 `mask(x, y) != 0` 时，才对输入像素执行 AND 运算并写入输出。
 	
 	- **返回值**：与原图维度完全一致的掩膜过滤后的图像矩阵。
+
+2. `np.zeros(shape, dtype)`
+	- `shape` : 掩膜的形状。必须确保其是 **单通道。**
+			- **避坑点 :**  如果使用彩色图像的 `img.shape(带三通道)`, 创建出来的将是三通道全黑图, 将其作为 `mask` 传入 `cv2.bitwise_and` 会发生 **通道错配崩溃点**。必须显式使用 `img.shape[:2]` (仅提取高、宽)。
+		
+	- `dtype` : 必须设置为 `np.unit8` , 已匹配 OpenCV 的图像深度标准。
