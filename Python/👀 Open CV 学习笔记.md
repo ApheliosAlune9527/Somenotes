@@ -1803,7 +1803,28 @@ flowchart LR
 - `maxval` : 当像素值满足阈值判断条件时, 被赋予的最大像素数值。常设为 255(机纯白色)。
 
 - `type` : 阈值类型
-	-  `cv.THRESH_BINARY` : 正向二值化。像素值超过`thresh`
+	-  `cv.THRESH_BINARY` : 正向二值化。像素值超过`thresh` 则设为 `maxval`,其余设为 `0` 。
 
- 
- 
+	 - `cv.THRESH_BINARY_INV` : 反向二值化。像素值超过 `thresh` 则设为 `0` 。其余设为 `maxval`。
+
+- **返回值 :** 
+	- `ret` : 返回实际使用的阈值大小(对于该函数即为你传入的 `thresh` 参数)。
+
+	- `dst` : 输出的二值化结果矩阵。
+
+2. `cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C, dst=None)`
+
+> _对于单通道图像,在每一个像素的局部领域中动态、智能地计算阈值。_
+
+- `src` : 输入的 8 位单通道灰度图像。
+
+- `maxValue` : 非零像素被赋予的最大值。通常设为 255。
+
+- `adaptiveMethod` : 局部阈值计算方法。
+	- `cv.ADAPTIVE_THRESH_MEAN_C` : 计算领域中 `BlockSize × BlockSize` 所有像素的均值。
+	
+	- `cv.ADAPTIVE)THRESH_GUASSIAN_C` : 以像素点为中心, 计算领域的高斯加权求和值。 
+
+- `thresholdType` : 二值化映射方法。必须是 `cv.THRESH_BINARY` 或者 `cv.THRESH_BINATU_INV` 之一。
+
+- `blockSize` : **极高危、最核心参数** 。用于计算局部阈值的方窗大小。 
