@@ -1447,3 +1447,6 @@ cv.imshow("Bilateral Filter", bilateral_optimized)
 			- **避坑点 :**  如果使用彩色图像的 `img.shape(带三通道)`, 创建出来的将是三通道全黑图, 将其作为 `mask` 传入 `cv2.bitwise_and` 会发生 **通道错配崩溃点**。必须显式使用 `img.shape[:2]` (仅提取高、宽)。
 		
 	- `dtype` : 必须设置为 `np.unit8` , 已匹配 OpenCV 的图像深度标准。
+
+---
+> 
