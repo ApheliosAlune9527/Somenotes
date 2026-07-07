@@ -2064,7 +2064,11 @@ $$
 ---
 
 ### 完整 API 与 参数详解
-1. `cv2.Laplacian(src, ddepth, dst=None, ksize=1, scale=1, delta=0, borderType= BORDER_DEFAULT`)`
+1. `cv2.Laplacian(src, ddepth, dx, dy, dst=None, ksize=1, scale=1, delta=0, borderType= BORDER_DEFAULT`)`
+
 - `src`：输入的单通道灰度图像。
 
 - `ddepth`：**极高危、最核心参数**。目标图像的深度/存储类型。
+	- **硬性约束**：在任何涉及梯度微分的场景下，**必须设为 `cv2.CV_64F`**，以在底层浮点级临时存储负值梯度。
+
+-  
