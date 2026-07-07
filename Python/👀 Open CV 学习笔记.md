@@ -1974,4 +1974,60 @@ cv.destroyAllWindows()
 2. **解决 Sim-to-Real 的绝佳语义屏障**： 仿真器（MuJoCo / Isaac Sim）中的光影分布往往是高度理想化的（纯净反射、光滑表面），而现实世界有着无数的随机微光反射、灰尘和粗糙斑点。通过在视觉前端加入**高斯自适应二值化**作为屏障，可以把仿真中的理想工件边界，和真实世界中杂乱无章的工件边界，**高度统一归一化为纯黑背景下的白线轮廓语义。** 神经网络和强化学习（RL）决策模型只需要在这条“白线轮廓”上做强化学习，物理现实世界的色彩噪声将被物理阻断，从而实现了 $100\%$ **的零退化无缝仿真部署（Sim-to-Real Deployment）**。
 
 
-## 十四、
+## 十四、图像梯度与边缘检测（Gradients & Edge Detection）
+
+### 核心概念与底层物理/数学逻辑模型
+> _在机器人控制与具身感知中, 图像梯度是空间几何流的数学映射。图像梯度(Image Gradient)_
+
+#### 1. 梯度的数学定义
+
+将 2D 图像视作一个二维连续亮度分布函数 $I(x, y)$ 。其在坐标 $(x, y)$ 处的梯度定义为一个二维向量 $\nabla I$ ：
+
+$$
+\nabla I = \begin{bmatrix} g_x \\ g_y \end{bmatrix} = \begin{bmatrix} \frac{\partial I}{\partial x} \\ \frac{\partial I}{\partial y} \end{bmatrix}
+$$
+
+其中，梯度的幅值（Magnitude）与方向（Direction / Orientation）分别表示为：
+
+$$
+\|\nabla I\| = \sqrt{g_x^2 + g_y^2}
+$$
+
+$$
+\theta = \arctan\left( \frac{g_y}{g_x} \right)
+$$
+
+在离散图像像素网格中，偏导数通常使用一阶差分（如后向、前向或中心差分）来近似计算：
+
+$$
+g_x \approx I(x+1, y) - I(x-1, y)
+$$
+
+$$
+g_y \approx I(x, y+1) - I(x, y-1)
+$$
+
+#### 2. 算子数理模型
+
+##### ① 索贝尔算子 (Sobel Operator)
+
+Sobel 算子在进行空间求导时，引入了邻域加权平滑（对中心像素分配更高权重），能有效抑制高频随机噪声。其包含水平方向卷积核 $K_x$ （计算 $g_x$ ）与垂直方向卷积核 $K_y$ （计算 $g_y$ ）：
+
+$$
+K_x = \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix}, \quad K_y = \begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix}
+$$
+
+##### ② 拉普拉斯算子 (Laplacian Operator)
+
+Laplacian 算子是一种各向同性（Rotation Invariant）的二阶微分算子。它不关注某一特定方向，而是通过计算二阶偏导数之和（即散度 $\nabla^2 I$ ）来寻找像素跃变的最剧烈点：
+
+$$
+\nabla^2 I = \frac{\partial^2 I}{\partial x^2} + \frac{\partial^2 I}{\partial y^2}
+$$
+
+在离散 $3 \times 3$ 邻域中，其数学离散近似核通常采用中心值为负（或正）的环形拉普拉斯卷积核：
+
+$$
+K_{\text{Laplacian}} = \begin{bmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{bmatrix} \quad \text{或} \quad \begin{bmatrix} 1 & 1 & 1 \\ 1 & -8 & 1 \\ 1 & 1 & 1 \end{bmatrix}
+$$
+
