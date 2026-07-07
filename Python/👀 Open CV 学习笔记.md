@@ -2107,3 +2107,19 @@ $$dst(x, y) = \text{saturate\_cast<uchar>}(|\alpha \cdot src(x, y) + \beta|)$$
 - `src`：输入矩阵（通常是 `cv.CV_64F` 浮点型的梯度结果）。
     
 - 返回值：返回可以直接用于在窗口中正常显示和后续特征处理的 `uint8` 单通道边界强度图像。
+
+4. `cv2.Canny(image, threshold1, threshold2, edges=None, apertureSize=3, L2gradient=False)`
+
+> _利用高效的 Canny 算法在图像中寻找高鲁棒、一像素宽极细边缘。_
+
+- `image`：输入的 8 位单通道图像（推荐在计算前先用 `cv2.GaussianBlur` 进行温和降噪）。
+    
+- `threshold1`：**第一阈值（低阈值 MinVal）**。
+    
+    - 如果梯度强度低于此值，该像素点被物理级剔除（标记为非边缘）。
+        
+- `threshold2`：**第二阈值（高阈值 MaxVal）**。
+    
+    - 如果梯度强度高于此值，该像素点被确认为强边缘。
+        
+    - **滞后连接法则**：若梯度值处于 `[threshold1, threshold2]` 之间，只有当该像素点与已确认为强边缘的像素直接**在空间上相连**时，它才会被作为边缘保留；否则同样被一并剔除。
