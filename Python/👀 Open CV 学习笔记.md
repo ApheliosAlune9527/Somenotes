@@ -1794,9 +1794,18 @@ flowchart LR
 
 ---
 ### 系统架构与数据流/处理图解
-1. 局部自适应阈值化（Adaptive Thresholding）局部滑动窗数据流向
-![]()
 
+1. **局部自适应阈值化（Adaptive Thresholding）局部滑动窗数据流向**
+
+![](13.局部自适应阈值化滑动窗数据流.png)
+
+2. **复杂阴影图像二值化管道（Pipeline）**
+
+当输入图像包含一侧是高光漫反射、另一侧是深色投影时，常规处理管道的控制分支流如下：
+
+![](13.复杂阴影图像二值化管道.png)
+
+---
 
 ### 完整的 API 与参数详解
 1. `cv2.threshold(src, thresh, maxval, type, dst=None)`
@@ -1861,7 +1870,7 @@ if src is None:
     raise FileNotFoundError(f"未找到该图像:{path}")
 resized = cv.resize(src, (1200, 720), interpolation=cv.INTER_AREA)
 
-# 注意 使用cv.cvtColor()函数将彩色图像转换为单通道灰度图像, 这是阈值化处理必不可少的前置条件。
+📌 注意 使用cv.cvtColor()函数将彩色图像转换为单通道灰度图像, 这是阈值化处理必不可少的前置条件。
 gray = cv.cvtColor(resized, cv.COLOR_BGR2GRAY)
 cv.imshow("Gray Img", gray)
 
@@ -1880,7 +1889,7 @@ cv.imshow("Simple Global Binary(Threshold = 127)", simple_binary)
 
 📌 试验 2: 反向全局阈值化 (Inverse Binary)
 
-📌 亮度 > 150 的像素变纯黑(0)，其余一律变纯白(255)
+📌 亮度 > 127 的像素变纯黑(0)，其余一律变纯白(255)
 
 _, simple_binary_inv = cv.threshold(gray, 127, 255, cv.THRESH_BINARY_INV)
 
