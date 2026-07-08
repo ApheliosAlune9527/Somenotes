@@ -2113,7 +2113,15 @@ $$
 >_对输入图像的每个像素进行以下操作：计算绝对值、缩放比例系数、并强行转换为无符号 8 位整型（`uint8`）。_
 
 
-$$dst(x, y) = \text{saturate\_cast<uchar>}(|\alpha \cdot src(x, y) + \beta|)$$
+这里的 `saturate_cast<uchar>` 可以理解为：先把结果限制在 `0~255`，再转换成 `uint8`。
+
+$$
+dst(x, y) =
+\operatorname{sat}_{[0,255]}
+\left(
+\left| \alpha \cdot src(x, y) + \beta \right|
+\right)
+$$
 
 - `src`：输入矩阵（通常是 `cv.CV_64F` 浮点型的梯度结果）。
     
