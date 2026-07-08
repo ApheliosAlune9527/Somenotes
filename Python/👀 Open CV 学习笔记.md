@@ -940,7 +940,7 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 
 
 
-### 完整的 API 与参数详解
+### 4. 完整的 API 与参数详解
 
 > _1. 用于在二值图像中查找轮廓。_
 ```python
@@ -2564,101 +2564,148 @@ import cv2 as cv
 import numpy as np
 from pathlib import Path
 
-# 1. 使用pathlib的Path模块跨平台安全加载测试图像 (以 BGR 彩色模式读入)
-path_single = Path(__file__).parent / "attachments" / "lady.jpg"
-path_group = Path(__file__).parent / "attachments" / "group 2.jpg"
+📌 1.读取图像
 
-img_single = cv.imread(str(path_single))
-img_group = cv.imread(str(path_group))
+path_single = Path(__file__).parent / "attachments" / "Melina.png"
 
-# 图像读取兜底：如未找到指定路径，使用 NumPy 自主生成模拟特征，保证代码永不崩溃
-if img_single is None:
-    print("⚠️ 未找到 Lady.jpg，已自动生成模拟图像保证程序正常运转")
-    img_single = np.zeros((400, 400, 3), dtype='uint8')
-    cv.circle(img_single, (200, 180), 80, (200, 200, 200), -1) # 模拟脸部
-    cv.circle(img_single, (170, 160), 10, (0, 0, 0), -1)       # 左眼
-    cv.circle(img_single, (230, 160), 10, (0, 0, 0), -1)       # 右眼
-    cv.line(img_single, (170, 220), (230, 220), (0, 0, 255), 5) # 嘴唇
-if img_group is None:
-    img_group = img_single.copy()
+path_group = Path(__file__).parent / "attachments" / "NJ.jpg"
 
-# 2. 灰度化处理： Haar 特征仅通过亮暗突变(梯度)提取几何轮廓，与色调无关，灰度化能节省 2/3 的内存数据
-gray_single = cv.cvtColor(img_single, cv.COLOR_BGR2GRAY)
-gray_group = cv.cvtColor(img_group, cv.COLOR_BGR2GRAY)
+Img_SingleFace = cv.imread(path_single)
+
+Img_GroupFace = cv.imread(path_group)
+
+if Img_SingleFace is None:
+
+    raise FileNotFoundError(f"图像未找到:{path_single}")
+if Img_GroupFace is None:
+
+    Img_GroupFace = Img_SingleFace
+
+resized_singleFace = cv.resize(Img_SingleFace, (1200, 700), interpolation=cv.INTER_AREA)
+
+resized_groupFace = cv.resize(Img_GroupFace, (650, 750), interpolation=cv.INTER_AREA)
+
+📌 cv.imshow("Single Face", resized_singleFace)
+📌 cv.imshow("Group Face", resized_groupFace)
 
 
-# ==========================================================
-# 3. 初始化级联分类器：自动双重兜底加载机制
-# ==========================================================
-xml_local_path = Path(__file__).parent / "har_face.xml"
+📌 ==========================================================
+📌 2.灰度化是 Haar 级联人脸检测的必需前置条件
 
-if xml_local_path.exists():
-    # 尝试加载用户本地手工保存的 XML
-    haar_cascade = cv.CascadeClassifier(str(xml_local_path))
-    print(f"📦 已加载本地指定级联权重: {xml_local_path}")
+gray_singleFace = cv.cvtColor(resized_singleFace, cv.COLOR_BGR2GRAY)
+
+gray_groupFace = cv.cvtColor(resized_groupFace, cv.COLOR_BGR2GRAY)
+
+  
+  
+
+📌 3.初始化级联分类器:将模型装载到分类器中
+
+xml_path = Path(cv.data.haarcascades) / "haarcascade_frontalface_default.xml"
+
+📌 加一个判断看看是否存在这个 xml 文件
+
+if not xml_path.exists():
+    raise FileNotFoundError(f"xml 文件未找到:{xml_path}")
+📌 有的OpenCV版本需要加上 str() 转换为字符串,否则报错:TypeError: Expected Ptr<cv::CascadeClassifier> for argument 'self'
+
+face_cascade = cv.CascadeClassifier(xml_path)
+
+📌 再加一个判断:看这个分类器对象里面有没有成功装载模型？
+
+if face_cascade.empty():
+    raise IOError("XML 文件存在，但 OpenCV 没有成功加载分类器")
 else:
-    # 本地没有？就直接利用系统内置绝对路径加载，防崩溃保通过！
-    system_xml_path = Path(cv.data.haarcascades）/ "haarcascade_frontalface_default.xml"
-    haar_cascade = cv.CascadeClassifier(system_xml_path)
-    print(f"🌟 本地无 XML，已自动切入 OpenCV 内部预装路径加载: {system_xml_path}")
+    print(f"xml 文件已成功加载:{xml_path}")
 
-if haar_cascade.empty():
-    raise IOError("Error: 无法初始化 Haar 级联检测器，请检查 OpenCV 安装包是否完整。")
+  
 
+📌 ==========================================================
 
-# ==========================================================
-# 场景 A: 经典单人脸高保真检测
-# ==========================================================
-# 单人图像明暗度高，无背景噪点。设定 scaleFactor=1.1, minNeighbors=3 保证灵敏度
-faces_rect_single = haar_cascade.detectMultiScale(
-    gray_single, 
-    scaleFactor=1.1, 
-    minNeighbors=3
+📌 场景 A: 经典单人脸高保真检测
+
+📌 ==========================================================
+
+📌 单人图像明暗度高，无背景噪点。设定 scaleFactor=1.1, minNeighbors=3 保证灵敏度
+
+ face_rect_single = face_cascade.detectMultiScale(
+     gray_singleFace,
+     scaleFactor=1.08,
+     minNeighbors=5,
 )
+print(f"单人图像中检测到的人脸数量为:{len(face_rect_single)}")
 
-print(f"【场景 A】单人图像中检测到人脸数量: {len(faces_rect_single)}")
+📌 可视化单人脸提取结果
+img_single_output = resized_singleFace.copy()
+for (x, y, w, h) in face_rect_single:
 
-# 可视化单人脸提取结果
-img_single_output = img_single.copy()
-for (x, y, w, h) in faces_rect_single:
-    # 绘制高保真绿色边界框
-    cv.rectangle(img_single_output, (x, y), (x+w, y+h), (0, 255, 0), thickness=2)
+📌绘制高保真绿色边界框
+cv.rectangle(img_single_output, (x, y), (x + w, y + h), (0, 255, 0), thickness=2)
 
 cv.imshow('Scene A - Single High-Precision Detection', img_single_output)
 
+📌 ==========================================================
+
+📌 场景 B: 多目标群像检测 (伴随严重的局部虚警噪声干扰)
+
+📌 ==========================================================
+
+📌 如果继续使用 minNeighbors=3 级别判定
+
+face_rect_group = face_cascade.detectMultiScale(
+      gray_groupFace,
+      scaleFactor=1.08,
+     minNeighbors=3
+
+# )
+
+# print(f"【优化前】群像图像中检测到的人脸数量为:{len(face_rect_group)}")
+
+  
+  
 
 # ==========================================================
-# 场景 B: 多目标群像检测 (伴随严重的局部虚警噪声干扰)
-# ==========================================================
-# 如果继续使用 minNeighbors=3 级别判定
-faces_rect_group_raw = haar_cascade.detectMultiScale(
-    gray_group, 
-    scaleFactor=1.1, 
-    minNeighbors=3
-)
-print(f"【场景 B - 未优化】检测出疑似人脸数量: {len(faces_rect_group_raw)} (包含严重的脖子/肚子误判噪点！)")
 
-
-# ==========================================================
 # 场景 C: 进阶保优方案 —— 提高置信度闸门 (minNeighbors=6)
+
 # ==========================================================
+
 # 通过将 minNeighbors 提升至 6，物理级剔除由于衣服、身体皮肤褶皱等与 Haar-like 高度相似的干扰伪轮廓。
-faces_rect_group_opt = haar_cascade.detectMultiScale(
-    gray_group, 
-    scaleFactor=1.1, 
-    minNeighbors=6
+
+faces_rect_group_opt = face_cascade.detectMultiScale(
+
+    gray_groupFace,
+
+    scaleFactor=1.08,
+
+    minNeighbors=7
+
 )
-print(f"【场景 C - 优化后】人脸数量收敛至: {len(faces_rect_group_opt)} (干扰噪点已被过滤)")
+
+print(f"【优化后】人脸数量收敛至: {len(faces_rect_group_opt)} (干扰噪点已被过滤)")
+
+  
 
 # 绘制优化后的群体人脸边界框
-img_group_output = img_group.copy()
+
+img_group_output = resized_groupFace.copy()
+
 for (x, y, w, h) in faces_rect_group_opt:
-    # 使用红色标记确认为真的人脸
-    cv.rectangle(img_group_output, (x, y), (x+w, y+h), (0, 0, 255), thickness=2)
 
-cv.imshow('Scene C - Group Optimized (Noise Suppressed)', img_group_output)
+    # 使用红色标记确认为真人脸
 
-# 保持窗口驻留
+    cv.rectangle(img_group_output, (x, y),
+
+                 (x + w, y + h), (0, 0, 255), thickness=2)
+
+  
+
+cv.imshow('Scene C - Optimized Group Face Detection', img_group_output)
+
+  
+
 cv.waitKey(0)
+
 cv.destroyAllWindows()
 ```
+
