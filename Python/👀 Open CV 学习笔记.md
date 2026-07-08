@@ -940,7 +940,7 @@ cropped = resize[100:400, 200:500]  # 裁剪区域为 (y1:y2, x1:x2)
 
 
 
-### 4. 完整的 API 与参数详解
+### 完整的 API 与参数详解
 
 > _1. 用于在二值图像中查找轮廓。_
 ```python
@@ -2045,7 +2045,7 @@ $$
 在离散 $3 \times 3$ 邻域中，其数学离散近似核通常采用中心值为负（或正）的环形拉普拉斯卷积核：
 
 $$
-K_{\text{Laplacian}} = \begin{bmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{bmatrix} \quad \text{或} \quad \begin{bmatrix} 1 & 1 & 1 \\ 1 & -8 & 1 \\ 1 & 1 & 1 \end{bmatrix}
+K_{\mathrm{Laplacian}} = \begin{bmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{bmatrix} \quad \mathrm{or} \quad \begin{bmatrix} 1 & 1 & 1 \\ 1 & -8 & 1 \\ 1 & 1 & 1 \end{bmatrix}
 $$
 
 ---
@@ -2129,7 +2129,7 @@ $$
 
 $$
 dst(x, y) =
-\operatorname{sat}_{[0,255]}
+\mathrm{sat}_{[0,255]}
 \left(
 \left| \alpha \cdot src(x, y) + \beta \right|
 \right)
@@ -2371,7 +2371,7 @@ $$
 积分图生成后，任意矩形区域 $R$ 的像素总和只需要访问四个角点：
 
 $$
-\operatorname{Sum}(R) = II(D) + II(A) - II(B) - II(C)
+\mathrm{Sum}(R) = II(D) + II(A) - II(B) - II(C)
 $$
 
 **直观理解：**
@@ -2393,7 +2393,7 @@ AdaBoost 的作用是从大量弱分类器中筛选出少量有效特征，并�
 $$
 \begin{aligned}
 H(x) &=
-\operatorname{sign}
+\mathrm{sign}
 \left(
 \sum_{t=1}^{T} \alpha_t h_t(x) - \theta
 \right)
@@ -2475,9 +2475,9 @@ Haar-like 特征解决“人脸局部结构怎么表示”，积分图解决“�
         
     - **结论**：区域 $(D)$ 内所有灰度值的精确累加和计算为：
 
-        $$
-        \text{Sum}(D) = II(x_2, y_2) + II(x_1, y_1) - II(x_2, y_1) - II(x_1, y_2)
-        $$
+$$
+\mathrm{Sum}(D) = II(x_2, y_2) + II(x_1, y_1) - II(x_2, y_1) - II(x_1, y_2)
+$$
 
 2. Haar 级联分类器的“级联过滤漏斗”(The Stage Cascading Funnel)
 
