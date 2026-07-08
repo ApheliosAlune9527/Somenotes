@@ -2501,5 +2501,5 @@ Haar-like 特征解决“人脸局部结构怎么表示”，积分图解决“�
 ```python
 import cv2 as cv
 📌 打印你的系统内置 XML 权重库绝对路径
-print(cv.data.harrcascades)
+print(cv.data.haarcascades)
 ```
