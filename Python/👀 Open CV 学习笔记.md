@@ -2317,8 +2317,7 @@ Haar-like 特征就是用黑白矩形去量化这种局部结构。它不直接�
 
 $$
 \begin{aligned}
-f(x)
-&=
+f(x) &=
 \sum_{(u, v) \in R_{\mathrm{white}}} I(u, v)
 -
 \sum_{(u, v) \in R_{\mathrm{black}}} I(u, v)
@@ -2351,19 +2350,15 @@ Viola-Jones 的关键优化是先生成**积分图（Integral Image）**。积�
 **积分图定义：**
 
 $$
-II(x, y)
-=
-\sum_{\substack{u \le x \\ v \le y}} I(u, v)
+II(x, y) = \sum_{u \le x,\ v \le y} I(u, v)
 $$
 
 **递推生成：**
 
 $$
 \begin{aligned}
-s(x, y)
-&= s(x, y - 1) + I(x, y) \\
-II(x, y)
-&= II(x - 1, y) + s(x, y)
+s(x, y) &= s(x, y - 1) + I(x, y) \\
+II(x, y) &= II(x - 1, y) + s(x, y)
 \end{aligned}
 $$
 
@@ -2374,9 +2369,7 @@ $$
 积分图生成后，任意矩形区域 $R$ 的像素总和只需要访问四个角点：
 
 $$
-\operatorname{Sum}(R)
-=
-II(D) + II(A) - II(B) - II(C)
+\operatorname{Sum}(R) = II(D) + II(A) - II(B) - II(C)
 $$
 
 **直观理解：**
@@ -2397,8 +2390,7 @@ AdaBoost 的作用是从大量弱分类器中筛选出少量有效特征，并�
 
 $$
 \begin{aligned}
-H(x)
-&=
+H(x) &=
 \operatorname{sign}
 \left(
 \sum_{t=1}^{T} \alpha_t h_t(x) - \theta
@@ -2481,16 +2473,9 @@ Haar-like 特征解决“人脸局部结构怎么表示”，积分图解决“�
         
     - **结论**：区域 $(D)$ 内所有灰度值的精确累加和计算为：
 
-    $$
-        \operatorname{Sum}(D)
-        =
-        II(x_2, y_2)
-        + II(x_1, y_1)
-        - II(x_2, y_1)
-        - II(x_1, y_2)
-    $$
+        $$\text{Sum}(D) = II(x_2, y_2) + II(x_1, y_1) - II(x_2, y_1) - II(x_1, y_2)$$
 
-2. Haar 级联分类器的“级联过滤漏斗”（The Stage Cascading Funnel
+2. Haar 级联分类器的“级联过滤漏斗”(The Stage Cascading Funnel)
 
 ![](15.Haar级联过滤漏斗.png)
 
