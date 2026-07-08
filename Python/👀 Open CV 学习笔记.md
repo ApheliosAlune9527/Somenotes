@@ -1015,7 +1015,7 @@ cv2.threshold(src, thresh, maxval, type)
 - `dst` : 阈值处理后的输出图像(和 src 同尺寸同类型) 
 
 ---
-> *完整代码*
+### 完整代码
 
 ```python
 import cv2 as cv
@@ -1112,7 +1112,7 @@ cv.destoryAllwindows()
 	<br>
 - `dtype` : 数据类型。为了匹配OpenCV 图像格式,必须指定为 `uint8` (即无符号8为整型, 范围 0 - 255)。
 ---
-> _完整代码_
+### 完整代码
 
 ```python
 import cv2 as cv
@@ -1611,7 +1611,7 @@ cv.destroyAllWindows()
 
 ---
 
->_完整代码_
+### 完整代码
 
 ```python
 import cv2 as cv
@@ -1872,7 +1872,7 @@ flowchart LR
 - **返回值**：直接返回自适应二值化处理后的图像矩阵。
 
 ---
-> _完整代码_
+### 完整代码
 
 - 以下代码演示了如何等比例缩放一张彩色风景图，分别计算并绘制其**整体灰度直方图**、**BGR 三通道真彩直方图**，以及在**挂载圆形空间掩膜后、局部感兴趣区域（ROI）的特征直方图**。
 ```python
@@ -2155,7 +2155,7 @@ $$
 
 ---
 
-> _完整代码_
+### 完整代码
 
 以下代码演示了如何等比例加载彩色原图并转换为灰度，分别执行并可视化**高精度 Laplacian 二阶边缘提取**、分方向的 **Sobel X / Sobel Y** 提取、利用按位或实现的 **Sobel 综合特征图**、以及代表工业最高降噪边缘定位标准的 **Canny 极限骨架图**。
 
@@ -2535,9 +2535,25 @@ print(cv.data.haarcascades)
 📌 拼接 XML 
 xml_path = Path(cv.data.haarcascades) / "haarcascade_frontalface_default.xml"
 
+📌加一个if判断是否存在内置的XML文件
 if not xml_path.exists():
 	raise FileNotFoundError(f"XML 文件不存在:{xml_path}")
+
 📌 将模型装载到分类器中
 face_cascade = cv.CascadeClassifier(xml_path) # 或者写 str(xml_path)
+
+📌 再加一个判断:看这个分类器对象里面有没有成功装载模型？
+if face_cascade.empty():
+	raise RuntimeError("XML 文件存在，但 OpenCV 没有成功加载分类器")
+
+```
+
+---
+
+### 完整代码
+
+>_以下是完整 Python 代码。代码在逻辑上展示了如何处理 **单目标精准检测**、以及在面对**多目标群像干扰**时通过动态微调超参数控制虚警噪点。_
+
+```python
 
 ```
