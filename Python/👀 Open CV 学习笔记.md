@@ -2528,6 +2528,16 @@ Haar-like 特征解决“人脸局部结构怎么表示”，积分图解决“�
 - **获取绝对路径方法**：
 ```python
 import cv2 as cv
+from pathlib as Path
 📌 打印你的系统内置 XML 权重库绝对路径
 print(cv.data.haarcascades)
+
+📌 拼接 XML 
+xml_path = Path(cv.data.haarcascades) / "haarcascade_frontalface_default.xml"
+
+if not xml_path.exists():
+	raise FileNotFoundError(f"XML 文件不存在:{xml_path}")
+📌 将模型装载到分类器中
+face_cascade = cv.CascadeClassifier(xml_path) # 或者写 str(xml_path)
+
 ```
