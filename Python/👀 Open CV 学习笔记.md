@@ -2655,22 +2655,17 @@ cv.imshow('Scene A - Single High-Precision Detection', img_single_output)
 face_rect_group = face_cascade.detectMultiScale(
       gray_groupFace,
       scaleFactor=1.08,
-     minNeighbors=3
+      minNeighbors=3
+)
+print(f"【优化前】群像图像中检测到的人脸数量为:{len(face_rect_group)}")
 
-# )
+📌 ==========================================================
 
-# print(f"【优化前】群像图像中检测到的人脸数量为:{len(face_rect_group)}")
+📌 场景 C: 进阶保优方案 —— 提高置信度闸门 (minNeighbors=6)
 
-  
-  
+📌 ==========================================================
 
-# ==========================================================
-
-# 场景 C: 进阶保优方案 —— 提高置信度闸门 (minNeighbors=6)
-
-# ==========================================================
-
-# 通过将 minNeighbors 提升至 6，物理级剔除由于衣服、身体皮肤褶皱等与 Haar-like 高度相似的干扰伪轮廓。
+📌 通过将 minNeighbors 提升至 6，物理级剔除由于衣服、身体皮肤褶皱等与 Haar-like 高度相似的干扰伪轮廓。
 
 faces_rect_group_opt = face_cascade.detectMultiScale(
 
@@ -2684,28 +2679,14 @@ faces_rect_group_opt = face_cascade.detectMultiScale(
 
 print(f"【优化后】人脸数量收敛至: {len(faces_rect_group_opt)} (干扰噪点已被过滤)")
 
-  
-
-# 绘制优化后的群体人脸边界框
-
+📌 绘制优化后的群体人脸边界框
 img_group_output = resized_groupFace.copy()
-
 for (x, y, w, h) in faces_rect_group_opt:
-
-    # 使用红色标记确认为真人脸
-
-    cv.rectangle(img_group_output, (x, y),
-
-                 (x + w, y + h), (0, 0, 255), thickness=2)
-
-  
-
+📌 使用红色标记确认为真人脸
+    cv.rectangle(img_group_output, (x, y), (x + w, y + h), (0, 0, 255), thickness=2)
 cv.imshow('Scene C - Optimized Group Face Detection', img_group_output)
 
-  
-
 cv.waitKey(0)
-
 cv.destroyAllWindows()
 ```
 
