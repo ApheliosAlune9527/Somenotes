@@ -2559,7 +2559,7 @@ import cv2 as cv
 import numpy as np
 from pathlib import Path
 
-# 1. 跨平台安全加载测试图像 (以 BGR 彩色模式读入)
+# 1. 使用pathlib的Path模块跨平台安全加载测试图像 (以 BGR 彩色模式读入)
 path_single = Path(__file__).parent / "attachments" / "lady.jpg"
 path_group = Path(__file__).parent / "attachments" / "group 2.jpg"
 
@@ -2577,7 +2577,7 @@ if img_single is None:
 if img_group is None:
     img_group = img_single.copy()
 
-# 2. 灰度化处理：Haar 特征仅通过亮暗突变(梯度)提取几何轮廓，与色调无关，灰度化能节省 2/3 的内存数据
+# 2. 灰度化处理： Haar 特征仅通过亮暗突变(梯度)提取几何轮廓，与色调无关，灰度化能节省 2/3 的内存数据
 gray_single = cv.cvtColor(img_single, cv.COLOR_BGR2GRAY)
 gray_group = cv.cvtColor(img_group, cv.COLOR_BGR2GRAY)
 
@@ -2592,8 +2592,8 @@ if xml_local_path.exists():
     haar_cascade = cv.CascadeClassifier(str(xml_local_path))
     print(f"📦 已加载本地指定级联权重: {xml_local_path}")
 else:
-    # 【高防崩彩蛋】本地没有？没关系！直接利用系统内置绝对路径加载，防崩溃保通过！
-    system_xml_path = cv.data.haarcascades + 'haarcascade_frontalface_default.xml'
+    # 本地没有？就直接利用系统内置绝对路径加载，防崩溃保通过！
+    system_xml_path = Path(cv.data.haarcascades）/ "haarcascade_frontalface_default.xml"
     haar_cascade = cv.CascadeClassifier(system_xml_path)
     print(f"🌟 本地无 XML，已自动切入 OpenCV 内部预装路径加载: {system_xml_path}")
 
