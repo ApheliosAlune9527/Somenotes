@@ -404,3 +404,4 @@ colcon build --symlink-install
 ![[Pasted image 20260712223534.png]]
 
 1.  功能包创建 ：`ros2 pkg create demo_py_topic --build-type ament_python --dependencies rclpy example_interfaces --license Apache-2.0 `
+
