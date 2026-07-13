@@ -399,9 +399,12 @@ colcon build --symlink-install
 4. 发布话题需要知道：话题名字 `/turtle1/cmd_vel` 和 话题接口 `geometry_msgs/msg/Twist
 ![[Pasted image 20260712203440.png]]
 
-### 1. 通过话题来发布小说
+### 1. 通过话题来发布小说（创建发布者）
 > *任务：*
 ![[Pasted image 20260712223534.png]]
 
 1.  功能包创建 ：`ros2 pkg create demo_py_topic --build-type ament_python --dependencies rclpy example_interfaces --license Apache-2.0 `
 
+### 2.订阅小说并逐行朗读（创建订阅者）
+> *任务*
+![[Pasted image 20260713161619.png]]
