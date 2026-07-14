@@ -408,3 +408,5 @@ colcon build --symlink-install
 ### 2.订阅小说并逐行朗读（创建订阅者）
 > *任务*
 ![[Pasted image 20260713161619.png]]
+
+### 3. 订阅Pose实现闭环控制
