@@ -4,7 +4,12 @@
 
 	![[Pasted image 20260714221017.png]]
 
+	> 面向过程实例
+	![[Pasted image 20260715145020.png]] 
 
+
+	> 面向对象
+	![[Pasted image 20260715145111.png]]
 - 创建工作空间
 ![[Pasted image 20260710150130.png]]
 
