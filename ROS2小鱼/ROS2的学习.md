@@ -14,7 +14,7 @@
 	> 话题通信 ： 数据描述格式称之为 消息msg pub和sub之间的msg 类型必须一致
 	![[Pasted image 20260715154943.png]]
 
-
+	![[Pasted image 20260715171708.png]]
 
 
 
