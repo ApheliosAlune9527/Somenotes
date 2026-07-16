@@ -502,4 +502,6 @@ colcon build --symlink-install
 > *任务*
 ![[Pasted image 20260713161619.png]]
 
-### 3. 发布 速度话题 来控制
+### 3. 发布 速度话题 来控制小海龟画圆
+![[Pasted image 20260716224812.png]]
+
