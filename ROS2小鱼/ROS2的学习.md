@@ -502,4 +502,4 @@ colcon build --symlink-install
 > *任务*
 ![[Pasted image 20260713161619.png]]
 
-### 3. 订阅Pose实现闭环控制
+### 3. 发布 速度话题 来控制
