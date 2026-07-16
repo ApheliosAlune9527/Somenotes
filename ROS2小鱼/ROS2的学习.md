@@ -39,6 +39,55 @@
 ![[Pasted image 20260716213133.png]]
 
 
+#### 使用 `ros2 interface show` 查看消息结构与包内类型
+
+用 `ros2 interface show`：
+
+```bash
+ros2 interface show std_msgs/msg/String
+```
+
+比如你想看 `geometry_msgs/msg/Twist`：
+
+```bash
+ros2 interface show geometry_msgs/msg/Twist
+```
+
+它会显示这个消息的字段：
+
+```
+Vector3 linear
+  float64 x
+  float64 y
+  float64 z
+Vector3 angular
+  float64 x
+  float64 y
+  float64 z
+```
+
+格式就是
+
+```
+ros2 interface show 包名/msg/消息名
+```
+
+如果你想看某个包有哪些消息
+
+```bash
+ros2 interface package std_msgs
+```
+
+这样会列出 `std_msgs` 包里所有的消息、服务、动作类型。
+
+#### 使用 `sor2 interface package 功能包名字` 来查看某个包内都有定义了哪些接口
+
+![[Pasted image 20260716214456.png]]
+
+#### 如何定义以及使用一个接口
+
+![[Pasted image 20260716214638.png]]
+
 
 
 
