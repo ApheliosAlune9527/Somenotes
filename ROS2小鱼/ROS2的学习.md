@@ -30,10 +30,11 @@
 
 ![[Pasted image 20260715204436.png]]
 
+![[Pasted image 20260715224340.png]]
 
+![[Pasted image 20260715224416.png]]
 
-
-
+![[Pasted image 20260715224455.png]]
 
 
 
