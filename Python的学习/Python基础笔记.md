@@ -5804,7 +5804,7 @@ class Person:
     name = None
     age = None
 
-    # 构造方法/构造器
+    # 构造方法 / 构造器
     # 构造方法是完成对象的初始化任务
     def __init__(self, name, age):
         print(f"__init__ 执行了 {name} {age}")
