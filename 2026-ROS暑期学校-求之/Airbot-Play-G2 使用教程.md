@@ -7,6 +7,7 @@ tags:
   - MoveIt
   - 教程
 created: 2026-07-21
+updated: 2026-07-23
 ---
 
 # AIRBOT Play + G2 夹爪 使用教程
@@ -14,8 +15,9 @@ created: 2026-07-21
 > [!info] 环境信息
 > - **适用硬件**：AIRBOT Play 六轴机械臂 + G2 夹爪
 > - **系统环境**：Ubuntu 22.04 + ROS2 Humble + Python 3.10
-> - **最后更新**：2026-07-21
+> - **最后更新**：2026-07-23
 > - **离线安装包**：[[Airbot-Play-G2 安装包/]]
+> - **旧版官方资料**：[[Airbot-Play-G2 安装包/AIRBOT Play V5.1.6 官方资料索引|V5.1.6 官方资料索引]]
 
 ---
 
@@ -48,7 +50,7 @@ created: 2026-07-21
 | arm-sdk（Python SDK） | 5.2.2 | 虚拟环境 `~/Discover_projects/arm-venvs/airbot-venv-5.2.2` · 安装包：[[Airbot-Play-G2 安装包/arm_sdk-5.2.2-py3-none-any.whl\|arm_sdk wheel]] |
 | airbot-arm（控制服务） | 5.2.2 | `/usr/bin/airbot-arm` · 安装包：[[Airbot-Play-G2 安装包/airbot-arm_5.2.2_amd64.deb\|airbot-arm deb]] |
 | airbot-configure（CAN 驱动） | 5.2.1.6-1 | 自动创建 `can0` 接口 · 安装包：[[Airbot-Play-G2 安装包/airbot-configure_5.2.1.6-1_all.deb\|airbot-configure deb]] |
-| airbot_py（旧版 SDK） | 5.1.6 | 虚拟环境 `~/Discover_projects/arm-venvs/airbot-venv-5.2.2-5.1.6` · 安装包：[[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|airbot_py wheel]] |
+| airbot_py（旧版 SDK） | 5.1.6 | 虚拟环境 `~/Discover_projects/arm-venvs/airbot-venv-5.1.6` · 安装包：[[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|airbot_py wheel]] |
 | Docker 镜像 | 5.1.6 | `airbot-runtime:5.1.6` |
 | ROS2 工作空间 | - | `~/Discover_projects/ros2_ws/airbot_play_moveit2/` · 源码包：[[Airbot-Play-G2 安装包/airbot_hardware_sdk_humble_AMD64.zip\|ROS2 HW SDK]] |
 
@@ -111,7 +113,7 @@ created: 2026-07-21
 | SDK | 虚拟环境 | 启动方式 | 用途 |
 |-----|---------|---------|------|
 | arm-sdk 5.2.2（推荐） · [[Airbot-Play-G2 安装包/arm_sdk-5.2.2-py3-none-any.whl\|📦]] | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2` | `sudo airbot-arm ...` | Python API 编程控制 |
-| airbot_py 5.1.6（旧版） · [[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|📦]] | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2-5.1.6` | `airbot_fsm ...`（Docker） | 键盘控制 |
+| airbot_py 5.1.6（旧版） · [[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|📦]] | `~/Discover_projects/arm-venvs/airbot-venv-5.1.6` | `airbot_fsm ...`（Docker） | 键盘控制 |
 
 > [!warning] 不要混用
 > 5.2.2 用 `airbot-arm` 服务，5.1.6 用 `airbot_fsm` 服务，不能同时运行。
@@ -408,13 +410,17 @@ ros2 node list
 > [!tip] 相关安装包
 > - [[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|airbot_py 5.1.6 旧版 SDK]]
 > - [[Airbot-Play-G2 安装包/airbot-configure_5.2.1.6-1_all.deb\|airbot-configure CAN 驱动]]
+> - [[Airbot-Play-G2 安装包/AIRBOT Play V5.1.6 官方资料索引\|官方 PDF 归档]]
 
 这是旧版 `airbot_py 5.1.6` 的键盘控制方式，使用 Docker 运行。与前面的 `arm-sdk 5.2.2` 是两套不同的 SDK，**不要混用**。
+
+> [!warning] 版本边界
+> 本节仅适用于 `airbot_py 5.1.6`、`airbot_fsm`/`airbot_server` 这套旧版工具。当前 `arm-sdk 5.2.2` 请使用第 4 节的 `airbot-arm` 流程。
 
 | SDK | 虚拟环境 | 启动方式 |
 |-----|---------|---------|
 | arm-sdk 5.2.2（推荐） | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2` | `sudo airbot-arm ...` |
-| airbot_py 5.1.6（旧版） | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2-5.1.6` | `airbot_fsm ...`（Docker） |
+| airbot_py 5.1.6（旧版） | `~/Discover_projects/arm-venvs/airbot-venv-5.1.6` | `airbot_fsm ...`（Docker） |
 
 ### 启动步骤
 
@@ -442,7 +448,7 @@ Transition activate for sdk_server succeeded
 
 ```bash
 unset PYTHONPATH PYTHONHOME
-source /home/aphelios/airbot-venv-5.1.6/bin/activate
+source ~/Discover_projects/arm-venvs/airbot-venv-5.1.6/bin/activate
 python -m airbot_examples.task_kbd_ctrl -p 50051
 ```
 
@@ -464,6 +470,19 @@ python -m airbot_examples.task_kbd_ctrl -p 50051
 | `[` / `]` | 闭合/打开夹爪 |
 | `z` | 退出 |
 | `Ctrl+C` | 立即停止 |
+
+#### 关节速度控制（SERVO_JOINT_VEL）
+
+按 `Space` 切换到关节速度模式后，以下按键分别控制对应关节的正向或反向运动：
+
+| 按键 | 操作 |
+|------|------|
+| `1` / `2` | J1 正向 / 反向 |
+| `3` / `4` | J2 正向 / 反向 |
+| `5` / `6` | J3 正向 / 反向 |
+| `7` / `8` | J4 正向 / 反向 |
+| `9` / `0` | J5 正向 / 反向 |
+| `-` / `=` | J6 正向 / 反向 |
 
 ### 停止
 
@@ -519,6 +538,15 @@ python -m airbot_examples.task_kbd_ctrl -p 50051
 | 🟢 绿色波浪 | 服务初始化中 | 等待变成绿色常亮 |
 | 🟢 绿色常亮 | **正常工作** | 可以开始控制 |
 | 🟣 紫色呼吸 | 重力补偿模式 | 正常，可手动拖动 |
+
+### 首次上电与零位校准
+
+1. 固定机械臂底座，清空工作范围；连接 USB-2 和 24V 电源后，等待自检结束。
+2. 仅当灯带黄色闪烁、提示零位丢失时，长按底座按钮约 3 秒，听到提示声后进入手动调整状态。
+3. 缓慢对齐机械臂连杆上的零位标记；J4、J5、J6 可保持任意位置。
+4. 再按一次底座按钮，听到提示声即完成校零。USB 已连接时，灯带应恢复为白色呼吸。
+
+旧版操作图示与原文见 [[Airbot-Play-G2 安装包/AIRBOT Play V5.1.6 官方资料索引\|V5.1.6 官方资料索引]]。当前 V5.2.2 的控制服务仍应按第 4 节启动。
 
 ---
 
@@ -730,6 +758,7 @@ options.blocking = False                  # 是否阻塞等待完成
 
 - 📦 **本地离线安装包**：[[Airbot-Play-G2 安装包/]]
 - 📦 **SDK 安装配置指南**：[[Airbot-Play-G2 安装包/AIRBOT-PLAY-SDK-安装配置指南.zh-CN.md\|AIRBOT-PLAY-SDK-安装配置指南]]
+- 📦 **V5.1.6 官方资料归档**：[[Airbot-Play-G2 安装包/AIRBOT Play V5.1.6 官方资料索引\|软件安装、初次运行与键盘控制]]
 - 📖 官方文档：[airbot-play](https://docs.airbots.online/airbot-play/)
 - 📖 SDK API 参考：[API Reference](https://docs.airbots.online/airbot-play/sdk/api/reference.html)
 - 📖 **使用示例（推荐）**：[Examples](https://docs.airbots.online/airbot-play/sdk/api/examples.html)
