@@ -15,6 +15,7 @@ created: 2026-07-21
 > - **适用硬件**：AIRBOT Play 六轴机械臂 + G2 夹爪
 > - **系统环境**：Ubuntu 22.04 + ROS2 Humble + Python 3.10
 > - **最后更新**：2026-07-21
+> - **离线安装包**：[[Airbot-Play-G2 安装包/]]
 
 ---
 
@@ -43,13 +44,13 @@ created: 2026-07-21
 | 组件 | 版本 | 路径/说明 |
 |------|------|----------|
 | ROS2 Humble | Humble | `/opt/ros/humble/` |
-| MoveIt2 | 2.5.9 | 随 ROS2 安装 |
-| arm-sdk（Python SDK） | 5.2.2 | 虚拟环境 `~/Discover_projects/arm-venvs/airbot-venv-5.2.2` |
-| airbot-arm（控制服务） | - | `/usr/bin/airbot-arm` |
-| airbot-configure（CAN 驱动） | 5.1.6-1 | 自动创建 `can0` 接口 |
-| airbot_py（旧版 SDK） | 5.1.6 | 虚拟环境 `~/Discover_projects/arm-venvs/airbot-venv-5.2.2-5.1.6` |
+| MoveIt2 | 2.5.9 | 随 ROS2 安装 · 源码包：[[Airbot-Play-G2 安装包/AIRBOT-Play-Hardware-with-Moveit2-feature-humble.zip\|MoveIt2 源码]] |
+| arm-sdk（Python SDK） | 5.2.2 | 虚拟环境 `~/Discover_projects/arm-venvs/airbot-venv-5.2.2` · 安装包：[[Airbot-Play-G2 安装包/arm_sdk-5.2.2-py3-none-any.whl\|arm_sdk wheel]] |
+| airbot-arm（控制服务） | 5.2.2 | `/usr/bin/airbot-arm` · 安装包：[[Airbot-Play-G2 安装包/airbot-arm_5.2.2_amd64.deb\|airbot-arm deb]] |
+| airbot-configure（CAN 驱动） | 5.2.1.6-1 | 自动创建 `can0` 接口 · 安装包：[[Airbot-Play-G2 安装包/airbot-configure_5.2.1.6-1_all.deb\|airbot-configure deb]] |
+| airbot_py（旧版 SDK） | 5.1.6 | 虚拟环境 `~/Discover_projects/arm-venvs/airbot-venv-5.2.2-5.1.6` · 安装包：[[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|airbot_py wheel]] |
 | Docker 镜像 | 5.1.6 | `airbot-runtime:5.1.6` |
-| ROS2 工作空间 | - | `~/Discover_projects/ros2_ws/airbot_play_moveit2/` |
+| ROS2 工作空间 | - | `~/Discover_projects/ros2_ws/airbot_play_moveit2/` · 源码包：[[Airbot-Play-G2 安装包/airbot_hardware_sdk_humble_AMD64.zip\|ROS2 HW SDK]] |
 
 ### ROS2 工作空间包含的包
 
@@ -109,8 +110,8 @@ created: 2026-07-21
 
 | SDK | 虚拟环境 | 启动方式 | 用途 |
 |-----|---------|---------|------|
-| arm-sdk 5.2.2（推荐） | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2` | `sudo airbot-arm ...` | Python API 编程控制 |
-| airbot_py 5.1.6（旧版） | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2-5.1.6` | `airbot_fsm ...`（Docker） | 键盘控制 |
+| arm-sdk 5.2.2（推荐） · [[Airbot-Play-G2 安装包/arm_sdk-5.2.2-py3-none-any.whl\|📦]] | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2` | `sudo airbot-arm ...` | Python API 编程控制 |
+| airbot_py 5.1.6（旧版） · [[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|📦]] | `~/Discover_projects/arm-venvs/airbot-venv-5.2.2-5.1.6` | `airbot_fsm ...`（Docker） | 键盘控制 |
 
 > [!warning] 不要混用
 > 5.2.2 用 `airbot-arm` 服务，5.1.6 用 `airbot_fsm` 服务，不能同时运行。
@@ -168,6 +169,10 @@ ros2 topic echo /joint_states
 ---
 
 ## 4. 路径 B：真机直控（arm-sdk 5.2.2）
+
+> [!tip] 相关安装包
+> - [[Airbot-Play-G2 安装包/arm_sdk-5.2.2-py3-none-any.whl\|arm-sdk 5.2.2 Python SDK]]
+> - [[Airbot-Play-G2 安装包/airbot-arm_5.2.2_amd64.deb\|airbot-arm 5.2.2 控制服务]]
 
 这条路径用 `arm-sdk 5.2.2` 的 Python API 直接控制真机，**不经过 ROS2**。
 
@@ -332,6 +337,11 @@ arm-sdk examples run airbot_example_move_end_pose_PTP
 
 ## 5. 路径 C：真机 + MoveIt2 规划控制
 
+> [!tip] 相关安装包
+> - [[Airbot-Play-G2 安装包/airbot-arm_5.2.2_amd64.deb\|airbot-arm 5.2.2 控制服务]]
+> - [[Airbot-Play-G2 安装包/AIRBOT-Play-Hardware-with-Moveit2-feature-humble.zip\|MoveIt2 工作空间源码]]
+> - [[Airbot-Play-G2 安装包/airbot_hardware_sdk_humble_AMD64.zip\|ROS2 Hardware SDK]]
+
 这条路径结合 ROS2 MoveIt2 和真机，用 RViz 做可视化规划，控制真机运动。
 
 ### 前提条件
@@ -394,6 +404,10 @@ ros2 node list
 ---
 
 ## 6. 附：5.1.6 SDK 键盘控制（旧版）
+
+> [!tip] 相关安装包
+> - [[Airbot-Play-G2 安装包/airbot_py-5.1.6-py3-none-any.whl\|airbot_py 5.1.6 旧版 SDK]]
+> - [[Airbot-Play-G2 安装包/airbot-configure_5.2.1.6-1_all.deb\|airbot-configure CAN 驱动]]
 
 这是旧版 `airbot_py 5.1.6` 的键盘控制方式，使用 Docker 运行。与前面的 `arm-sdk 5.2.2` 是两套不同的 SDK，**不要混用**。
 
@@ -714,6 +728,8 @@ options.blocking = False                  # 是否阻塞等待完成
 
 ## 附录 A：官方资源
 
+- 📦 **本地离线安装包**：[[Airbot-Play-G2 安装包/]]
+- 📦 **SDK 安装配置指南**：[[Airbot-Play-G2 安装包/AIRBOT-PLAY-SDK-安装配置指南.zh-CN.md\|AIRBOT-PLAY-SDK-安装配置指南]]
 - 📖 官方文档：[airbot-play](https://docs.airbots.online/airbot-play/)
 - 📖 SDK API 参考：[API Reference](https://docs.airbots.online/airbot-play/sdk/api/reference.html)
 - 📖 **使用示例（推荐）**：[Examples](https://docs.airbots.online/airbot-play/sdk/api/examples.html)
